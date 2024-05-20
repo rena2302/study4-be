@@ -16,6 +16,17 @@ namespace study4_be
         {
             services.AddControllersWithViews();
             services.AddScoped<UserRepository>();
+            // Cấu hình CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +65,17 @@ namespace study4_be
 
                 // Chuyển quyền kiểm soát sang middleware tiếp theo trong pipeline
                 await next();
+            });
+            // Sử dụng CORS
+            app.UseCors("AllowAllOrigins");
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.UseEndpoints(endpoints =>

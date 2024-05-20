@@ -18,6 +18,8 @@ namespace study4_be.Repositories
 
         public void AddUser(User user)
         {
+            // Tạo ID ngẫu nhiên cho người dùng
+            user.UsersId = Guid.NewGuid().ToString();
             HashPassword(user);
             _context.Users.Add(user);
             _context.SaveChanges();
