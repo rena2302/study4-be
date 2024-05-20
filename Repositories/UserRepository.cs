@@ -9,23 +9,30 @@ namespace study4_be.Repositories
 
         public User GetUserByUsername(string username)
         {
-            // Truy vấn người dùng từ cơ sở dữ liệu sử dụng tên người dùng
             return _context.Users.FirstOrDefault(u => u.UsersName == username);
+        }
+        public User GetUserByUserEmail(string email)
+        {
+            return _context.Users.FirstOrDefault(u => u.Email == email);
         }
 
         public void AddUser(User user)
         {
-            // Thêm người dùng mới vào cơ sở dữ liệu và lưu thay đổi
+            HashPassword(user);
             _context.Users.Add(user);
             _context.SaveChanges();
         }
-
-        // Bạn có thể triển khai các phương thức khác tương tự ở đây nếu cần
-
-        // Ví dụ:
-        // public IEnumerable<User> GetAllUsers()
-        // {
-        //     return _context.Users.ToList();
-        // }
+        public bool CheckEmailExists(string email)
+        {
+            return _context.Users.Any(u => u.Email == email);
+        }
+        public void HashPassword (User user)
+        {
+            user.UsersPassword = BCrypt.Net.BCrypt.HashPassword(user.UsersPassword);
+        }
+        public bool VerifyPassword(string enteredPassword, string storedHash)
+        {
+            return BCrypt.Net.BCrypt.Verify(enteredPassword, storedHash);
+        }
     }
 }

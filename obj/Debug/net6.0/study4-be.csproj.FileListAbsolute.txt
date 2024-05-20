@@ -59,3 +59,4 @@ C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\ref\st
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\study4-be.pdb
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\study4-be.genruntimeconfig.cache
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\refint\study4-be.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\BCrypt.Net-Next.dll

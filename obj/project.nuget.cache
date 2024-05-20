@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "U7D8Fd1w+M8s30XL3MwOCCXuG+uus8m6AcAckpXlQ6EWZGfSZbf2JJZ11iaOHGeLFfQzwdhhQG0x4pA3Nl8Z8Q==",
+  "dgSpecHash": "OCNZnVXE7Tqr4etNwcHSLfeOE4Wg7IfqxVh7k5t+tcs1KrRWqnQCFVPdd82A/ekqQ6xYB42/BXx+gJcwuLA2ZA==",
   "success": true,
   "projectFilePath": "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\phanv\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\phanv\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phanv\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\phanv\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
