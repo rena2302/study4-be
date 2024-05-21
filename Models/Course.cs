@@ -7,7 +7,7 @@ namespace study4_be.Models
     {
         public Course()
         {
-            Lessons = new HashSet<Lesson>();
+            Containers = new HashSet<Container>();
             Orders = new HashSet<Order>();
             Ratings = new HashSet<Rating>();
         }
@@ -19,7 +19,7 @@ namespace study4_be.Models
         public string? CourseTag { get; set; }
         public double? CoursePrice { get; set; }
 
-        public virtual ICollection<Lesson> Lessons { get; set; }
+        public virtual ICollection<Container> Containers { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
     }

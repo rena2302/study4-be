@@ -6,12 +6,12 @@ namespace study4_be.Services
 {
     public class AuthService /*: IAuthService*/
     {
-        //private readonly UserManager<Models.User> _userManager;
+        private readonly UserManager<Models.User> _userManager;
 
-        //public AuthService(UserManager<Models.User> userManager)
-        //{
-        //    _userManager = userManager;
-        //}
+        public AuthService(UserManager<Models.User> userManager)
+        {
+            _userManager = userManager;
+        }
 
         //public async Task<IdentityResult> RegisterUserAsync(RegisterUserDto registerUserDto)
         //{

@@ -13,7 +13,7 @@ namespace study4_be.Repositories
         }
         public User GetUserByUserEmail(string email)
         {
-            return _context.Users.FirstOrDefault(u => u.Email == email);
+            return _context.Users.FirstOrDefault(u => u.UsersEmail == email);
         }
 
         public void AddUser(User user)
@@ -26,9 +26,9 @@ namespace study4_be.Repositories
         }
         public bool CheckEmailExists(string email)
         {
-            return _context.Users.Any(u => u.Email == email);
+            return _context.Users.Any(u => u.UsersEmail == email);
         }
-        public void HashPassword (User user)
+        public void HashPassword(User user)
         {
             user.UsersPassword = BCrypt.Net.BCrypt.HashPassword(user.UsersPassword);
         }

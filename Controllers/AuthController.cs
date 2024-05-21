@@ -12,7 +12,7 @@ namespace study4_be.Controllers
     {
         private readonly UserRepository _userRepository = new UserRepository();
 
-        private  STUDY4Context _context = new STUDY4Context();
+        private STUDY4Context _context = new STUDY4Context();
         private UserRegistrationValidator _userRegistrationValidator = new UserRegistrationValidator();
         public IActionResult Index()
         {
@@ -53,9 +53,9 @@ namespace study4_be.Controllers
                 var requestBody = await reader.ReadToEndAsync();
                 var loginData = JsonSerializer.Deserialize<User>(requestBody);
 
-                if (loginData != null && !string.IsNullOrEmpty(loginData.Email) && !string.IsNullOrEmpty(loginData.UsersPassword))
+                if (loginData != null && !string.IsNullOrEmpty(loginData.UsersEmail) && !string.IsNullOrEmpty(loginData.UsersPassword))
                 {
-                    var user = _userRepository.GetUserByUserEmail(loginData.Email);
+                    var user = _userRepository.GetUserByUserEmail(loginData.UsersEmail);
 
                     if (user != null && _userRepository.VerifyPassword(loginData.UsersPassword, user.UsersPassword))
                     {

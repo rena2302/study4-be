@@ -9,12 +9,12 @@ namespace study4_be.Validation
         private readonly UserRepository _userRepository = new UserRepository();
         public bool Validate(User user, out string errorMessage)
         {
-            if (string.IsNullOrEmpty(user.Email) || !IsValidEmail(user.Email))
+            if (string.IsNullOrEmpty(user.UsersEmail) || !IsValidEmail(user.UsersEmail))
             {
                 errorMessage = "A valid email is required.";
                 return false;
             }
-            if (_userRepository.CheckEmailExists(user.Email))
+            if (_userRepository.CheckEmailExists(user.UsersEmail))
             {
                 errorMessage = "Email already exists.";
                 return false;

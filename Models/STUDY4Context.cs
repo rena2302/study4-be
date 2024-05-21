@@ -16,7 +16,6 @@ namespace study4_be.Models
         {
         }
 
-        public virtual DbSet<Answer> Answers { get; set; } = null!;
         public virtual DbSet<Audio> Audios { get; set; } = null!;
         public virtual DbSet<Container> Containers { get; set; } = null!;
         public virtual DbSet<Course> Courses { get; set; } = null!;
@@ -25,6 +24,7 @@ namespace study4_be.Models
         public virtual DbSet<Question> Questions { get; set; } = null!;
         public virtual DbSet<Quiz> Quizzes { get; set; } = null!;
         public virtual DbSet<Rating> Ratings { get; set; } = null!;
+        public virtual DbSet<Translate> Translates { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<Vocabulary> Vocabularies { get; set; } = null!;
 
@@ -39,44 +39,6 @@ namespace study4_be.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Answer>(entity =>
-            {
-                entity.ToTable("ANSWER");
-
-                entity.Property(e => e.AnswerId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ANSWER_ID");
-
-                entity.Property(e => e.Answer1)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("ANSWER");
-
-                entity.Property(e => e.QuestionId).HasColumnName("QUESTION_ID");
-
-                entity.Property(e => e.QuizzesId).HasColumnName("QUIZZES_ID");
-
-                entity.Property(e => e.UsersId)
-                    .HasMaxLength(70)
-                    .IsUnicode(false)
-                    .HasColumnName("USERS_ID");
-
-                entity.HasOne(d => d.Question)
-                    .WithMany(p => p.Answers)
-                    .HasForeignKey(d => d.QuestionId)
-                    .HasConstraintName("FK_ANSWER_QUESTION");
-
-                entity.HasOne(d => d.Quizzes)
-                    .WithMany(p => p.Answers)
-                    .HasForeignKey(d => d.QuizzesId)
-                    .HasConstraintName("FK_ANSWER_QUIZZES");
-
-                entity.HasOne(d => d.Users)
-                    .WithMany(p => p.Answers)
-                    .HasForeignKey(d => d.UsersId)
-                    .HasConstraintName("FK_ANSWER_USERS");
-            });
-
             modelBuilder.Entity<Audio>(entity =>
             {
                 entity.ToTable("AUDIO");
@@ -95,12 +57,12 @@ namespace study4_be.Models
                     .IsUnicode(false)
                     .HasColumnName("AUDIO_URL");
 
-                entity.Property(e => e.LessonsId).HasColumnName("LESSONS_ID");
+                entity.Property(e => e.ContainerId).HasColumnName("Container_id");
 
-                entity.HasOne(d => d.Lessons)
+                entity.HasOne(d => d.Container)
                     .WithMany(p => p.Audios)
-                    .HasForeignKey(d => d.LessonsId)
-                    .HasConstraintName("FK_AUDIO_LESSONS");
+                    .HasForeignKey(d => d.ContainerId)
+                    .HasConstraintName("FK_AUDIO_Container");
             });
 
             modelBuilder.Entity<Container>(entity =>
@@ -111,22 +73,12 @@ namespace study4_be.Models
                     .ValueGeneratedNever()
                     .HasColumnName("Container_id");
 
-                entity.Property(e => e.FlashCardId).HasColumnName("FlashCard_id");
+                entity.Property(e => e.CoursesId).HasColumnName("COURSES_ID");
 
-                entity.Property(e => e.GrammarId).HasColumnName("Grammar_id");
-
-                entity.Property(e => e.LessonId).HasColumnName("Lesson_id");
-
-                entity.Property(e => e.TrainerId).HasColumnName("Trainer_id");
-
-                entity.Property(e => e.VideoId).HasColumnName("Video_id");
-
-                entity.Property(e => e.VocabId).HasColumnName("Vocab_id");
-
-                entity.HasOne(d => d.Lesson)
+                entity.HasOne(d => d.Courses)
                     .WithMany(p => p.Containers)
-                    .HasForeignKey(d => d.LessonId)
-                    .HasConstraintName("FK_Container_Lessons");
+                    .HasForeignKey(d => d.CoursesId)
+                    .HasConstraintName("FK_Container_COURSE");
             });
 
             modelBuilder.Entity<Course>(entity =>
@@ -179,11 +131,6 @@ namespace study4_be.Models
                 entity.Property(e => e.LessonsTitle)
                     .HasMaxLength(200)
                     .HasColumnName("LESSONS_TITLE");
-
-                entity.HasOne(d => d.Courses)
-                    .WithMany(p => p.Lessons)
-                    .HasForeignKey(d => d.CoursesId)
-                    .HasConstraintName("FK_LESSONS_COURSES");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -229,6 +176,26 @@ namespace study4_be.Models
 
                 entity.Property(e => e.IdQuizzes).HasColumnName("ID_QUIZZES");
 
+                entity.Property(e => e.OptionA)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("OPTION_A");
+
+                entity.Property(e => e.OptionB)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("OPTION_B");
+
+                entity.Property(e => e.OptionC)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("OPTION_C");
+
+                entity.Property(e => e.OptionD)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("OPTION_D");
+
                 entity.Property(e => e.QuestionText)
                     .HasMaxLength(100)
                     .HasColumnName("QUESTION_TEXT");
@@ -249,6 +216,8 @@ namespace study4_be.Models
                     .ValueGeneratedNever()
                     .HasColumnName("QUIZZES_ID");
 
+                entity.Property(e => e.ContainerId).HasColumnName("Container_id");
+
                 entity.Property(e => e.CreatedTime)
                     .HasColumnType("datetime")
                     .HasColumnName("CREATED_TIME");
@@ -257,16 +226,14 @@ namespace study4_be.Models
                     .HasMaxLength(100)
                     .HasColumnName("DESCRIPTION_QUIZZES");
 
-                entity.Property(e => e.LessonsId).HasColumnName("LESSONS_ID");
-
                 entity.Property(e => e.Title)
                     .HasMaxLength(70)
                     .HasColumnName("TITLE");
 
-                entity.HasOne(d => d.Lessons)
+                entity.HasOne(d => d.Container)
                     .WithMany(p => p.Quizzes)
-                    .HasForeignKey(d => d.LessonsId)
-                    .HasConstraintName("FK_QUIZZES_LESSONS");
+                    .HasForeignKey(d => d.ContainerId)
+                    .HasConstraintName("FK_QUIZZES_CONTAINER");
             });
 
             modelBuilder.Entity<Rating>(entity =>
@@ -305,6 +272,30 @@ namespace study4_be.Models
                     .HasConstraintName("FK_RATING_USERS");
             });
 
+            modelBuilder.Entity<Translate>(entity =>
+            {
+                entity.ToTable("Translate");
+
+                entity.Property(e => e.TranslateId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("Translate_id");
+
+                entity.Property(e => e.Answer).HasMaxLength(255);
+
+                entity.Property(e => e.ContainerId).HasColumnName("Container_id");
+
+                entity.Property(e => e.Hint)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Text).HasMaxLength(255);
+
+                entity.HasOne(d => d.Container)
+                    .WithMany(p => p.Translates)
+                    .HasForeignKey(d => d.ContainerId)
+                    .HasConstraintName("FK_Translate_Container");
+            });
+
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UsersId);
@@ -316,11 +307,6 @@ namespace study4_be.Models
                     .IsUnicode(false)
                     .HasColumnName("USERS_ID");
 
-                entity.Property(e => e.Email)
-                    .HasMaxLength(70)
-                    .IsUnicode(false)
-                    .HasColumnName("EMAIL");
-
                 entity.Property(e => e.UsersBanner)
                     .HasMaxLength(255)
                     .IsUnicode(false)
@@ -329,6 +315,11 @@ namespace study4_be.Models
                 entity.Property(e => e.UsersDescription)
                     .HasMaxLength(100)
                     .HasColumnName("USERS_DESCRIPTION");
+
+                entity.Property(e => e.UsersEmail)
+                    .HasMaxLength(70)
+                    .IsUnicode(false)
+                    .HasColumnName("USERS_EMAIL");
 
                 entity.Property(e => e.UsersImage)
                     .HasMaxLength(255)
@@ -355,39 +346,40 @@ namespace study4_be.Models
                     .ValueGeneratedNever()
                     .HasColumnName("VOCAB_ID");
 
-                entity.Property(e => e.AudioUrl)
-                    .HasMaxLength(60)
-                    .IsUnicode(false)
-                    .HasColumnName("Audio_URL");
+                entity.Property(e => e.AudioUrlUk)
+                    .HasMaxLength(100)
+                    .HasColumnName("AUDIO_URL_UK");
+
+                entity.Property(e => e.AudioUrlUs)
+                    .HasMaxLength(100)
+                    .HasColumnName("AUDIO_URL_US");
+
+                entity.Property(e => e.ContainerId).HasColumnName("Container_ID");
 
                 entity.Property(e => e.Example)
+                    .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("EXAMPLE");
 
                 entity.Property(e => e.Explanation)
+                    .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("EXPLANATION");
 
-                entity.Property(e => e.LessonsId).HasColumnName("LESSONS_ID");
-
                 entity.Property(e => e.Mean)
-                    .HasMaxLength(60)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
                     .HasColumnName("MEAN");
 
-                entity.Property(e => e.Type)
-                    .HasMaxLength(20)
+                entity.Property(e => e.VocabType)
+                    .HasMaxLength(70)
                     .IsUnicode(false)
-                    .HasColumnName("TYPE");
+                    .HasColumnName("VOCAB_TYPE");
 
-                entity.Property(e => e.Vocab)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("VOCAB");
-
-                entity.HasOne(d => d.Lessons)
+                entity.HasOne(d => d.Container)
                     .WithMany(p => p.Vocabularies)
-                    .HasForeignKey(d => d.LessonsId)
-                    .HasConstraintName("FK_VOCABULARY_LESSONS");
+                    .HasForeignKey(d => d.ContainerId)
+                    .HasConstraintName("FK_VOCABULARY_Container");
             });
 
             OnModelCreatingPartial(modelBuilder);
