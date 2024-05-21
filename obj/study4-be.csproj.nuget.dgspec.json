@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj": {}
+    "C:\\Users\\Admin\\workspace\\study4-be\\study4-be.csproj": {}
   },
   "projects": {
-    "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj": {
+    "C:\\Users\\Admin\\workspace\\study4-be\\study4-be.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\workspace\\study4-be\\study4-be.csproj",
         "projectName": "study4-be",
-        "projectPath": "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj",
-        "packagesPath": "C:\\Users\\phanv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\workspace\\study4-be\\study4-be.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\workspace\\study4-be\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\phanv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -56,6 +58,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
             }
           },
           "imports": [
@@ -76,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.130\\RuntimeIdentifierGraph.json"
         }
       }
     }
