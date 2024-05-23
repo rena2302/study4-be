@@ -1,0 +1,54 @@
+﻿<style>
+    .flex{
+        margin-top: 20px;
+        display: flex;
+        align-items:center;
+    }
+</style>
+
+
+<div class="form-horizontal">
+    <h4>Course</h4>
+    <hr />
+    <div class="card-body">
+        <p class="card-description"> Edit</p>
+        <form class="forms-sample">
+            <div class="form-group">
+                <label for="exampleInputPassword4">Id</label>
+                <input class="form-control" type="text" value="" readonly/>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">Name</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">Description</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">Price</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">Tag</label>
+                <input class="form-control" type="text" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label>File upload</label>
+                <input type="file" name="img[]" class="file-upload-default">
+                <div class="input-group col-xs-12">
+                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                    <span class="input-group-append">
+                        <label for="uploadimg" class="file-upload-browse btn btn-gradient-primary" type="button">Upload</label>
+                        <input id="uploadimg" style="display:none" type="file" name="Upload" onchange="ChangeImage(this,document.getElementById('previewImg'))" />
+                    </span>
+                </div>
+            </div>
+        </form>
+        <div class="flex">
+            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+            @Html.ActionLink("Cancel", "Course_List", "Courses",null, new { @class = "btn btn-light" })
+        </div>
+    </div>
+</div>
