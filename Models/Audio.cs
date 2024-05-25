@@ -8,8 +8,8 @@ namespace study4_be.Models
         public int AudioId { get; set; }
         public string? AudioUrl { get; set; }
         public string? AudioDescription { get; set; }
-        public int? ContainerId { get; set; }
+        public int? LessonId { get; set; }
 
-        public virtual Container? Container { get; set; }
+        public virtual Lesson? Lesson { get; set; }
     }
 }

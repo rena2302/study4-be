@@ -9,8 +9,8 @@ namespace study4_be.Models
         public string? Hint { get; set; }
         public string? Text { get; set; }
         public string? Answer { get; set; }
-        public int? ContainerId { get; set; }
+        public int? LessonId { get; set; }
 
-        public virtual Container? Container { get; set; }
+        public virtual Lesson? Lesson { get; set; }
     }
 }

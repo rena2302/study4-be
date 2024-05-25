@@ -12,8 +12,8 @@ namespace study4_be.Models
         public string? Explanation { get; set; }
         public string? AudioUrlUs { get; set; }
         public string? AudioUrlUk { get; set; }
-        public int? ContainerId { get; set; }
+        public int? LessonId { get; set; }
 
-        public virtual Container? Container { get; set; }
+        public virtual Lesson? Lesson { get; set; }
     }
 }

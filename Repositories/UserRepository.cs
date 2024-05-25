@@ -1,4 +1,5 @@
-﻿using study4_be.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using study4_be.Models;
 using System.Linq;
 
 namespace study4_be.Repositories
@@ -6,7 +7,16 @@ namespace study4_be.Repositories
     public class UserRepository
     {
         private readonly STUDY4Context _context = new STUDY4Context();
-
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
+        public async Task DeleteAllUsersAsync()
+        {
+            var users = await _context.Users.ToListAsync();
+            _context.Users.RemoveRange(users);
+            await _context.SaveChangesAsync();
+        }
         public User GetUserByUsername(string username)
         {
             return _context.Users.FirstOrDefault(u => u.UsersName == username);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 using study4_be.Models;
 using study4_be.Repositories;
 using study4_be.Validation;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace study4_be.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AuthController : Controller
     {
         private readonly UserRepository _userRepository = new UserRepository();
@@ -18,7 +21,7 @@ namespace study4_be.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register()
         {
             using (var reader = new StreamReader(HttpContext.Request.Body))
@@ -45,7 +48,7 @@ namespace study4_be.Controllers
                 }
             }
         }
-        [HttpPost]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login()
         {
             using (var reader = new StreamReader(HttpContext.Request.Body))
@@ -59,7 +62,7 @@ namespace study4_be.Controllers
 
                     if (user != null && _userRepository.VerifyPassword(loginData.UsersPassword, user.UsersPassword))
                     {
-                        return Json(new { status = 200, message = "Login successful", userData = user });
+                        return Json(new { status = 200, message = "Login successful", user });
                     }
                     else
                     {
@@ -71,6 +74,20 @@ namespace study4_be.Controllers
                     return BadRequest("Invalid login data");
                 }
             }
+        }
+        [HttpGet("GetAllUsers")]
+        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        {
+            var users = await _userRepository.GetAllUsersAsync();
+            return Json(new { status = 200, message = "Get Users Successful", users });
+
+        }
+        //development enviroment
+        [HttpDelete("DeleteAllUsers")]
+        public async Task<IActionResult> DeleteAllUsers()
+        {
+            await _userRepository.DeleteAllUsersAsync();
+            return Json(new { status = 200, message = "Delete Users Successful" });
         }
     }
 }

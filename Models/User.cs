@@ -8,6 +8,7 @@ namespace study4_be.Models
         public User()
         {
             Ratings = new HashSet<Rating>();
+            UserCourses = new HashSet<UserCourse>();
         }
 
         public string UsersId { get; set; } = null!;
@@ -19,5 +20,6 @@ namespace study4_be.Models
         public string? UsersBanner { get; set; }
 
         public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<UserCourse> UserCourses { get; set; }
     }
 }

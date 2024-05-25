@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 <style>
     .flex {
         margin-top: 20px;
@@ -10,49 +10,49 @@
 <h2>Course Create</h2>
 
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="card">
-            <div class="card-body">
-                <p class="card-description">Create </p>
-                <form class="forms-sample">
-                    <div class="form-group">
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">Create </p>
+            <form class="forms-sample">
+                <div class="form-group">
                     <label for="exampleInputPassword4">Id</label>
                     <input class="form-control" type="text" value="" readonly />
-                    </div>
-                    <div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="exampleInputPassword4">Name</label>
                     <input class="form-control" type="text" />
-                    </div>
-                    <div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="exampleInputPassword4">Description</label>
                     <input class="form-control" type="text" />
-                    </div>
-                    <div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="exampleInputPassword4">Price</label>
                     <input class="form-control" type="text" />
-                    </div>
-                    <div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="exampleInputPassword4">Tag</label>
                     <input class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                    <label>File upload</label>
+                    <input type="file" name="img[]" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <label for="uploadimg" class="file-upload-browse btn btn-gradient-primary" type="button">Upload</label>
+                            <input id="uploadimg" style="display:none" type="file" name="UploadImage" onchange="ChangeImage(this,document.getElementById('previewImg'))" />
+                        </span>
                     </div>
-                    <div class="form-group">
-                        <label>File upload</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
-                            <span class="input-group-append">
-                                <label for="uploadimg" class="file-upload-browse btn btn-gradient-primary" type="button">Upload</label>
-                                <input id="uploadimg" style="display:none" type="file" name="UploadImage" onchange="ChangeImage(this,document.getElementById('previewImg'))" />
-                            </span>
-                        </div>
-                        <img src="" height="150" width="150" id="previewImg" />
-                    </div>
+                    <img src="" height="150" width="150" id="previewImg" />
+                </div>
                 <div class="flex">
                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                     @Html.ActionLink("Cancel", "Course_List", "Courses", null, new { @class = "btn btn-light" })
                 </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>

@@ -7,19 +7,13 @@ namespace study4_be.Models
     {
         public Container()
         {
-            Audios = new HashSet<Audio>();
-            Quizzes = new HashSet<Quiz>();
-            Translates = new HashSet<Translate>();
-            Vocabularies = new HashSet<Vocabulary>();
+            Lessons = new HashSet<Lesson>();
         }
 
         public int ContainerId { get; set; }
-        public int? CoursesId { get; set; }
+        public int? UnitId { get; set; }
 
-        public virtual Course? Courses { get; set; }
-        public virtual ICollection<Audio> Audios { get; set; }
-        public virtual ICollection<Quiz> Quizzes { get; set; }
-        public virtual ICollection<Translate> Translates { get; set; }
-        public virtual ICollection<Vocabulary> Vocabularies { get; set; }
+        public virtual Unit? Unit { get; set; }
+        public virtual ICollection<Lesson> Lessons { get; set; }
     }
 }
