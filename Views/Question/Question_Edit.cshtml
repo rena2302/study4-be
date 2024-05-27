@@ -1,0 +1,54 @@
+﻿<style>
+    .flex {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+
+<div class="form-horizontal">
+    <h4>Course</h4>
+    <hr />
+    <div class="card-body">
+        <p class="card-description"> Edit</p>
+        <form class="forms-sample">
+            <div class="form-group">
+                <label for="exampleInputPassword4">QUESTION_ID</label>
+                <input class="form-control" type="text" value="" readonly />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">ID_QUIZZES</label>
+                <input class="form-control" type="text" readonly />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">QUESTION_TEXT</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">CORRECT_ANSWER</label>
+                <input class="form-control" type="text" />
+            </div>
+                        <div class="form-group">
+                <label for="exampleInputPassword4">OPTION_A</label>
+                <input class="form-control" type="text" />
+            </div>
+                        <div class="form-group">
+                <label for="exampleInputPassword4">OPTION_B</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">OPTION_C</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">OPTION_D</label>
+                <input class="form-control" type="text" />
+            </div>
+        </form>
+        <div class="flex">
+            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+            @Html.ActionLink("Cancel", "Question_List", "Question", null, new { @class = "btn btn-light" })
+        </div>
+    </div>
+</div>
