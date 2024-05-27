@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol.Core.Types;
 using study4_be.Models;
 using study4_be.Repositories;
 using study4_be.Validation;
+using NuGet.Protocol.Core.Types;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
-
-namespace study4_be.Controllers
+namespace study4_be.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : Controller
+    public class Auth_APIController : Controller
     {
         private readonly UserRepository _userRepository = new UserRepository();
 
@@ -56,11 +55,11 @@ namespace study4_be.Controllers
                 var requestBody = await reader.ReadToEndAsync();
                 var loginData = JsonSerializer.Deserialize<User>(requestBody);
 
-                if (loginData != null && !string.IsNullOrEmpty(loginData.UsersEmail) && !string.IsNullOrEmpty(loginData.UsersPassword))
+                if (loginData != null && !string.IsNullOrEmpty(loginData.UserEmail) && !string.IsNullOrEmpty(loginData.UserPassword))
                 {
-                    var user = _userRepository.GetUserByUserEmail(loginData.UsersEmail);
+                    var user = _userRepository.GetUserByUserEmail(loginData.UserEmail);
 
-                    if (user != null && _userRepository.VerifyPassword(loginData.UsersPassword, user.UsersPassword))
+                    if (user != null && _userRepository.VerifyPassword(loginData.UserPassword, user.UserPassword))
                     {
                         return Json(new { status = 200, message = "Login successful", user });
                     }

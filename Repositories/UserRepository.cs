@@ -19,28 +19,28 @@ namespace study4_be.Repositories
         }
         public User GetUserByUsername(string username)
         {
-            return _context.Users.FirstOrDefault(u => u.UsersName == username);
+            return _context.Users.FirstOrDefault(u => u.UserName == username);
         }
         public User GetUserByUserEmail(string email)
         {
-            return _context.Users.FirstOrDefault(u => u.UsersEmail == email);
+            return _context.Users.FirstOrDefault(u => u.UserEmail == email);
         }
 
         public void AddUser(User user)
         {
             // Tạo ID ngẫu nhiên cho người dùng
-            user.UsersId = Guid.NewGuid().ToString();
+            user.UserId = Guid.NewGuid().ToString();
             HashPassword(user);
             _context.Users.Add(user);
             _context.SaveChanges();
         }
         public bool CheckEmailExists(string email)
         {
-            return _context.Users.Any(u => u.UsersEmail == email);
+            return _context.Users.Any(u => u.UserEmail == email);
         }
         public void HashPassword(User user)
         {
-            user.UsersPassword = BCrypt.Net.BCrypt.HashPassword(user.UsersPassword);
+            user.UserPassword = BCrypt.Net.BCrypt.HashPassword(user.UserPassword);
         }
         public bool VerifyPassword(string enteredPassword, string storedHash)
         {

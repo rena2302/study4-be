@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using study4_be.Models;
 
-namespace study4_be.Controllers;
+namespace study4_be.Controllers.Admin;
 
 public class HomeController : Controller
 {

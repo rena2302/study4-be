@@ -13,7 +13,7 @@ namespace study4_be.Models
             UserCourses = new HashSet<UserCourse>();
         }
 
-        public int CoursesId { get; set; }
+        public int CourseId { get; set; }
         public string? CourseName { get; set; }
         public string? CourseDescription { get; set; }
         public string? CourseImage { get; set; }

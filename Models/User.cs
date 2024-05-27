@@ -11,13 +11,13 @@ namespace study4_be.Models
             UserCourses = new HashSet<UserCourse>();
         }
 
-        public string UsersId { get; set; } = null!;
-        public string? UsersName { get; set; }
-        public string? UsersEmail { get; set; }
-        public string? UsersPassword { get; set; }
-        public string? UsersDescription { get; set; }
-        public string? UsersImage { get; set; }
-        public string? UsersBanner { get; set; }
+        public string UserId { get; set; } = null!;
+        public string? UserName { get; set; }
+        public string? UserEmail { get; set; }
+        public string? UserPassword { get; set; }
+        public string? UserDescription { get; set; }
+        public string? UserImage { get; set; }
+        public string? UserBanner { get; set; }
 
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<UserCourse> UserCourses { get; set; }

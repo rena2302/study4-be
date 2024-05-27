@@ -85,14 +85,9 @@ namespace study4_be.Models
 
             modelBuilder.Entity<Course>(entity =>
             {
-                entity.HasKey(e => e.CoursesId)
-                    .HasName("PK_COURSE");
-
                 entity.ToTable("COURSES");
 
-                entity.Property(e => e.CoursesId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("COURSES_ID");
+                entity.Property(e => e.CourseId).HasColumnName("COURSE_ID");
 
                 entity.Property(e => e.CourseDescription)
                     .HasMaxLength(255)
@@ -229,7 +224,7 @@ namespace study4_be.Models
                     .HasMaxLength(100)
                     .HasColumnName("DESCRIPTION_QUIZZES");
 
-                entity.Property(e => e.LessonId).HasColumnName("LESSON_id");
+                entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
 
                 entity.Property(e => e.Title)
                     .HasMaxLength(70)
@@ -249,7 +244,7 @@ namespace study4_be.Models
                     .ValueGeneratedNever()
                     .HasColumnName("RATING_ID");
 
-                entity.Property(e => e.CoursesId).HasColumnName("COURSES_ID");
+                entity.Property(e => e.CourseId).HasColumnName("COURSE_ID");
 
                 entity.Property(e => e.RatingDate)
                     .HasColumnType("datetime")
@@ -261,19 +256,19 @@ namespace study4_be.Models
                     .HasMaxLength(200)
                     .HasColumnName("REVIEW");
 
-                entity.Property(e => e.UsersId)
+                entity.Property(e => e.UserId)
                     .HasMaxLength(70)
                     .IsUnicode(false)
-                    .HasColumnName("USERS_ID");
+                    .HasColumnName("USER_ID");
 
-                entity.HasOne(d => d.Courses)
+                entity.HasOne(d => d.Course)
                     .WithMany(p => p.Ratings)
-                    .HasForeignKey(d => d.CoursesId)
+                    .HasForeignKey(d => d.CourseId)
                     .HasConstraintName("FK_RATING_COURSES");
 
-                entity.HasOne(d => d.Users)
+                entity.HasOne(d => d.User)
                     .WithMany(p => p.Ratings)
-                    .HasForeignKey(d => d.UsersId)
+                    .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK_RATING_USERS");
             });
 
@@ -323,42 +318,40 @@ namespace study4_be.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.UsersId);
-
                 entity.ToTable("USERS");
 
-                entity.Property(e => e.UsersId)
+                entity.Property(e => e.UserId)
                     .HasMaxLength(70)
                     .IsUnicode(false)
-                    .HasColumnName("USERS_ID");
+                    .HasColumnName("USER_ID");
 
-                entity.Property(e => e.UsersBanner)
+                entity.Property(e => e.UserBanner)
                     .HasMaxLength(255)
                     .IsUnicode(false)
-                    .HasColumnName("USERS_BANNER");
+                    .HasColumnName("USER_BANNER");
 
-                entity.Property(e => e.UsersDescription)
+                entity.Property(e => e.UserDescription)
                     .HasMaxLength(100)
-                    .HasColumnName("USERS_DESCRIPTION");
+                    .HasColumnName("USER_DESCRIPTION");
 
-                entity.Property(e => e.UsersEmail)
+                entity.Property(e => e.UserEmail)
                     .HasMaxLength(70)
                     .IsUnicode(false)
-                    .HasColumnName("USERS_EMAIL");
+                    .HasColumnName("USER_EMAIL");
 
-                entity.Property(e => e.UsersImage)
+                entity.Property(e => e.UserImage)
                     .HasMaxLength(255)
                     .IsUnicode(false)
-                    .HasColumnName("USERS_IMAGE");
+                    .HasColumnName("USER_IMAGE");
 
-                entity.Property(e => e.UsersName)
+                entity.Property(e => e.UserName)
                     .HasMaxLength(70)
-                    .HasColumnName("USERS_NAME");
+                    .HasColumnName("USER_NAME");
 
-                entity.Property(e => e.UsersPassword)
+                entity.Property(e => e.UserPassword)
                     .HasMaxLength(70)
                     .IsUnicode(false)
-                    .HasColumnName("USERS_PASSWORD");
+                    .HasColumnName("USER_PASSWORD");
             });
 
             modelBuilder.Entity<UserCourse>(entity =>

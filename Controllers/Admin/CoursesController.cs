@@ -3,14 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
 using study4_be.Repositories;
 using Microsoft.Extensions.Logging;
-namespace study4_be.Controllers
+namespace study4_be.Controllers.Admin
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class CoursesController : Controller
     {
         private readonly ILogger<CoursesController> _logger;
-        public CoursesController(ILogger<CoursesController> logger) 
+        public CoursesController(ILogger<CoursesController> logger)
         {
             _logger = logger;
         }
@@ -43,23 +41,31 @@ namespace study4_be.Controllers
         {
             return View();
         }
-        [HttpGet]
         public IActionResult Course_Create()
         {
             return View();
         }
-        [HttpPost("Course_Create")]
+        [HttpPost]
         public async Task<IActionResult> Course_Create(Course course)
         {
             if (!ModelState.IsValid)
             {
-                
+
                 return View(course);    //show form with value input and show errors
             }
             try
             {
-                _context.Add(course);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.AddAsync(course);
+                    await _context.SaveChangesAsync();
+                    CreatedAtAction(nameof(GetCourseById), new { id = course.CourseId }, course);
+                }
+                catch (Exception e)
+                {
+                    CreatedAtAction(nameof(GetCourseById), new { id = course.CourseId }, course);
+                    _logger.LogError(e, "Error occurred while creating new course.");
+                }
                 return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
             }
             catch (Exception ex)
@@ -70,6 +76,19 @@ namespace study4_be.Controllers
                 return View(course);
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCourseById(int id)
+        {
+            var course = await _context.Courses.FindAsync(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(course);
+        }
+
         public IActionResult Course_Edit()
         {
             return View();
