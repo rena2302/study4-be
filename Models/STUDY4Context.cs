@@ -144,9 +144,7 @@ namespace study4_be.Models
                     .IsUnicode(false)
                     .HasColumnName("Phone_Number");
 
-                entity.Property(e => e.State)
-                    .HasMaxLength(100)
-                    .HasColumnName("STATE");
+                entity.Property(e => e.State).HasColumnName("STATE");
 
                 entity.Property(e => e.TotalAmount).HasColumnName("Total_amount");
 
