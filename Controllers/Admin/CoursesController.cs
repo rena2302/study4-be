@@ -103,5 +103,9 @@ namespace study4_be.Controllers.Admin
         {
             return View();
         }
+        public IActionResult BuyCourse()
+        {
+            return View("test");
+        }
     }
 }
