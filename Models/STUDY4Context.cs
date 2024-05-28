@@ -139,13 +139,16 @@ namespace study4_be.Models
                     .HasColumnType("date")
                     .HasColumnName("Order_date");
 
+                entity.Property(e => e.PhoneNumber)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("Phone_Number");
+
                 entity.Property(e => e.State)
                     .HasMaxLength(100)
                     .HasColumnName("STATE");
 
-                entity.Property(e => e.TotalAmount)
-                    .HasColumnType("decimal(10, 3)")
-                    .HasColumnName("Total_amount");
+                entity.Property(e => e.TotalAmount).HasColumnName("Total_amount");
 
                 entity.Property(e => e.UserId)
                     .HasMaxLength(70)

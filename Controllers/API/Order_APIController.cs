@@ -31,18 +31,18 @@ namespace study4_be.Controllers.API
         [HttpPost("Buy_Course")] // thieu number phone va tru thoi gian
         public async Task<IActionResult> Buy_Course([FromBody] BuyCourseRequest request)
         {
-            if (request == null || request.UsersId == null || request.CourseId == null)
+            if (request == null || request.UserId == null || request.CourseId == null)
             {
                 return BadRequest("Invalid user or course information.");
             }
 
-            var existingUser = await _context.Users.FindAsync(request.UsersId);
+            var existingUser = await _context.Users.FindAsync(request.UserId);
             if (existingUser == null)
             {
                 return NotFound("User not found.");
             }
             var existingOrder = await _context.Orders
-               .FirstOrDefaultAsync(o => o.UserId == request.UsersId && o.CourseId == request.CourseId);
+               .FirstOrDefaultAsync(o => o.UserId == request.UserId && o.CourseId == request.CourseId);
 
             if (existingOrder != null)
             {
@@ -54,11 +54,16 @@ namespace study4_be.Controllers.API
             {
                 return NotFound("Course not found.");
             }
+            existingUser.PhoneNumber = request.PhoneNumber;
             var order = new Order
             {
                 UserId = existingUser.UserId,
                 CourseId = existingCourse.CourseId,
-                OrderDate = DateTime.Now
+                OrderDate = DateTime.Now,
+                PhoneNumber = request.PhoneNumber,
+                TotalAmount = request.TotalAmount,
+                Address = request.Address,
+                State = false
             };
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();

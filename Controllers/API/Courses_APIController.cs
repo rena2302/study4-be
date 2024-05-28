@@ -22,7 +22,7 @@ namespace study4_be.Controllers.API
         private readonly CourseRepository _coursesRepository = new CourseRepository();
         public STUDY4Context _context = new STUDY4Context();
 
-        [HttpGet("GetAllCourses")]
+        [HttpGet("Get_AllCourses")]
         public async Task<ActionResult<IEnumerable<Course>>> Get_AllCourses()
         {
             var courses = await _coursesRepository.GetAllCoursesAsync();
@@ -30,7 +30,7 @@ namespace study4_be.Controllers.API
 
         }
         //development enviroment
-        [HttpDelete("DeleteAllCourses")]
+        [HttpDelete("Delete_AllCourses")]
         public async Task<IActionResult> Delete_AllCourses()
         {
             await _coursesRepository.DeleteAllCoursesAsync();
