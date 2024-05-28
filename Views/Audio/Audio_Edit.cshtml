@@ -1,0 +1,38 @@
+﻿<style>
+    .flex {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+
+<div class="form-horizontal">
+    <h4>Course</h4>
+    <hr />
+    <div class="card-body">
+        <p class="card-description"> Edit</p>
+        <form class="forms-sample">
+            <div class="form-group">
+                <label for="exampleInputPassword4">AUDIO_ID</label>
+                <input class="form-control" type="text" value="" readonly />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">AUDIO_URL</label>
+                <input class="form-control" type="text" readonly />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">AUDIO_DESCRIPTION</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">LESSON_ID</label>
+                <input class="form-control" type="text" />
+            </div>
+        </form>
+        <div class="flex">
+            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+            @Html.ActionLink("Cancel", "Audio_List", "Audio", null, new { @class = "btn btn-light" })
+        </div>
+    </div>
+</div>

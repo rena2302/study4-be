@@ -1,0 +1,41 @@
+﻿<style>
+    .flex {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<h2>Course Create</h2>
+
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">Create </p>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputPassword4">AUDIO_ID</label>
+                    <input class="form-control" type="text" value="" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">AUDIO_URL</label>
+                    <input class="form-control" type="text" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">AUDIO_DESCRIPTION</label>
+                    <input class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">LESSON_ID</label>
+                    <input class="form-control" type="text" />
+                </div>
+                <div class="flex">
+                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                    @Html.ActionLink("Cancel", "Audio_List", "Audio", null, new { @class = "btn btn-light" })
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

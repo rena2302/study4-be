@@ -1,0 +1,62 @@
+﻿<style>
+    .mb-5 {
+        color: black;
+    }
+
+    .course__details-btn {
+        padding: 10px;
+        margin: 10px;
+    }
+</style>
+
+
+<h2>Detail</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="card bg-gradient-danger card-img-holder text-white" style="overflow:hidden!important">
+            <div class="card-body" style="text-align:center">
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    QUESTION_ID<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+                <div style="padding:20px"></div>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    ID_QUIZZES<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+                <div style="padding:20px"></div>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    QUESTION_TEXT<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+                <div style="padding:20px"></div>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    CORRECT_ANSWER<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    OPTION_A<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    OPTION_B<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    OPTION_C<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    OPTION_D<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                <p class="mb-5">123</p>
+            </div>
+        </div>
+        <div style="padding:20px"></div>
+        <div class="form-actions no-color">
+            @Html.ActionLink("Edit", "Question_Edit", "Question", null, new { @class = "btn btn-light me-2 course__details-btn" })
+            @Html.ActionLink("Cancel", "Question_List", "Question", null, new { @class = "btn btn-light course__details-btn" })
+        </div>
+    </dl>
+</div>

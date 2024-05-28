@@ -1,0 +1,60 @@
+﻿<style>
+    .course__create-btn {
+        padding: 10px;
+        margin-top: 40px;
+        border: none;
+        font-size: 20px;
+        background-color: #d1ecf1;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: center;
+    }
+
+        .course__create-btn:hover {
+            opacity: 0.8;
+        }
+</style>
+
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                    <th>LESSONS_ID</th>
+                    <th>COURSES_ID</th>
+                    <th>LESSONS_TITLE</th>
+                    <th>CONTENT</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @*                 Foreach should be here *@
+                <tr>
+                    <td>
+                        <p>123</p>
+                    </td>
+                    <td>
+                        <p>123</p>
+                    </td>
+                    <td>
+                        <p>123</p>
+                    </td>
+                    <td>
+                        <p>123</p>
+                    </td>
+                    <td>
+                        <a href="@Url.ActionLink("Lesson_Edit","Lesson")" class="text-link-action">Sửa</a>
+                        <span style="padding:0 8px">|</span>
+                        <a href="@Url.ActionLink("Lesson_Delete","Lesson")" class="text-link-action">Xóa</a>
+                        <span style="padding:0 8px">|</span>
+                        <a href="@Url.ActionLink("Lesson_Details","Lesson")" class="text-link-action">Chi tiết</a>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+    <a href="@Url.ActionLink("Lesson_Create","Lesson")" class="course__create-btn">Create</a>
+</div>
