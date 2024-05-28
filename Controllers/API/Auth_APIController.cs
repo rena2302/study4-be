@@ -75,7 +75,7 @@ namespace study4_be.Controllers.API
             }
         }
         [HttpGet("GetAllUsers")]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        public async Task<ActionResult<IEnumerable<User>>> Get_AllUsers()
         {
             var users = await _userRepository.GetAllUsersAsync();
             return Json(new { status = 200, message = "Get Users Successful", users });
@@ -83,7 +83,7 @@ namespace study4_be.Controllers.API
         }
         //development enviroment
         [HttpDelete("DeleteAllUsers")]
-        public async Task<IActionResult> DeleteAllUsers()
+        public async Task<IActionResult> Delete_AllUsers()
         {
             await _userRepository.DeleteAllUsersAsync();
             return Json(new { status = 200, message = "Delete Users Successful" });

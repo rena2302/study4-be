@@ -42,7 +42,7 @@ namespace study4_be.Controllers.API
                 return NotFound("User not found.");
             }
             var existingOrder = await _context.Orders
-               .FirstOrDefaultAsync(o => o.UsersId == request.UsersId && o.CourseId == request.CourseId);
+               .FirstOrDefaultAsync(o => o.UserId == request.UsersId && o.CourseId == request.CourseId);
 
             if (existingOrder != null)
             {
@@ -56,7 +56,7 @@ namespace study4_be.Controllers.API
             }
             var order = new Order
             {
-                UsersId = existingUser.UserId,
+                UserId = existingUser.UserId,
                 CourseId = existingCourse.CourseId,
                 OrderDate = DateTime.Now
             };

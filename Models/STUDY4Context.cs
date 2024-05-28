@@ -35,7 +35,6 @@ namespace study4_be.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                //optionsBuilder.UseSqlServer("Server=tcp:eu-az-sql-serv1.database.windows.net,1433;Initial Catalog=d6a2vw4i0z90hhi;Persist Security Info=False;User ID=u2nh59tab9g39te;Password=3LmObYn6bmx7G&dz2rh%VpR!f;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30; ");
                 optionsBuilder.UseSqlServer("Data Source=LAPTOP-62MKG1UJ;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
             }
         }
@@ -46,9 +45,7 @@ namespace study4_be.Models
             {
                 entity.ToTable("AUDIO");
 
-                entity.Property(e => e.AudioId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("AUDIO_ID");
+                entity.Property(e => e.AudioId).HasColumnName("AUDIO_ID");
 
                 entity.Property(e => e.AudioDescription)
                     .HasMaxLength(255)
@@ -72,9 +69,7 @@ namespace study4_be.Models
             {
                 entity.ToTable("CONTAINER");
 
-                entity.Property(e => e.ContainerId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CONTAINER_ID");
+                entity.Property(e => e.ContainerId).HasColumnName("CONTAINER_ID");
 
                 entity.Property(e => e.UnitId).HasColumnName("UNIT_ID");
 
@@ -114,9 +109,7 @@ namespace study4_be.Models
             {
                 entity.ToTable("LESSON");
 
-                entity.Property(e => e.LessonId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("LESSON_ID");
+                entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
 
                 entity.Property(e => e.ContainerId).HasColumnName("CONTAINER_ID");
 
@@ -136,9 +129,7 @@ namespace study4_be.Models
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.Property(e => e.OrderId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Order_id");
+                entity.Property(e => e.OrderId).HasColumnName("Order_id");
 
                 entity.Property(e => e.Address).HasMaxLength(100);
 
@@ -148,14 +139,18 @@ namespace study4_be.Models
                     .HasColumnType("date")
                     .HasColumnName("Order_date");
 
+                entity.Property(e => e.State)
+                    .HasMaxLength(100)
+                    .HasColumnName("STATE");
+
                 entity.Property(e => e.TotalAmount)
                     .HasColumnType("decimal(10, 3)")
                     .HasColumnName("Total_amount");
 
-                entity.Property(e => e.UsersId)
+                entity.Property(e => e.UserId)
                     .HasMaxLength(70)
                     .IsUnicode(false)
-                    .HasColumnName("Users_id");
+                    .HasColumnName("User_id");
 
                 entity.HasOne(d => d.Course)
                     .WithMany(p => p.Orders)
@@ -167,9 +162,7 @@ namespace study4_be.Models
             {
                 entity.ToTable("QUESTION");
 
-                entity.Property(e => e.QuestionId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("QUESTION_ID");
+                entity.Property(e => e.QuestionId).HasColumnName("QUESTION_ID");
 
                 entity.Property(e => e.CorrectAnswer)
                     .HasMaxLength(100)
@@ -213,9 +206,7 @@ namespace study4_be.Models
 
                 entity.ToTable("QUIZZES");
 
-                entity.Property(e => e.QuizzesId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("QUIZZES_ID");
+                entity.Property(e => e.QuizzesId).HasColumnName("QUIZZES_ID");
 
                 entity.Property(e => e.CreatedTime)
                     .HasColumnType("datetime")
@@ -241,9 +232,7 @@ namespace study4_be.Models
             {
                 entity.ToTable("RATING");
 
-                entity.Property(e => e.RatingId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("RATING_ID");
+                entity.Property(e => e.RatingId).HasColumnName("RATING_ID");
 
                 entity.Property(e => e.CourseId).HasColumnName("COURSE_ID");
 
@@ -277,9 +266,7 @@ namespace study4_be.Models
             {
                 entity.ToTable("Translate");
 
-                entity.Property(e => e.TranslateId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Translate_id");
+                entity.Property(e => e.TranslateId).HasColumnName("Translate_id");
 
                 entity.Property(e => e.Answer).HasMaxLength(255);
 
@@ -301,9 +288,7 @@ namespace study4_be.Models
             {
                 entity.ToTable("UNIT");
 
-                entity.Property(e => e.UnitId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("UNIT_ID");
+                entity.Property(e => e.UnitId).HasColumnName("UNIT_ID");
 
                 entity.Property(e => e.CourseId).HasColumnName("COURSE_ID");
 
@@ -325,6 +310,11 @@ namespace study4_be.Models
                     .HasMaxLength(70)
                     .IsUnicode(false)
                     .HasColumnName("USER_ID");
+
+                entity.Property(e => e.PhoneNumber)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("PHONE_NUMBER");
 
                 entity.Property(e => e.UserBanner)
                     .HasMaxLength(255)
@@ -391,9 +381,7 @@ namespace study4_be.Models
 
                 entity.ToTable("VOCABULARY");
 
-                entity.Property(e => e.VocabId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("VOCAB_ID");
+                entity.Property(e => e.VocabId).HasColumnName("VOCAB_ID");
 
                 entity.Property(e => e.AudioUrlUk)
                     .HasMaxLength(100)
