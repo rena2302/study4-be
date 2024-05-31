@@ -74,7 +74,7 @@ namespace study4_be.Controllers.API
                 }
             }
         }
-        [HttpGet("GetAllUsers")]
+        [HttpGet("Get_AllUsers")]
         public async Task<ActionResult<IEnumerable<User>>> Get_AllUsers()
         {
             var users = await _userRepository.GetAllUsersAsync();
@@ -82,7 +82,7 @@ namespace study4_be.Controllers.API
 
         }
         //development enviroment
-        [HttpDelete("DeleteAllUsers")]
+        [HttpDelete("Delete_AllUsers")]
         public async Task<IActionResult> Delete_AllUsers()
         {
             await _userRepository.DeleteAllUsersAsync();

@@ -82,6 +82,13 @@ namespace study4_be.Controllers.API
                 if (!existingOrder.State == true)
                 {
                     existingOrder.State = true;
+                    var queryNewUserCourses =  new UserCourse
+                    {
+                        UserId = existingOrder.UserId,
+                        CourseId = (int)existingOrder.CourseId,
+                        Date = DateTime.Now,
+                    };
+                    await _context.UserCourses.AddAsync(queryNewUserCourses);
                 }
                 else
                 {
