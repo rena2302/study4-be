@@ -727,3 +727,7 @@ C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\study4
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\scopedcss\projectbundle\study4-be.bundle.scp.css
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\obj\Debug\net6.0\refint\study4-be.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\MediatR.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\MediatR.Contracts.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
