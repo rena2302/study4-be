@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using study4_be.Helper;
+using study4_be.Models;
 using study4_be.Payment.MomoPayment;
 using study4_be.PaymentServices.Momo.Config;
 using System;
@@ -15,6 +16,7 @@ public class Momo_PaymentController : ControllerBase
     private readonly ILogger<Momo_PaymentController> _logger;
     private readonly MomoConfig _momoConfig;
     private readonly HashHelper _hashHelper;
+    private STUDY4Context _context = new STUDY4Context();
     public Momo_PaymentController(ILogger<Momo_PaymentController> logger, IOptions<MomoConfig> momoPaymentSettings)
     {
         _logger = logger;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
 using study4_be.Repositories;
@@ -55,20 +56,45 @@ namespace study4_be.Controllers.API
                 return NotFound("Course not found.");
             }
             existingUser.PhoneNumber = request.PhoneNumber;
-            var order = new Order
-            {
-                UserId = existingUser.UserId,
-                CourseId = existingCourse.CourseId,
-                TotalAmount = existingCourse.CoursePrice,
-                OrderDate = DateTime.Now,
-                PhoneNumber = request.PhoneNumber,
-                Address = request.Address,
-                State = false
-            };
-            _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
+                var order = new Order
+                {
+                    UserId = existingUser.UserId,
+                    CourseId = existingCourse.CourseId,
+                    TotalAmount = existingCourse.CoursePrice,
+                    OrderDate = DateTime.Now,
+                    PhoneNumber = request.PhoneNumber,
+                    Address = request.Address,
+                    State = false
+                };
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+             var newlyAddedOrderId = order.OrderId; // Lấy giá trị ID vừa được thêm vào
+            return Json(new { status = 200, orderId = newlyAddedOrderId, message = "Course purchased successfully." });
+        }
 
-            return Ok("Course purchased successfully.");
+
+        [HttpPost("Buy_Success")]
+        public async Task<IActionResult> Buy_Success(Buy_SuccessRequest order)
+        {
+            var existingOrder = await _context.Orders.FirstOrDefaultAsync(o => o.OrderId == order.OrderId );
+            try
+            {
+                if (!existingOrder.State == true)
+                {
+                    existingOrder.State = true;
+                }
+                else
+                {
+                    return BadRequest("You Had Bought Before");
+                }
+                await _context.SaveChangesAsync();
+                return Json(new { status = 200,order = existingOrder, message = "Update Order State Successful" });
+            } 
+            catch(Exception e)
+            {
+                return BadRequest("Has error when Update State of Order");
+            }
+          
         }
     }
 }
