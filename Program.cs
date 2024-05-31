@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using study4_be.Interface;
+using study4_be.Models;
 using study4_be.Payment;
 using study4_be.Payment.MomoPayment;
 using study4_be.PaymentServices.Momo.Config;
@@ -7,8 +8,10 @@ using study4_be.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-// Momo config payment
 // Đăng ký các dịch vụ
+builder.Services.AddDbContext<STUDY4Context>(); // Đăng ký STUDY4Context vào DI container
+builder.Services.AddScoped<UserCourseExpirationService>(); // Đăng ký dịch vụ UserCourseExpirationService với phạm vi Scoped
+// Momo config payment
 builder.Services.AddTransient<ICurrentUserServices, CurrentUserServices>(); // Đăng ký ICurrentUserServices
 builder.Configuration.AddJsonFile("appsettings.json", optional: false);
 builder.Services.AddTransient<IConnectionService, ConnectionService>();

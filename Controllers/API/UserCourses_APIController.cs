@@ -20,9 +20,15 @@ namespace study4_be.Controllers.API
         [HttpPost("Get_AllCoursesByUser")]
         public async Task<ActionResult<IEnumerable<User>>> Get_AllCoursesByUser(GetAllCoursesByUserRequest request)
         {
-            //return Json(new { status = 200, message = "Get All UserCourses Successful", request });
             var courses = await _userCoursesRepo.Get_AllCoursesByUser(request.userId);
             return Json(new { status = 200, message = "Get All Courses By User Successful", courses });
+        }
+        [HttpPost("Get_AllUsersBuyCourse")]
+        public async Task<ActionResult<IEnumerable<User>>> Get_AllUsersBuyCourse(GetAllUsersBuyCourse request)
+        {
+            var userList = await _userCoursesRepo.Get_AllUserBuyCourses(request.courseId);
+            var totalAmount =  userList.Count();
+            return Json(new { status = 200, message = "Get All User Buy Courses Successful", userList, totalAmount });
         }
         [HttpGet("Get_AllUserCourses")]
         public async Task<ActionResult<IEnumerable<User>>> Get_AllUserCourses()
