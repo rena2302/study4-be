@@ -59,9 +59,9 @@ namespace study4_be.Controllers.API
             {
                 UserId = existingUser.UserId,
                 CourseId = existingCourse.CourseId,
+                TotalAmount = existingCourse.CoursePrice,
                 OrderDate = DateTime.Now,
                 PhoneNumber = request.PhoneNumber,
-                TotalAmount = request.TotalAmount,
                 Address = request.Address,
                 State = false
             };
