@@ -749,3 +749,25 @@ C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\sv\Han
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\tr-TR\Hangfire.Core.resources.dll
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\zh-TW\Hangfire.Core.resources.dll
 C:\Users\phanv\OneDrive\Máy tính\SideProject\study4-be\bin\Debug\net6.0\zh\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\Hangfire.AspNetCore.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\Hangfire.Core.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\Hangfire.NetCore.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\Hangfire.SqlServer.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\MediatR.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\MediatR.Contracts.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\ca\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\de\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\es\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\fa\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\fr\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\nb\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\nl\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\pt-BR\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\pt-PT\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\pt\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\sv\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\tr-TR\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\zh-TW\Hangfire.Core.resources.dll
+D:\Downloads\study4-be\bin\Debug\net6.0\zh\Hangfire.Core.resources.dll
