@@ -27,7 +27,6 @@ namespace study4_be.Controllers.API
         {
             var courses = await _coursesRepository.GetAllCoursesAsync();
             return Json(new { status = 200, message = "Get Courses Successful", courses });
-
         }
         //development enviroment
         [HttpDelete("Delete_AllCourses")]

@@ -8,6 +8,12 @@ using study4_be.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+    });
 // Đăng ký các dịch vụ
 builder.Services.AddDbContext<STUDY4Context>(); // Đăng ký STUDY4Context vào DI container
 builder.Services.AddScoped<UserCourseExpirationService>(); // Đăng ký dịch vụ UserCourseExpirationService với phạm vi Scoped

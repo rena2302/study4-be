@@ -22,7 +22,7 @@ namespace study4_be.Controllers.API
             return View();
         }
         [HttpPost("Get_AllUnitsByCourse")]
-        public async Task<ActionResult<IEnumerable<Lesson>>> Get_AllUnitsByCourse(GetAllUnitsByCourses courses)
+        public async Task<ActionResult<IEnumerable<Unit>>> Get_AllUnitsByCourse(GetAllUnitsByCourses courses)
         {
             var units = await _unitRepo.GetAllUnitsByCourseAsync(courses.courseId);
             return Json(new { status = 200, message = "Get All Units Successful", units });
