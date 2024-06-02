@@ -1,22 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\",
+  "WorkspaceRootPath": "D:\\Downloads\\1\\study4-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\models\\study4context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:models\\study4context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\controllers\\admin\\vocabcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:controllers\\admin\\vocabcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\controllers\\admin\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:controllers\\admin\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\repositories\\vocabrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:repositories\\vocabrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\views\\courses\\course_create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:views\\courses\\course_create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\views\\vocab\\vocab_list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:views\\vocab\\vocab_list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\views\\courses\\course_list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:views\\courses\\course_list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\views\\unit\\unit_list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:views\\unit\\unit_list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\controllers\\admin\\translatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:controllers\\admin\\translatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,66 +30,79 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "STUDY4Context.cs",
-              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Models\\STUDY4Context.cs",
-              "RelativeDocumentMoniker": "Models\\STUDY4Context.cs",
-              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Models\\STUDY4Context.cs",
-              "RelativeToolTip": "Models\\STUDY4Context.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAuwCUAAACSAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T08:16:27.55Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Course_Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Views\\Courses\\Course_Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Courses\\Course_Create.cshtml",
-              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Views\\Courses\\Course_Create.cshtml",
-              "RelativeToolTip": "Views\\Courses\\Course_Create.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-02T08:10:42.78Z",
+              "DocumentIndex": 1,
+              "Title": "VocabRepository.cs",
+              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Repositories\\VocabRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\VocabRepository.cs",
+              "ToolTip": "D:\\Downloads\\1\\study4-be\\Repositories\\VocabRepository.cs",
+              "RelativeToolTip": "Repositories\\VocabRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T13:17:39.338Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Course_List.cshtml",
-              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Views\\Courses\\Course_List.cshtml",
-              "RelativeDocumentMoniker": "Views\\Courses\\Course_List.cshtml",
-              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Views\\Courses\\Course_List.cshtml",
-              "RelativeToolTip": "Views\\Courses\\Course_List.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAAA2AAAA",
+              "Title": "Unit_List.cshtml",
+              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Views\\Unit\\Unit_List.cshtml",
+              "RelativeDocumentMoniker": "Views\\Unit\\Unit_List.cshtml",
+              "ToolTip": "D:\\Downloads\\1\\study4-be\\Views\\Unit\\Unit_List.cshtml",
+              "RelativeToolTip": "Views\\Unit\\Unit_List.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADQAAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-02T08:06:38.173Z",
+              "WhenOpened": "2024-06-02T13:15:22.5Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CoursesController.cs",
-              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\Admin\\CoursesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Admin\\CoursesController.cs",
-              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\Admin\\CoursesController.cs",
-              "RelativeToolTip": "Controllers\\Admin\\CoursesController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAowCoAAABJAAAA",
+              "DocumentIndex": 2,
+              "Title": "Vocab_List.cshtml",
+              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Views\\Vocab\\Vocab_List.cshtml",
+              "RelativeDocumentMoniker": "Views\\Vocab\\Vocab_List.cshtml",
+              "ToolTip": "D:\\Downloads\\1\\study4-be\\Views\\Vocab\\Vocab_List.cshtml",
+              "RelativeToolTip": "Views\\Vocab\\Vocab_List.cshtml",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAEIAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-02T13:15:20.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TranslateController.cs",
+              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Controllers\\Admin\\TranslateController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Admin\\TranslateController.cs",
+              "ToolTip": "D:\\Downloads\\1\\study4-be\\Controllers\\Admin\\TranslateController.cs",
+              "RelativeToolTip": "Controllers\\Admin\\TranslateController.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAcwBAAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T08:06:20.949Z",
+              "WhenOpened": "2024-06-02T13:09:29.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VocabController.cs",
+              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Controllers\\Admin\\VocabController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Admin\\VocabController.cs",
+              "ToolTip": "D:\\Downloads\\1\\study4-be\\Controllers\\Admin\\VocabController.cs",
+              "RelativeToolTip": "Controllers\\Admin\\VocabController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T13:09:23.585Z",
               "EditorCaption": ""
             }
           ]

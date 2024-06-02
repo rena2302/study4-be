@@ -11,25 +11,26 @@ namespace study4_be.Controllers.Admin
         {
             _logger = logger;
         }
-        private readonly LessonRepository _lessonsRepository = new LessonRepository();
+        private readonly VocabRepository _vocabsRepository = new VocabRepository();
         public STUDY4Context _context = new STUDY4Context();
         [HttpGet("GetAllVocabs")]
-        public async Task<ActionResult<IEnumerable<Lesson>>> GetAllVocabs()
+        public async Task<ActionResult<IEnumerable<Vocabulary>>> GetAllVocabs()
         {
-            var lessons = await _lessonsRepository.GetAllLessonsAsync();
-            return Json(new { status = 200, message = "Get Vocab Successful", lessons });
+            var vocabs = await _vocabsRepository.GetAllVocabAsync();
+            return Json(new { status = 200, message = "Get Vocab Successful", vocabs });
 
         }
 
         [HttpDelete("DeleteAllVocabs")]
         public async Task<IActionResult> DeleteAllVocabs()
         {
-            await _lessonsRepository.DeleteAllLessonsAsync();
+            await _vocabsRepository.DeleteAllVocabAsync();
             return Json(new { status = 200, message = "Delete Vocab Successful" });
         }
-        public IActionResult Vocab_List()
+        public async Task<IActionResult> Vocab_List()
         {
-            return View();
+            var vocabs = await _vocabsRepository.GetAllVocabAsync(); // Retrieve list of courses from repository
+            return View(vocabs); // Pass the list of courses to the view
         }
         public IActionResult Vocab_Create()
         {

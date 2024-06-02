@@ -5,17 +5,16 @@ namespace study4_be.Repositories
 {
     public class VocabRepository
     {
-        //private readonly STUDY4Context _context = new STUDY4Context();
-        //public async Task<IEnumerable<Unit>> GetAllUnitsByCourseAsync(int idCourse)
-        //{
-        //    var vocab = await _context.Vocabularies.Where(u => u.VocabId == idCourse).ToListAsync();
-        //    return vocab;
-        //}
-        //public async Task DeleteAllUnitsAsync()
-        //{
-        //    var units = await _context.Units.ToListAsync();
-        //    _context.Units.RemoveRange(units);
-        //    await _context.SaveChangesAsync();
-        //}
+        private readonly STUDY4Context _context = new STUDY4Context();
+        public async Task<IEnumerable<Vocabulary>> GetAllVocabAsync()
+        {
+            return await _context.Vocabularies.ToListAsync();
+        }
+        public async Task DeleteAllVocabAsync()
+        {
+            var vocab = await _context.Vocabularies.ToListAsync();
+            _context.Vocabularies.RemoveRange(vocab);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿<style>
+﻿@model IEnumerable<study4_be.Models.Audio>
+<style>
     .course__create-btn {
         padding: 10px;
         margin-top: 40px;
@@ -21,37 +22,38 @@
         <table class="table">
             <thead class="table-info">
                 <tr>
-                    <th>AUDIO_ID</th>
-                    <th>AUDIO_URL</th>
-                    <th>AUDIO_DESCRIPTION</th>
-                    <th>LESSON_ID</th>
+                    <th>AudioId</th>
+                    <th>AudioUrl</th>
+                    <th>AudioDescription</th>
+                    <th>LessonId</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @*                 Foreach should be here *@
-                <tr>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <a href="@Url.ActionLink("Audio_Edit","Audio")" class="text-link-action">Sửa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Audio_Delete","Audio")" class="text-link-action">Xóa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Audio_Details","Audio")" class="text-link-action">Chi tiết</a>
-                    </td>
-                </tr>
-
+                @foreach (var audio in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@audio.AudioId</p>
+                        </td>
+                        <td>
+                            <p>@audio.AudioUrl</p>
+                        </td>
+                        <td>
+                            <p>@audio.AudioDescription</p>
+                        </td>
+                        <td>
+                            <p>@audio.LessonId</p>
+                        </td>
+                        <td>
+                            <a href="@Url.ActionLink("Audio_Edit","Audio", new { id = audio.AudioId }))" class="text-link-action">Sửa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Audio_Delete","Audio",new { id = audio.AudioId }))" class="text-link-action">Xóa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Audio_Details","Audio",new { id = audio.AudioId }))" class="text-link-action">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
 
             </tbody>
         </table>

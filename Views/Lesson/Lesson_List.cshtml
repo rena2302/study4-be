@@ -1,4 +1,5 @@
-﻿<style>
+﻿@model IEnumerable<study4_be.Models.Lesson>
+<style>
     .course__create-btn {
         padding: 10px;
         margin-top: 40px;
@@ -21,37 +22,38 @@
         <table class="table">
             <thead class="table-info">
                 <tr>
-                    <th>LESSONS_ID</th>
-                    <th>COURSES_ID</th>
-                    <th>LESSONS_TITLE</th>
-                    <th>CONTENT</th>
+                    <th>LessonId</th>
+                    <th>LessonType</th>
+                    <th>LessonTitle</th>
+                    <th>ContainerId</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @*                 Foreach should be here *@
-                <tr>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <a href="@Url.ActionLink("Lesson_Edit","Lesson")" class="text-link-action">Sửa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Lesson_Delete","Lesson")" class="text-link-action">Xóa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Lesson_Details","Lesson")" class="text-link-action">Chi tiết</a>
-                    </td>
-                </tr>
-
+                @foreach (var lesson in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@lesson.LessonId</p>
+                        </td>
+                        <td>
+                            <p>@lesson.LessonType</p>
+                        </td>
+                        <td>
+                            <p>@lesson.LessonTitle</p>
+                        </td>
+                        <td>
+                            <p>@lesson.ContainerId</p>
+                        </td>
+                        <td>
+                            <a href="@Url.ActionLink("Lesson_Edit","Lesson", new { id = lesson.LessonId })," class="text-link-action">Sửa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Lesson_Delete","Lesson", new { id = lesson.LessonId })" class="text-link-action">Xóa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Lesson_Details","Lesson", new { id = lesson.LessonId })" class="text-link-action">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
 
             </tbody>
         </table>

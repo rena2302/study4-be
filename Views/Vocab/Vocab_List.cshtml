@@ -1,4 +1,5 @@
-﻿<style>
+﻿@model IEnumerable<study4_be.Models.Vocabulary>
+<style>
     .course__create-btn {
         padding: 10px;
         margin-top: 40px;
@@ -34,45 +35,45 @@
                 </tr>
             </thead>
             <tbody>
-                @*                 Foreach should be here *@
-                <tr>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <a href="@Url.ActionLink("Vocab_Edit","Vocab")" class="text-link-action">Sửa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Vocab_Delete","Vocab")" class="text-link-action">Xóa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Vocab_Details","Vocab")" class="text-link-action">Chi tiết</a>
-                    </td>
-                </tr>
-
-
+                @foreach (var vocab in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@vocab.VocabId</p>
+                        </td>
+                        <td>
+                            <p>@vocab.VocabType</p>
+                        </td>
+                        <td>
+                            <p>@vocab.Mean</p>
+                        </td>
+                        <td>
+                            <p>@vocab.Example</p>
+                        </td>
+                        <td>
+                            <p>@vocab.Explanation</p>
+                        </td>
+                        <td>
+                            <p>@vocab.AudioUrlUs</p>
+                        </td>
+                        <td>
+                            <p>@vocab.AudioUrlUk</p>
+                        </td>
+                        <td>
+                            <p>@vocab.LessonId</p>
+                        </td>
+                        <td>
+                            <p>@vocab.Lesson</p>
+                        </td>
+                        <td>
+                            <a href="@Url.ActionLink("Vocab_Edit","Vocab",new { id = vocab.VocabId })" class="text-link-action">Sửa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Vocab_Delete","Vocab",new { id = vocab.VocabId })" class="text-link-action">Xóa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Vocab_Details","Vocab",new { id = vocab.VocabId })" class="text-link-action">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

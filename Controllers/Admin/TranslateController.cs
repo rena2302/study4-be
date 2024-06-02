@@ -11,24 +11,25 @@ namespace study4_be.Controllers.Admin
         {
             _logger = logger;
         }
-        private readonly AudioRepository _audiosRepository = new AudioRepository();
+        private readonly TranslateRepository _translateRepository = new TranslateRepository();
         public STUDY4Context _context = new STUDY4Context();
         [HttpGet("GetAllTransaltes")]
         public async Task<ActionResult<IEnumerable<Translate>>> GetAllTransaltes()
         {
-            var audios = await _audiosRepository.GetAllAudiosAsync();
+            var audios = await _translateRepository.GetAllTranslateAsync();
             return Json(new { status = 200, message = "Get Transalte Successful", audios });
 
         }
         [HttpDelete("DeleteAllTransaltes")]
         public async Task<IActionResult> DeleteAlTransaltes()
         {
-            await _audiosRepository.DeleteAllAudiosAsync();
+            await _translateRepository.DeleteAllTranslatesAsync();
             return Json(new { status = 200, message = "Delete Transalte Successful" });
         }
-        public IActionResult Translate_List()
+        public async Task<IActionResult> Translate_List()
         {
-            return View();
+            var translates = await _translateRepository.GetAllTranslateAsync(); // Retrieve list of courses from repository
+            return View(translates); // Pass the list of courses to the view
         }
         public IActionResult Translate_Create()
         {

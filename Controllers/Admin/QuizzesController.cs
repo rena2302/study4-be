@@ -15,7 +15,7 @@ namespace study4_be.Controllers.Admin
         public STUDY4Context _context = new STUDY4Context();
 
         [HttpGet("GetAllQuizzes")]
-        public async Task<ActionResult<IEnumerable<Course>>> GetAllQuizzes()
+        public async Task<ActionResult<IEnumerable<Quiz>>> GetAllQuizzes()
         {
             var quizzes = await _quizzesRepository.GetAllQuizzesAsync();
             return Json(new { status = 200, message = "Get Quizzes Successful", quizzes });
@@ -28,9 +28,10 @@ namespace study4_be.Controllers.Admin
             await _quizzesRepository.DeleteAllQuizzesAsync();
             return Json(new { status = 200, message = "Delete Quizzes Successful" });
         }
-        public IActionResult Quizzes_List()
+        public async Task<IActionResult> Quizzes_List()
         {
-            return View();
+            var quizzes = await _quizzesRepository.GetAllQuizzesAsync(); // Retrieve list of courses from repository
+            return View(quizzes); // Pass the list of courses to the view
         }
         public IActionResult Quizzes_Create()
         {

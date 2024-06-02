@@ -26,9 +26,10 @@ namespace study4_be.Controllers.Admin
 			await _audiosRepository.DeleteAllAudiosAsync();
 			return Json(new { status = 200, message = "Delete Audios Successful" });
 		}
-		public IActionResult Audio_List()
+		public async Task<IActionResult> Audio_List()
 		{
-			return View();
+			var audios = await _audiosRepository.GetAllAudiosAsync(); // Retrieve list of courses from repository
+			return View(audios); // Pass the list of courses to the view
 		}
 		public IActionResult Audio_Create()
 		{

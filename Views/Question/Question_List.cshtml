@@ -1,4 +1,5 @@
-﻿<style>
+﻿@model IEnumerable<study4_be.Models.Question>
+<style>
     .course__create-btn {
         padding: 10px;
         margin-top: 40px;
@@ -21,54 +22,54 @@
         <table class="table">
             <thead class="table-info">
                 <tr>
-                    <th>QUESTION_ID</th>
-                    <th>ID_QUIZZES</th>
-                    <th>QUESTION_TEXT</th>
-                    <th>CORRECT_ANSWER</th>
-                    <th>OPTION_A</th>
-                    <th>OPTION_B</th>
-                    <th>OPTION_C</th>
-                    <th>OPTION_D</th>
+                    <th>QuestionId</th>
+                    <th>IdQuizzes</th>
+                    <th>QuestionText</th>
+                    <th>CorrectAnswer</th>
+                    <th>OptionA</th>
+                    <th>OptionB</th>
+                    <th>OptionC</th>
+                    <th>OptionD</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @*                 Foreach should be here *@
-                <tr>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                                        <td>
-                        <p>123</p>
-                    </td>
-                                        <td>
-                        <p>123</p>
-                    </td>
-                                        <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <a href="@Url.ActionLink("Question_Edit","Question")" class="text-link-action">Sửa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Question_Delete","Question")" class="text-link-action">Xóa</a>
-                        <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Question_Details","Question")" class="text-link-action">Chi tiết</a>
-                    </td>
-                </tr>
-
-
+                @foreach (var question in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@question.QuestionId</p>
+                        </td>
+                        <td>
+                            <p>@question.IdQuizzes</p>
+                        </td>
+                        <td>
+                            <p>@question.QuestionText</p>
+                        </td>
+                        <td>
+                            <p>@question.CorrectAnswer</p>
+                        </td>
+                        <td>
+                            <p>@question.OptionA</p>
+                        </td>
+                        <td>
+                            <p>@question.OptionB</p>
+                        </td>
+                        <td>
+                            <p>@question.OptionC</p>
+                        </td>
+                        <td>
+                            <p>@question.OptionD</p>
+                        </td>
+                        <td>
+                            <a href="@Url.ActionLink("Question_Edit","Question",new { id = question.QuestionId })" class="text-link-action">Sửa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Question_Delete","Question",new { id = question.QuestionId })" class="text-link-action">Xóa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.ActionLink("Question_Details","Question",new { id = question.QuestionId })" class="text-link-action">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
