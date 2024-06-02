@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using study4_be.Models;
 using study4_be.Repositories;
 using study4_be.Services;
@@ -23,12 +24,13 @@ namespace study4_be.Controllers.API
             var courses = await _userCoursesRepo.Get_AllCoursesByUser(request.userId);
             return Json(new { status = 200, message = "Get All Courses By User Successful", courses });
         }
-        [HttpPost("Get_AllUsersBuyCourse")]
-        public async Task<ActionResult<IEnumerable<User>>> Get_AllUsersBuyCourse(GetAllUsersBuyCourse request)
+        [HttpPost("Get_DetailCourseAndUserBought")]
+        public async Task<ActionResult<IEnumerable<User>>> Get_DetailCourseAndUserBought(GetAllUsersBuyCourse request)
         {
-            var userList = await _userCoursesRepo.Get_AllUserBuyCourses(request.courseId);
+            var userList = await _userCoursesRepo.Get_DetailCourseAndUserBought(request.courseId);
             var totalAmount =  userList.Count();
-            return Json(new { status = 200, message = "Get All User Buy Courses Successful", userList, totalAmount });
+            var courseDetail = await _context.Courses.FindAsync(request.courseId);
+            return Json(new { status = 200, message = "Get All User Buy Courses Successful", courseDetail, totalAmount });
         }
         [HttpGet("Get_AllUserCourses")]
         public async Task<ActionResult<IEnumerable<User>>> Get_AllUserCourses()

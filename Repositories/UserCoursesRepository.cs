@@ -24,7 +24,7 @@ namespace study4_be.Repositories
                                   .Where(uc => uc.UserId == idUser)
                                   .ToListAsync();
         }
-        public async Task<IEnumerable<UserCourse>> Get_AllUserBuyCourses(int idCourse)
+        public async Task<IEnumerable<UserCourse>> Get_DetailCourseAndUserBought(int idCourse)
         {
             return await _context.UserCourses
                                   .Where(uc => uc.CourseId == idCourse)

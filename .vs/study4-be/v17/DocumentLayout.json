@@ -1,29 +1,53 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Downloads\\1\\study4-be\\",
+  "WorkspaceRootPath": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\repositories\\quizzrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\controllers\\api\\usercourses_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:controllers\\api\\usercourses_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\repositories\\usercoursesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:repositories\\usercoursesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\global.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:global.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\models\\study4context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:models\\study4context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\controllers\\api\\courses_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:controllers\\api\\courses_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\repositories\\quizzrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:repositories\\quizzrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\controllers\\api\\order_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:controllers\\api\\order_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\controllers\\api\\order_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:controllers\\api\\order_apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|d:\\downloads\\1\\study4-be\\models\\translate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|c:\\users\\senetuser\\source\\repos\\yunneetoichoi\\study4-be\\models\\translate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F874FD6F-BB69-4E65-A93C-476F20E72063}|study4-be.csproj|solutionrelative:models\\translate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,8 +58,64 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "STUDY4Context.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Models\\STUDY4Context.cs",
+              "RelativeDocumentMoniker": "Models\\STUDY4Context.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Models\\STUDY4Context.cs",
+              "RelativeToolTip": "Models\\STUDY4Context.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAgwCUAAACSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:40:57.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "global.json",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\global.json",
+              "RelativeDocumentMoniker": "global.json",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\global.json",
+              "RelativeToolTip": "global.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-02T07:44:01.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:43:58.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserCoursesRepository.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\UserCoursesRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\UserCoursesRepository.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\UserCoursesRepository.cs",
+              "RelativeToolTip": "Repositories\\UserCoursesRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:39:25.173Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -43,80 +123,105 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UserCourses_APIController.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\API\\UserCourses_APIController.cs",
+              "RelativeDocumentMoniker": "Controllers\\API\\UserCourses_APIController.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\API\\UserCourses_APIController.cs",
+              "RelativeToolTip": "Controllers\\API\\UserCourses_APIController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAQwBsAAAB2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:37:26.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Courses_APIController.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\API\\Courses_APIController.cs",
+              "RelativeDocumentMoniker": "Controllers\\API\\Courses_APIController.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\API\\Courses_APIController.cs",
+              "RelativeToolTip": "Controllers\\API\\Courses_APIController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAB8AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:37:15.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "QuizzRepository.cs",
-              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Repositories\\QuizzRepository.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\QuizzRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\QuizzRepository.cs",
-              "ToolTip": "D:\\Downloads\\1\\study4-be\\Repositories\\QuizzRepository.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\QuizzRepository.cs",
               "RelativeToolTip": "Repositories\\QuizzRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-02T07:06:53.109Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "QuestionRepository.cs",
-              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Repositories\\QuestionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\QuestionRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\QuestionRepository.cs",
-              "ToolTip": "D:\\Downloads\\1\\study4-be\\Repositories\\QuestionRepository.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\QuestionRepository.cs",
               "RelativeToolTip": "Repositories\\QuestionRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T07:06:51.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-02T07:06:51.903Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "OrderRepository.cs",
-              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Repositories\\OrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\OrderRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\OrderRepository.cs",
-              "ToolTip": "D:\\Downloads\\1\\study4-be\\Repositories\\OrderRepository.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Repositories\\OrderRepository.cs",
               "RelativeToolTip": "Repositories\\OrderRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T07:06:05.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-02T07:06:05.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Order_APIController.cs",
-              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Controllers\\API\\Order_APIController.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\API\\Order_APIController.cs",
               "RelativeDocumentMoniker": "Controllers\\API\\Order_APIController.cs",
-              "ToolTip": "D:\\Downloads\\1\\study4-be\\Controllers\\API\\Order_APIController.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Controllers\\API\\Order_APIController.cs",
               "RelativeToolTip": "Controllers\\API\\Order_APIController.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAUwBQAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T07:05:24.549Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-02T07:05:24.549Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Downloads\\1\\study4-be\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAAF0AAAAAAAAAAAAAAG8AAABiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-02T07:04:48.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-02T07:04:48.681Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "Translate.cs",
-              "DocumentMoniker": "D:\\Downloads\\1\\study4-be\\Models\\Translate.cs",
+              "DocumentMoniker": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Models\\Translate.cs",
               "RelativeDocumentMoniker": "Models\\Translate.cs",
-              "ToolTip": "D:\\Downloads\\1\\study4-be\\Models\\Translate.cs",
+              "ToolTip": "C:\\Users\\SenetUser\\source\\repos\\YunneeToiChoi\\study4-be\\Models\\Translate.cs",
               "RelativeToolTip": "Models\\Translate.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T06:51:50.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-02T06:51:50.927Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
