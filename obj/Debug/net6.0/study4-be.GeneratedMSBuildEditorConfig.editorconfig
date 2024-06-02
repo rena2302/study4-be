@@ -135,6 +135,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Downloads/1/study4-be/Views/Translate/Translate_Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNsYXRlXFRyYW5zbGF0ZV9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Translate/Translate_Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNsYXRlXFRyYW5zbGF0ZV9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Translate/Translate_Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNsYXRlXFRyYW5zbGF0ZV9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Translate/Translate_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNsYXRlXFRyYW5zbGF0ZV9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Translate/Translate_List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNsYXRlXFRyYW5zbGF0ZV9MaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Downloads/1/study4-be/Views/Unit/Unit_Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdFxVbml0X0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -153,6 +173,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Downloads/1/study4-be/Views/Unit/Unit_List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pdFxVbml0X0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Vocab/Vocab_Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJcVm9jYWJfQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Vocab/Vocab_Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJcVm9jYWJfRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Vocab/Vocab_Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJcVm9jYWJfRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Vocab/Vocab_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJcVm9jYWJfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Downloads/1/study4-be/Views/Vocab/Vocab_List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJcVm9jYWJfTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Downloads/1/study4-be/Views/_ViewImports.cshtml]
