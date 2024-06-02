@@ -1,4 +1,8 @@
-﻿<style>
+﻿@model IEnumerable<study4_be.Models.Course>
+@{
+    ViewData["Title"] = "Course List";
+}
+<style>
     .course__create-btn{
         padding: 10px;
         margin-top: 40px;
@@ -32,36 +36,33 @@
                 </tr>
             </thead>
             <tbody>
-@*                 Foreach should be here *@
+                @foreach (var course in Model)
+                {
                     <tr>
                         <td>
-                            <img style="border-radius:0%!important" src="https://png.pngtree.com/element_our/png_detail/20180918/science-png_102086.jpg" height="150" width="150" id="previewImg" />
+                            <img style="border-radius:0%!important" src="@course.CourseImage" height="150" width="150" id="previewImg" />
                         </td>
                         <td>
-                            <p>123</p>
+                            <p>@course.CourseName</p>
                         </td>
                         <td>
-                            <p>123</p>
+                            <p>@course.CourseDescription</p>
                         </td>
                         <td>
-                            <p>123</p>
+                            <p>@course.CoursePrice</p>
                         </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
                         <td>
-                            <a href="@Url.ActionLink("Course_Edit","Courses")" class="text-link-action">Sửa</a>
+                            <p>@course.CourseTag</p>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Course_Edit", "Courses", new { id = course.CourseId })" class="text-link-action">Sửa</a>
                             <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Course_Delete","Courses")" class="text-link-action">Xóa</a>
+                            <a href="@Url.Action("Course_Delete", "Courses", new { id = course.CourseId })" class="text-link-action">Xóa</a>
                             <span style="padding:0 8px">|</span>
-                        <a href="@Url.ActionLink("Course_Details","Courses")" class="text-link-action">Chi tiết</a>
+                            <a href="@Url.Action("Course_Details", "Courses", new { id = course.CourseId })" class="text-link-action">Chi tiết</a>
                         </td>
                     </tr>
-                
-
+                }
             </tbody>
         </table>
     </div>
