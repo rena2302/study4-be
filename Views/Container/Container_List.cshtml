@@ -1,0 +1,63 @@
+﻿@model IEnumerable<study4_be.Models.Container>
+@{
+    ViewData["Title"] = "Course List";
+}
+<style>
+    .course__create-btn {
+        padding: 10px;
+        margin-top: 40px;
+        border: none;
+        font-size: 20px;
+        background-color: #d1ecf1;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: center;
+    }
+
+        .course__create-btn:hover {
+            opacity: 0.8;
+        }
+</style>
+
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                    <th>ContainerId</th>
+                    <th>UnitId</th>
+                    <th>Unit</th>
+                    <th>Lessons</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@course.ContainerId</p>
+                        </td>
+                        <td>
+                            <p>@course.UnitId</p>
+                        </td>
+                        <td>
+                            <p>@course.Unit</p>
+                        </td>
+                        <td>
+                            <p>@course.Lessons</p>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Container_Edit", "Container", new { id = course.ContainerId })" class="text-link-action">Sửa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.Action("Container_Delete", "Container", new { id = course.ContainerId })" class="text-link-action">Xóa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="@Url.Action("Container_Details", "Container", new { id = course.ContainerId })" class="text-link-action">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a href="@Url.ActionLink("Container_Create","Container")" class="course__create-btn">Create</a>
+</div>

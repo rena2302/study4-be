@@ -530,9 +530,7 @@ D:\Downloads\study4-be\obj\Debug\net6.0\staticwebassets.development.json
 D:\Downloads\study4-be\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Downloads\study4-be\obj\Debug\net6.0\scopedcss\bundle\study4-be.styles.css
 D:\Downloads\study4-be\obj\Debug\net6.0\scopedcss\projectbundle\study4-be.bundle.scp.css
-D:\Downloads\study4-be\obj\Debug\net6.0\study4-be.csproj.Up2Date
 D:\Downloads\study4-be\obj\Debug\net6.0\study4-be.dll
-D:\Downloads\study4-be\obj\Debug\net6.0\refint\study4-be.dll
 D:\Downloads\study4-be\obj\Debug\net6.0\study4-be.pdb
 D:\Downloads\study4-be\obj\Debug\net6.0\study4-be.genruntimeconfig.cache
 D:\Downloads\study4-be\obj\Debug\net6.0\ref\study4-be.dll
@@ -1301,3 +1299,5 @@ C:\Users\SenetUser\Source\Repos\YunneeToiChoi\study4-be\obj\Debug\net6.0\refint\
 C:\Users\SenetUser\Source\Repos\YunneeToiChoi\study4-be\obj\Debug\net6.0\study4-be.pdb
 C:\Users\SenetUser\Source\Repos\YunneeToiChoi\study4-be\obj\Debug\net6.0\study4-be.genruntimeconfig.cache
 C:\Users\SenetUser\Source\Repos\YunneeToiChoi\study4-be\obj\Debug\net6.0\ref\study4-be.dll
+D:\Downloads\study4-be\obj\Debug\net6.0\study4-be.csproj.Up2Date
+D:\Downloads\study4-be\obj\Debug\net6.0\refint\study4-be.dll
