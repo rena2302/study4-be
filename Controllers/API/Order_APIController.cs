@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
 using study4_be.Repositories;
-using study4_be.Services;
+using study4_be.Services.Request;
 
 namespace study4_be.Controllers.API
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class Order_APIController : Controller
 	{

@@ -1,4 +1,4 @@
-﻿namespace study4_be.Services
+﻿namespace study4_be.Services.Request
 {
     public class GetAllCoursesByUserRequest
     {

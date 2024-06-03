@@ -1,4 +1,4 @@
-﻿namespace study4_be.Services
+﻿namespace study4_be.Services.Response
 {
     public class CourseResponse
     {

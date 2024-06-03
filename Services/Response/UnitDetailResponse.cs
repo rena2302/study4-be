@@ -1,6 +1,6 @@
 ﻿using study4_be.Models;
 
-namespace study4_be.Services
+namespace study4_be.Services.Response
 {
     public class UnitDetailResponse
     {

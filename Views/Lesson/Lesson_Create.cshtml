@@ -25,6 +25,12 @@
                     <label for="LessonTitle">LessonTitle</label>
                     <input asp-for="LessonTitle" class="form-control" />
                     <span asp-validation-for="LessonTitle" class="text-danger"></span>
+                </div>      
+                @* test  input containerId, sau nay lam select nha*@
+                <div class="form-group"> 
+                    <label for="ContainerId">Lesson depend containerId</label>
+                    <input asp-for="ContainerId" class="form-control" />
+                    <span asp-validation-for="ContainerId" class="text-danger"></span>
                 </div>
                 <div class="flex">
                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
