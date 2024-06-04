@@ -5,6 +5,7 @@ using study4_be.Models;
 using study4_be.Repositories;
 using study4_be.Services;
 using study4_be.Services.Request;
+using System.Linq;
 
 namespace study4_be.Controllers.API
 {
@@ -20,18 +21,26 @@ namespace study4_be.Controllers.API
             return View();
         }
         [HttpPost("Get_AllCoursesByUser")]
-        public async Task<ActionResult<IEnumerable<User>>> Get_AllCoursesByUser(GetAllCoursesByUserRequest request)
+        public async Task<ActionResult<IEnumerable<Course>>> Get_AllCoursesByUser(GetAllCoursesByUserRequest request)
         {
-            var courses = await _userCoursesRepo.Get_AllCoursesByUser(request.userId);
+            var courseListId = await _userCoursesRepo.Get_AllCoursesByUser(request.userId);
+            if (!courseListId.Any())
+            {
+                return Json(new { status = 404, message = "No courses found for the user" });
+            }
+            var courses = await _context.Courses
+                .Where(c => courseListId.Select(uc => uc.CourseId).Contains(c.CourseId))
+                .ToListAsync();
             return Json(new { status = 200, message = "Get All Courses By User Successful", courses });
         }
+
         [HttpPost("Get_DetailCourseAndUserBought")]
         public async Task<ActionResult<IEnumerable<User>>> Get_DetailCourseAndUserBought(GetAllUsersBuyCourse request)
         {
             var userList = await _userCoursesRepo.Get_DetailCourseAndUserBought(request.courseId);
-            var totalAmount =  userList.Count();
+            var totalAmount = userList.Count();
             var courseDetail = await _context.Courses.FindAsync(request.courseId);
-            return Json(new { status = 200, message = "Get All User Buy Courses Successful", courseDetail, totalAmount });
+            return Json(new { status = 200, message = "Get Detail course and user Bought course", courseDetail, totalAmount, userList });
         }
         [HttpGet("Get_AllUserCourses")]
         public async Task<ActionResult<IEnumerable<User>>> Get_AllUserCourses()
