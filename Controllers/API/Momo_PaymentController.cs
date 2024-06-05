@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using study4_be.Helper;
 using study4_be.Models;
 using study4_be.Payment.MomoPayment;
 using study4_be.PaymentServices.Momo.Config;
+using study4_be.Services.Request;
+using study4_be.Validation;
 using System;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 [Route("api/[controller]")]
 [ApiController]
@@ -78,5 +82,83 @@ public class Momo_PaymentController : ControllerBase
             return await client.PostAsync(_momoConfig.PaymentUrl, content);
         }
     }
+
+    [HttpPost("GetIpnFromMomo")]
+    public async Task<IActionResult> GetIpnFromMomo()
+    {
+        using (var reader = new StreamReader(HttpContext.Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
+            var data = JsonSerializer.Deserialize<JsonElement>(requestBody);
+
+            if (data.TryGetProperty("resultCode", out var statusCodeElement))
+            {
+                if (statusCodeElement.GetInt32() == 0 || statusCodeElement.GetInt32() == 9000)
+                {
+                    if (data.TryGetProperty("orderId", out var orderIdElement))
+                    {
+                        int orderId = orderIdElement.GetInt32();
+                        return await Buy_Success(orderId);
+                    }
+                    else
+                    {
+                        return BadRequest("Order id not exist");
+                    }
+                }
+                else
+                {
+                    return BadRequest("Have error while update state order, please contact to admin to resolve it");
+                }
+                //else if(statusCodeElement.GetInt32() >=200 && statusCodeElement.GetInt32() < 400)
+                //{
+                //    return BadRequest("Have error while update state order, please contact to admin to resolve it");
+
+                //}
+                //else if(statusCodeElement.GetInt32() >= 400 && statusCodeElement.GetInt32() < 500)
+                //{
+                //    return BadRequest("Have error while update state order, please contact to admin to resolve it");
+
+                //}
+
+            }
+            else
+            {
+                return BadRequest("Data status code not exist");
+            }
+        }
+    }
+
+    public async Task<IActionResult> Buy_Success(int orderId)
+    {
+        var existingOrder = await _context.Orders.FirstOrDefaultAsync(o => o.OrderId == orderId);
+        try
+        {
+            if (existingOrder != null &&  existingOrder.State==false)
+            {
+                existingOrder.State = true;
+                var queryNewUserCourses = new UserCourse
+                {
+                    UserId = existingOrder.UserId,
+                    CourseId = (int)existingOrder.CourseId,
+                    Date = DateTime.Now,
+                };
+                await _context.UserCourses.AddAsync(queryNewUserCourses);
+                await _context.SaveChangesAsync();
+                return Ok(new { status = 200, order = existingOrder, message = "Update Order State Successful" });
+            }
+            else if (existingOrder != null && existingOrder.State==true)
+            {
+                return BadRequest("You Had Bought Before");
+            }
+            else
+            {
+                return BadRequest("Order not found");
+            }
+        }
+        catch (Exception e)
+        {
+            return BadRequest("Has error when Update State of Order" + e);
+        }
+    }
+
 }
-  

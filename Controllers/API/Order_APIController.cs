@@ -103,5 +103,11 @@ namespace study4_be.Controllers.API
 			}
 
 		}
-	}
+        [HttpPost("Get_AllOrders")]
+        public async Task<IActionResult> Get_AllOrders()
+        {
+			var orderList = await ordRepo.GetAllOrdersAsync();
+            return Json(new { status = 200, orderList, message = "Get All Orders successfully." });
+        }
+    }
 }

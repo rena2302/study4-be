@@ -30,7 +30,6 @@ namespace study4_be.Controllers.API
             var courses = await _coursesRepository.GetAllCoursesAsync();
             return Json(new { status = 200, message = "Get Courses Successful", courses });
         }
-
         [HttpPost("Get_UnregisteredCourses")] // courses the user hasn't registered for
         public async Task<ActionResult> Get_UnregisteredCourses(GetUserCoursesRequest request)
         {
@@ -78,7 +77,6 @@ namespace study4_be.Controllers.API
                     .ToListAsync();
                 return userPurchaseBought;
         }
-
         [HttpDelete("Delete_AllCourses")]
         public async Task<IActionResult> Delete_AllCourses()
         {

@@ -30,5 +30,11 @@ namespace study4_be.Repositories
                                   .Where(uc => uc.CourseId == idCourse)
                                   .ToListAsync();
         }
+        public async Task Delete_AllUsersCoursesAsync()
+        {
+            var userCourses = await _context.UserCourses.ToListAsync();
+            _context.UserCourses.RemoveRange(userCourses);
+            await _context.SaveChangesAsync();
+        }
     }
 }

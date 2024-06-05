@@ -48,5 +48,19 @@ namespace study4_be.Controllers.API
             var courses = await _userCoursesRepo.GetAllUserCoursesAsync();
             return Json(new { status = 200, message = "Get All UserCourses Successful", courses });
         }
+        [HttpDelete("Delete_AllUserCourses")]
+        public async Task<ActionResult<IEnumerable<User>>> Delete_AllUserCourses()
+        {
+            try
+            {
+                await _userCoursesRepo.Delete_AllUsersCoursesAsync();
+            }
+            catch (Exception ex)
+            {
+                await Console.Out.WriteLineAsync(ex.Message);
+                return BadRequest(ex.Message);
+            }
+            return Json(new { status = 200, message = "Delete All UserCourses Successful"});
+        }
     }
 }
