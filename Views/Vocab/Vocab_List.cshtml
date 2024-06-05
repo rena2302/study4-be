@@ -18,6 +18,12 @@
 
 
 <div class="card">
+    <div class="container">
+        <p>Search</p>
+        <input type="text" class="col-md-10" />
+        <a href="" class="course__create-btn col-md-1"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="@Url.ActionLink("Vocab_Create","Vocab")" class="course__create-btn col-md-1"><i class="fa-solid fa-plus"></i></a>
+    </div>
     <div class="card-body">
         <table class="table">
             <thead class="table-info">
@@ -77,5 +83,4 @@
             </tbody>
         </table>
     </div>
-    <a href="@Url.ActionLink("Vocab_Create","Vocab")" class="course__create-btn">Create</a>
 </div>

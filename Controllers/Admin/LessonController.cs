@@ -93,5 +93,10 @@ namespace study4_be.Controllers.Admin
             return View();
         }
 
+        //public ActionResult SelectContainer()
+        //{
+        //    Container container = new Container();
+        //    container.ListContainer =
+        //}
     }
 }
