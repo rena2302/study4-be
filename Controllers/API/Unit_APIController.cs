@@ -21,11 +21,20 @@ namespace study4_be.Controllers.API
         {
             return View();
         }
-        [HttpPost("Get_AllUnitsByCourse")]
-        public async Task<ActionResult<IEnumerable<Unit>>> Get_AllUnitsByCourse(GetAllUnitsByCourses courses)
+           [HttpPost("Get_AllUnitsByCourse")]
+    public async Task<ActionResult<IEnumerable<Unit>>> Get_AllUnitsByCourse(GetAllUnitsByCourses courses)
+    {
+        var existingUser = _context.UserCourses.Where(idU => idU.UserId == courses.userId);
+        var x = existingUser.Where(c => c.CourseId == courses.courseId);
+        if (!x.Any())
         {
             var units = await _unitRepo.GetAllUnitsByCourseAsync(courses.courseId);
             return Json(new { status = 200, message = "Get All Units Successful", units });
         }
+        else
+        {
+            return BadRequest("User not have this course");
+        }
+    }
     }
 }
