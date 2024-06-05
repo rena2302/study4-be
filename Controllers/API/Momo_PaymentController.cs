@@ -84,20 +84,15 @@ public class Momo_PaymentController : ControllerBase
     }
 
     [HttpPost("GetIpnFromMomo")]
-    public async Task<IActionResult> GetIpnFromMomo()
+    public async Task<IActionResult> GetIpnFromMomo([FromBody] GetMomoIPNResult resultIpn)
     {
-        using (var reader = new StreamReader(HttpContext.Request.Body))
-        {
-            var requestBody = await reader.ReadToEndAsync();
-            var data = JsonSerializer.Deserialize<JsonElement>(requestBody);
-
-            if (data.TryGetProperty("resultCode", out var statusCodeElement))
-            {
-                if (statusCodeElement.GetInt32() == 0 || statusCodeElement.GetInt32() == 9000)
+        int resultCode = resultIpn.resultCode;
+        string orderString = resultIpn.orderId;
+                if (resultCode == 0 || resultCode== 9000)
                 {
-                    if (data.TryGetProperty("orderId", out var orderIdElement))
+                    if (orderString != null)
                     {
-                        int orderId = orderIdElement.GetInt32();
+                         int orderId = int.Parse(orderString);
                         return await Buy_Success(orderId);
                     }
                     else
@@ -109,25 +104,11 @@ public class Momo_PaymentController : ControllerBase
                 {
                     return BadRequest("Have error while update state order, please contact to admin to resolve it");
                 }
-                //else if(statusCodeElement.GetInt32() >=200 && statusCodeElement.GetInt32() < 400)
-                //{
-                //    return BadRequest("Have error while update state order, please contact to admin to resolve it");
-
-                //}
-                //else if(statusCodeElement.GetInt32() >= 400 && statusCodeElement.GetInt32() < 500)
-                //{
-                //    return BadRequest("Have error while update state order, please contact to admin to resolve it");
-
-                //}
-
-            }
-            else
-            {
-                return BadRequest("Data status code not exist");
-            }
-        }
     }
-
+    public async Task CheckTransactioStatus()
+    {
+        // check status with key value and order id , remember Json stringtify , chac vay
+    }
     public async Task<IActionResult> Buy_Success(int orderId)
     {
         var existingOrder = await _context.Orders.FirstOrDefaultAsync(o => o.OrderId == orderId);
