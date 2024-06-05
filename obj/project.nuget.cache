@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bUfhXRjwmixkSn50jB1Xrs7QguHCeDZVEf6tVG3TxGHzCXuF+fl5t3EHEdGWsSuykhE892Q0Z01e5X0jZ7K08A==",
+  "dgSpecHash": "seBrGADKK3HEL1uh+qm2qlYT1hN1NRLZlnIijHP4zC4zjSPoOvoz/hhxGVkrJyNktsPSWaBy7jMpFkw8GU2Log==",
   "success": true,
   "projectFilePath": "C:\\Users\\newgear\\OneDrive\\Máy tính\\newgear\\study4-be\\study4-be.csproj",
   "expectedPackageFiles": [
@@ -228,11 +228,7 @@
     "C:\\Users\\newgear\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\newgear\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\newgear\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\newgear\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\newgear\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\newgear\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\newgear\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.23\\microsoft.aspnetcore.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\newgear\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.23\\microsoft.netcore.app.host.win-x64.6.0.23.nupkg.sha512"
+    "C:\\Users\\newgear\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
