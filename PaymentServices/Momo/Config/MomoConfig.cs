@@ -11,5 +11,6 @@
         public string IpnUrl { get; set; } = string.Empty;
         public string AccessKey { get; set; } = string.Empty;
         public string SecretKey { get; set; } = string.Empty;
+        public string Transaction {  get; set; } = string.Empty;    
     }
 }

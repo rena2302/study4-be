@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.Options;
 using study4_be.Helper;
 using study4_be.Models;
 using study4_be.Payment.MomoPayment;
 using study4_be.PaymentServices.Momo.Config;
+using study4_be.services.Request;
 using study4_be.Services.Request;
 using study4_be.Validation;
 using System;
@@ -105,9 +108,48 @@ public class Momo_PaymentController : ControllerBase
                     return BadRequest("Have error while update state order, please contact to admin to resolve it");
                 }
     }
-    public async Task CheckTransactioStatus()
+    [HttpPost("RequestTracking")]
+    public async Task<IActionResult> CheckTransactionStatus([FromBody] RequestTrackingStatusMomo req) // Assuming orderId is received as a parameter
     {
-        // check status with key value and order id , remember Json stringtify , chac vay
+        if (string.IsNullOrEmpty(req.orderId))
+        {
+            return BadRequest("Missing mandatory field: orderId"); // Handle missing orderId
+        }
+
+        RequestTrackingStatusMomo trackingQuery = new RequestTrackingStatusMomo()
+        {
+            partnerCode = _momoConfig.PartnerCode,
+            requestId = req.requestId, // Generate a unique requestId
+            orderId = req.orderId,
+            lang = "vi",
+        };
+
+        var signature = _hashHelper.GenerateSignatureToCheckingStatus(trackingQuery, _momoConfig);
+
+        var dataRequest = new
+        {
+            partnerCode = _momoConfig.PartnerCode,
+            requestId = trackingQuery.requestId,
+            orderId = trackingQuery.orderId,
+            lang = trackingQuery.lang,
+            signature = signature
+        };
+        string aa = "https://payment.momo.vn/v2/gateway/api/query";
+        using (var client = new HttpClient())
+        {
+            var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(dataRequest), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(aa, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await Buy_Success(int.Parse(req.orderId));
+            }
+            else
+            {
+                // Handle unsuccessful response with error message from MoMo API
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+            }
+        }
     }
     public async Task<IActionResult> Buy_Success(int orderId)
     {

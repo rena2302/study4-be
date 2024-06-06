@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\newgear\\OneDrive\\Máy tính\\newgear\\study4-be\\study4-be.csproj": {}
+    "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj": {}
   },
   "projects": {
-    "C:\\Users\\newgear\\OneDrive\\Máy tính\\newgear\\study4-be\\study4-be.csproj": {
+    "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\newgear\\OneDrive\\Máy tính\\newgear\\study4-be\\study4-be.csproj",
+        "projectUniqueName": "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj",
         "projectName": "study4-be",
-        "projectPath": "C:\\Users\\newgear\\OneDrive\\Máy tính\\newgear\\study4-be\\study4-be.csproj",
-        "packagesPath": "C:\\Users\\newgear\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\newgear\\OneDrive\\Máy tính\\newgear\\study4-be\\obj\\",
+        "projectPath": "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\study4-be.csproj",
+        "packagesPath": "C:\\Users\\phanv\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\phanv\\OneDrive\\Máy tính\\SideProject\\study4-be\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\newgear\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\phanv\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
