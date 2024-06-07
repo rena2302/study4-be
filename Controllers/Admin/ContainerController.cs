@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
 using study4_be.Repositories;
 
@@ -13,26 +14,10 @@ namespace study4_be.Controllers.Admin
 		}
 		private readonly ContainerRepository _containersRepository = new ContainerRepository();
 		public STUDY4Context _context = new STUDY4Context();
-
-		[HttpGet("GetAllCourses")]
-		//public async Task<ActionResult<IEnumerable<Course>>> GetAllCourses()
-		//{
-		//	var courses = await _containersRepository.GetAllCoursesAsync();
-		//	return Json(new { status = 200, message = "Get Courses Successful", courses });
-
-		//}
-		//development enviroment
-		[HttpDelete("DeleteAllCourses")]
-		public async Task<IActionResult> DeleteAllCourses()
-		{
-			await _containersRepository.DeleteAllUnitsAsync();
-			return Json(new { status = 200, message = "Delete Containers Successful" });
-		}
 		public async Task<IActionResult> Container_List()
 		{
-			//var courses = await _containersRepository.GetAllCoursesAsync();
-			//return View(courses);
-			return View();
+			var containers = await _context.Containers.ToListAsync();
+			return View(containers);
 		}
 		public IActionResult Container_Create()
 		{

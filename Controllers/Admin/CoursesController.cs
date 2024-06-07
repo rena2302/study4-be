@@ -33,10 +33,6 @@ namespace study4_be.Controllers.Admin
         {
             return View();
         }
-        public IActionResult ShowCourseList()
-        {
-            return View();
-        }
         public async Task<IActionResult> Course_List()
         {
             var courses = await _coursesRepository.GetAllCoursesAsync(); // Retrieve list of courses from repository

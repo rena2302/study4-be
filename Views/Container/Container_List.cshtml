@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<study4_be.Models.Container>
 @{
-    ViewData["Title"] = "Course List";
+    ViewData["Title"] = "Container List";
 }
 <style>
     .course__create-btn {
@@ -46,12 +46,6 @@
                         </td>
                         <td>
                             <p>@course.UnitId</p>
-                        </td>
-                        <td>
-                            <p>@course.Unit</p>
-                        </td>
-                        <td>
-                            <p>@course.Lessons</p>
                         </td>
                         <td>
                             <a href="@Url.Action("Container_Edit", "Container", new { id = course.ContainerId })" class="text-link-action">Sửa</a>

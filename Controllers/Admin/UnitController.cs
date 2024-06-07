@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
+using study4_be.Models.ViewModel;
 using study4_be.Repositories;
 
 namespace study4_be.Controllers.Admin
@@ -13,40 +16,32 @@ namespace study4_be.Controllers.Admin
         }
         private readonly UnitRepository _unitsRepository = new UnitRepository();
         public STUDY4Context _context = new STUDY4Context();
-
-        //Need Id Course
-        [HttpGet("GetAllUnits")]
-        //public async Task<ActionResult<IEnumerable<Unit>>> GetAllUnits()
-        //{
-        //    var units = await _unitsRepository.GetAllUnitsByCourseAsync();
-        //    return Json(new { status = 200, message = "Get Units Successful", units });
-
-        //}
-        //development enviroment
-        [HttpDelete("DeleteAllUnits")]
-        public async Task<IActionResult> DeleteAllCourses()
+        public async Task<IActionResult> Unit_List()
         {
-            await _unitsRepository.DeleteAllUnitsAsync();
-            return Json(new { status = 200, message = "Delete Units Successful" });
-        }
-        public IActionResult Unit_List()
-        {
-            //Like above
-            //var unit = await _unitsRepository.GetAllUnitsByCourseAsync();
-            //return View(unit);
-            return View();
+            var units = await _context.Units.ToListAsync();
+            return View(units);
         }
         public IActionResult Unit_Create()
         {
-            return View();
+            var courses = _context.Courses.ToList();
+            var model = new UnitCreateVIewModel
+            {
+                Units = new Unit(),
+                Courses = courses.Select(c => new SelectListItem
+                {
+                    Value = c.CourseId.ToString(),
+                    Text = c.CourseName
+                }).ToList()
+            };
+            return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Unit_Create(Unit unit)
+        public async Task<IActionResult> Unit_Create(UnitCreateVIewModel unit)
         {
             if (!ModelState.IsValid)
             {
 
-                return View(unit);    //show form with value input and show errors
+                return View(unit);
             }
             try
             {
@@ -54,11 +49,15 @@ namespace study4_be.Controllers.Admin
                 {
                     await _context.AddAsync(unit);
                     await _context.SaveChangesAsync();
-                    CreatedAtAction(nameof(GetUnitById), new { id = unit.UnitId }, unit);
+                    unit.Courses = _context.Courses.Select(c => new SelectListItem
+                    {
+                        Value = c.CourseId.ToString(),
+                        Text = c.CourseName
+                    }).ToList();
                 }
                 catch (Exception e)
                 {
-                    CreatedAtAction(nameof(GetUnitById), new { id = unit.UnitId }, unit);
+                    CreatedAtAction(nameof(GetUnitById), new { id = unit.Units.UnitId }, unit);
                     _logger.LogError(e, "Error occurred while creating new unit.");
                 }
                 return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
