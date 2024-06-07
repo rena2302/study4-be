@@ -34,8 +34,9 @@ namespace study4_be.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+                var passWord = Environment.GetEnvironmentVariable("YourPassword");
                 //optionsBuilder.UseSqlServer("Data Source=GBAONEEE;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
-                optionsBuilder.UseSqlServer("Server=estudy.database.windows.net,1433;Initial Catalog=estudydb;Persist Security Info=False;User ID=estudyadmin;Password=admin@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Server=estudy.database.windows.net,1433;Initial Catalog=estudydb;Persist Security Info=False;User ID=estudyadmin;Password=" + passWord + ";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
                 //optionsBuilder.UseSqlServer("Data Source=LAPTOP-62MKG1UJ;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
             }
         }
