@@ -14,7 +14,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
         options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
     });
-// Đăng ký các dịch vụ
+//Đăng ký các dịch vụ
 builder.Services.AddDbContext<STUDY4Context>(); // Đăng ký STUDY4Context vào DI container
 builder.Services.AddScoped<UserCourseExpirationService>(); // Đăng ký dịch vụ UserCourseExpirationService với phạm vi Scoped
 // Momo config payment
@@ -24,8 +24,8 @@ builder.Services.AddTransient<IConnectionService, ConnectionService>();
 builder.Services.AddTransient<ISqlService, SqlService>();
 builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.Configure<MomoConfig>(
-    builder.Configuration.GetSection(MomoConfig.ConfigName) );
-// Add services to the container.
+    builder.Configuration.GetSection(MomoConfig.ConfigName));
+//Add services to the container.
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddControllersWithViews();
 

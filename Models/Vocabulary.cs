@@ -13,6 +13,7 @@ namespace study4_be.Models
         public string? AudioUrlUs { get; set; }
         public string? AudioUrlUk { get; set; }
         public int? LessonId { get; set; }
+        public string? VocabTitle { get; set; }
 
         public virtual Lesson? Lesson { get; set; }
     }

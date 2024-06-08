@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace study4_be.Models
 {
@@ -9,7 +8,7 @@ namespace study4_be.Models
         public Lesson()
         {
             Audios = new HashSet<Audio>();
-            Quizzes = new HashSet<Quiz>();
+            Questions = new HashSet<Question>();
             Translates = new HashSet<Translate>();
             Vocabularies = new HashSet<Vocabulary>();
         }
@@ -21,7 +20,7 @@ namespace study4_be.Models
 
         public virtual Container? Container { get; set; }
         public virtual ICollection<Audio> Audios { get; set; }
-        public virtual ICollection<Quiz> Quizzes { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Translate> Translates { get; set; }
         public virtual ICollection<Vocabulary> Vocabularies { get; set; }
     }

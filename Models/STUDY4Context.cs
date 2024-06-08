@@ -22,7 +22,6 @@ namespace study4_be.Models
         public virtual DbSet<Lesson> Lessons { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<Question> Questions { get; set; } = null!;
-        public virtual DbSet<Quiz> Quizzes { get; set; } = null!;
         public virtual DbSet<Rating> Ratings { get; set; } = null!;
         public virtual DbSet<Translate> Translates { get; set; } = null!;
         public virtual DbSet<Unit> Units { get; set; } = null!;
@@ -35,9 +34,7 @@ namespace study4_be.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                //optionsBuilder.UseSqlServer("Data Source=GBAONEEE;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
-                optionsBuilder.UseSqlServer("Server=estudy.database.windows.net,1433;Initial Catalog=estudydb;Persist Security Info=False;User ID=estudyadmin;Password=admin@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;");
-                //optionsBuilder.UseSqlServer("Data Source=LAPTOP-62MKG1UJ;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-62MKG1UJ;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
             }
         }
 
@@ -138,7 +135,7 @@ namespace study4_be.Models
                 entity.Property(e => e.CourseId).HasColumnName("Course_id");
 
                 entity.Property(e => e.OrderDate)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("Order_date");
 
                 entity.Property(e => e.PhoneNumber)
@@ -171,7 +168,7 @@ namespace study4_be.Models
                     .HasMaxLength(100)
                     .HasColumnName("CORRECT_ANSWER");
 
-                entity.Property(e => e.IdQuizzes).HasColumnName("ID_QUIZZES");
+                entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
 
                 entity.Property(e => e.OptionA)
                     .HasMaxLength(200)
@@ -197,38 +194,10 @@ namespace study4_be.Models
                     .HasMaxLength(100)
                     .HasColumnName("QUESTION_TEXT");
 
-                entity.HasOne(d => d.IdQuizzesNavigation)
-                    .WithMany(p => p.Questions)
-                    .HasForeignKey(d => d.IdQuizzes)
-                    .HasConstraintName("FK_QUESTION_QUIZZES");
-            });
-
-            modelBuilder.Entity<Quiz>(entity =>
-            {
-                entity.HasKey(e => e.QuizzesId);
-
-                entity.ToTable("QUIZZES");
-
-                entity.Property(e => e.QuizzesId).HasColumnName("QUIZZES_ID");
-
-                entity.Property(e => e.CreatedTime)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CREATED_TIME");
-
-                entity.Property(e => e.DescriptionQuizzes)
-                    .HasMaxLength(100)
-                    .HasColumnName("DESCRIPTION_QUIZZES");
-
-                entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
-
-                entity.Property(e => e.Title)
-                    .HasMaxLength(70)
-                    .HasColumnName("TITLE");
-
                 entity.HasOne(d => d.Lesson)
-                    .WithMany(p => p.Quizzes)
+                    .WithMany(p => p.Questions)
                     .HasForeignKey(d => d.LessonId)
-                    .HasConstraintName("FK_QUIZZES_LESSON");
+                    .HasConstraintName("FK_QUESTION_LESSON");
             });
 
             modelBuilder.Entity<Rating>(entity =>
@@ -410,6 +379,11 @@ namespace study4_be.Models
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("MEAN");
+
+                entity.Property(e => e.VocabTitle)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("VOCAB_TITLE");
 
                 entity.Property(e => e.VocabType)
                     .HasMaxLength(70)
