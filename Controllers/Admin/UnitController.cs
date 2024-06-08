@@ -67,44 +67,6 @@ namespace study4_be.Controllers.Admin
                 return View(unitViewModel);
             }
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> Unit_Create(UnitCreateViewModel unitViewModel)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(unitViewModel);
-        //    }
-
-        //    try
-        //    {
-        //        var unit = new Unit
-        //        {
-        //            UnitId = unitViewModel.Units.UnitId,
-        //            UnitTittle = unitViewModel.Units.UnitTittle
-        //            // map other properties
-        //        };
-
-        //        await _context.AddAsync(unit);
-        //        await _context.SaveChangesAsync();
-
-        //        unitViewModel.Courses = _context.Courses.Select(c => new SelectListItem
-        //        {
-        //            Value = c.CourseId.ToString(),
-        //            Text = c.CourseName
-        //        }).ToList();
-
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error occurred while creating new unit.");
-        //        ModelState.AddModelError("", "An error occurred while processing your request. Please try again later.");
-        //        return View(unitViewModel);
-        //    }
-        //}
-
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUnitById(int id)
         {

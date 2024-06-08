@@ -1,4 +1,4 @@
-﻿@model study4_be.Models.Lesson
+﻿@model study4_be.Models.ViewModel.LessonCreateViewModel
 <style>
     .flex {
         margin-top: 20px;
@@ -17,20 +17,19 @@
             <p class="card-description">Create </p>
             <form asp-action="Lesson_Create" method="post" enctype="multipart/form-data" class="forms-sample">
                 <div class="form-group">
-                    <label for="LessonType">LessonType</label>
-                    <input asp-for="LessonType" class="form-control" />
-                    <span asp-validation-for="LessonType" class="text-danger"></span>
+                    <label for="lesson.LessonType">LessonType</label>
+                    <input asp-for="lesson.LessonType" class="form-control" />
+                    <span asp-validation-for="lesson.LessonType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="LessonTitle">LessonTitle</label>
-                    <input asp-for="LessonTitle" class="form-control" />
-                    <span asp-validation-for="LessonTitle" class="text-danger"></span>
-                </div>      
-                @* test  input containerId, sau nay lam select nha*@
-                <div class="form-group"> 
-                    <label for="ContainerId">Lesson depend containerId</label>
-                    <input asp-for="ContainerId" class="form-control" />
-                    <span asp-validation-for="ContainerId" class="text-danger"></span>
+                    <label for="lesson.LessonTitle">LessonTitle</label>
+                    <input asp-for="lesson.LessonTitle" class="form-control" />
+                    <span asp-validation-for="lesson.LessonTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="lesson.ContainerId">Container id</label>
+                    <select asp-for="lesson.ContainerId" class="form-control" asp-items="Model.container"></select>
+                    <span asp-validation-for="lesson.ContainerId" class="text-danger"></span>
                 </div>
                 <div class="flex">
                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>

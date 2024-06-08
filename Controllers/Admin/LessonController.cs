@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using study4_be.Models;
+using study4_be.Models.ViewModel;
 using study4_be.Repositories;
 
 namespace study4_be.Controllers.Admin
@@ -34,38 +36,76 @@ namespace study4_be.Controllers.Admin
         }
         public IActionResult Lesson_Create()
         {
-            return View();
+            var containers = _context.Containers.ToList();
+            var model = new LessonCreateViewModel
+            {
+                lesson = new Lesson(),
+                container = containers.Select(c => new SelectListItem
+                {
+                    Value = c.ContainerId.ToString(),
+                    Text = c.ContainerId.ToString()
+                }).ToList()
+            };
+            return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Lesson_Create(Lesson lesson)
+        public async Task<IActionResult> Lesson_Create(LessonCreateViewModel lessonViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-
-                return View(lesson);    //show form with value input and show errors
-            }
             try
             {
-                try
+                var lesson = new Lesson
                 {
-                    await _context.AddAsync(lesson);
-                    await _context.SaveChangesAsync();
-                    CreatedAtAction(nameof(GetLessonById), new { id = lesson.LessonId }, lesson);
-                }
-                catch (Exception e)
-                {
-                    CreatedAtAction(nameof(GetLessonById), new { id = lesson.LessonId }, lesson);
-                    _logger.LogError(e, "Error occurred while creating new lesson.");
-                }
-                return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
+                    LessonType = lessonViewModel.lesson.LessonType,
+                    LessonId = lessonViewModel.lesson.LessonId,
+                    LessonTitle = lessonViewModel.lesson.LessonTitle
+                    // map other properties if needed
+                };
+
+                await _context.AddAsync(lesson);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                // show log
-                _logger.LogError(ex, "Error occurred while creating new lesson.");
+                _logger.LogError(ex, "Error occurred while creating new unit.");
                 ModelState.AddModelError("", "An error occurred while processing your request. Please try again later.");
-                return View(lesson);
+
+                lessonViewModel.container = _context.Containers.Select(c => new SelectListItem
+                {
+                    Value = c.ContainerId.ToString(),
+                    Text = c.ContainerId.ToString()
+                }).ToList();
+
+                return View(lessonViewModel);
             }
+            //if (!ModelState.IsValid)
+            //{
+
+            //    return View(lesson);    //show form with value input and show errors
+            //}
+            //try
+            //{
+            //    try
+            //    {
+            //        await _context.AddAsync(lesson);
+            //        await _context.SaveChangesAsync();
+            //        CreatedAtAction(nameof(GetLessonById), new { id = lesson.LessonId }, lesson);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        CreatedAtAction(nameof(GetLessonById), new { id = lesson.LessonId }, lesson);
+            //        _logger.LogError(e, "Error occurred while creating new lesson.");
+            //    }
+            //    return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
+            //}
+            //catch (Exception ex)
+            //{
+            //    // show log
+            //    _logger.LogError(ex, "Error occurred while creating new lesson.");
+            //    ModelState.AddModelError("", "An error occurred while processing your request. Please try again later.");
+            //    return View(lesson);
+            //}
         }
 
         [HttpGet("{id}")]
