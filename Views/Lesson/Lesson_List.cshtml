@@ -1,4 +1,4 @@
-﻿@model IEnumerable<study4_be.Models.Lesson>
+﻿@model IEnumerable<study4_be.Models.ViewModel.LessonListViewModel>
 <style>
     .course__create-btn {
         padding: 10px;
@@ -28,35 +28,43 @@
         <table class="table">
             <thead class="table-info">
                 <tr>
-                    <th>LessonId</th>
-                    <th>LessonType</th>
-                    <th>LessonTitle</th>
-                    <th>ContainerId</th>
-                    <th></th>
+                    <th>Lesson Id</th>
+                    <th>Lesson Type</th>
+                    <th>Lesson Title</th>
+                    <th>Container Title</th>
+                    <th>Unit Title</th>
+                    <th>Course Title</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var lesson in Model)
+                @foreach (var item in Model)
                 {
                     <tr>
                         <td>
-                            <p>@lesson.LessonId</p>
+                            <p>@item.Lesson.LessonId</p>
                         </td>
                         <td>
-                            <p>@lesson.LessonType</p>
+                            <p>@item.Lesson.LessonType</p>
                         </td>
                         <td>
-                            <p>@lesson.LessonTitle</p>
+                            <p>@item.Lesson.LessonTitle</p>
                         </td>
                         <td>
-                            <p>@lesson.ContainerId</p>
+                            <p>@item.containerTitle</p>
                         </td>
                         <td>
-                            <a href="@Url.ActionLink("Lesson_Edit","Lesson", new { id = lesson.LessonId })," class="text-link-action">Sửa</a>
+                            <p>@item.unitTitle</p>
+                        </td>
+                        <td>
+                            <p>@item.courseTitle</p>
+                        </td>
+                        <td>
+                            <a href="@Url.ActionLink("Lesson_Edit","Lesson", new { id = item.Lesson.LessonId })," class="text-link-action">Sửa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.ActionLink("Lesson_Delete","Lesson", new { id = lesson.LessonId })" class="text-link-action">Xóa</a>
+                            <a href="@Url.ActionLink("Lesson_Delete","Lesson", new { id = item.Lesson.LessonId })" class="text-link-action">Xóa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.ActionLink("Lesson_Details","Lesson", new { id = lesson.LessonId })" class="text-link-action">Chi tiết</a>
+                            <a href="@Url.ActionLink("Lesson_Details","Lesson", new { id = item.Lesson.LessonId })" class="text-link-action">Chi tiết</a>
                         </td>
                     </tr>
                 }

@@ -18,8 +18,8 @@
                     <span asp-validation-for="vocab.VocabType" class="text-danger"></span>
                 </div> 
                 <div class="form-group">
-                    <label for="vocab.VocabType">Vocab Tittle</label>
-                    <input asp-for="vocab.VocabType" class="form-control" />
+                    <label for="vocab.VocabTitle">Vocab Tittle</label>
+                    <input asp-for="vocab.VocabTitle" class="form-control" />
                     <span asp-validation-for="vocab.VocabType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -48,7 +48,7 @@
                     <span asp-validation-for="vocab.AudioUrlUk" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="vocab.LessonId">Lesson id</label>
+                    <label asp-for="vocab.LessonId">Lesson</label>
                     <select asp-for="vocab.LessonId" class="form-control" asp-items="Model.lesson"></select>
                     <span asp-validation-for="vocab.LessonId" class="text-danger"></span>
                 </div>

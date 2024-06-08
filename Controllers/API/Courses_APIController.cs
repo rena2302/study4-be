@@ -49,6 +49,20 @@ namespace study4_be.Controllers.API
         [HttpPost("Get_OutstandingCoursesUserNotBought")]
         public async Task<ActionResult> Get_OutstandingCoursesUserNotBought(GetUserCoursesRequest req)
         {
+            if (req.userId == null || req.userId=="")
+            {   
+                var outstandingCoursesForGuest = await _context.UserCourses
+                .GroupBy(uc => uc.CourseId)
+                .Take(req.amountOutstanding)
+                .Select(g => g.Key)// Chọn ra CourseId
+                .ToListAsync();
+
+                var detailedOutstandingCoursesForGuest = await _context.Courses
+                      .Where(c => outstandingCoursesForGuest.Contains(c.CourseId)) // Lọc các khóa học theo danh sách các CourseId nổi bật
+                      .ToListAsync();
+
+                return Ok(new { status = 200, message = "Get Outstanding Courses For Guest Successful", outstandingCourses = detailedOutstandingCoursesForGuest });
+            }
             List<int>  userPurchasedCourses = await GetCoursesUserHasPurchasedAsync(req.userId);
             var outstandingCourses = await _context.UserCourses
                 .Where(uc => !userPurchasedCourses.Contains(uc.CourseId)) // Lọc các khóa học chưa mua

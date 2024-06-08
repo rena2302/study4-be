@@ -1,4 +1,4 @@
-﻿@model IEnumerable<study4_be.Models.Vocabulary>
+﻿@model IEnumerable<study4_be.Models.ViewModel.VocabListViewModel>
 <style>
     .course__create-btn {
         padding: 10px;
@@ -28,16 +28,19 @@
         <table class="table">
             <thead class="table-info">
                 <tr>
-                    <th>VocabId</th>
-                    <th>VocabType</th>
+                    <th>Vocab Id</th>
+                    <th>Vocab Title</th>
+                    <th>Vocab Type</th>
                     <th>Mean</th>
                     <th>Example</th>
                     <th>Explanation</th>
-                    <th>AudioUrlUs</th>
-                    <th>AudioUrlUk</th>
-                    <th>LessonId</th>
-                    <th>Lesson</th>
-                    <th></th>
+                    <th>AudioUrl Us</th>
+                    <th>AudioUrl Uk</th>
+                    <th>Lesson Title </th>
+                    <th>Container Tittle</th>
+                    <th>Unit Tittle</th>
+                    <th>Course Tittle</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,35 +48,50 @@
                 {
                     <tr>
                         <td>
-                            <p>@vocab.VocabId</p>
+                            <p>@vocab.vocab.VocabId</p>
                         </td>
                         <td>
-                            <p>@vocab.VocabType</p>
+                            <p>@vocab.vocab.VocabTitle</p>
                         </td>
                         <td>
-                            <p>@vocab.Mean</p>
+                            <p>@vocab.vocab.VocabType</p>
                         </td>
                         <td>
-                            <p>@vocab.Example</p>
+                            <p>@vocab.vocab.Mean</p>
                         </td>
                         <td>
-                            <p>@vocab.Explanation</p>
+                            <p>@vocab.vocab.Example</p>
                         </td>
                         <td>
-                            <p>@vocab.AudioUrlUs</p>
+                            <p>@vocab.vocab.Explanation</p>
                         </td>
                         <td>
-                            <p>@vocab.AudioUrlUk</p>
+                            <p>@vocab.vocab.AudioUrlUs</p>
                         </td>
                         <td>
-                            <p>@vocab.LessonId</p>
+                            <p>@vocab.vocab.AudioUrlUk</p>
                         </td>
                         <td>
-                            <a href="@Url.ActionLink("Vocab_Edit","Vocab",new { id = vocab.VocabId })" class="text-link-action">Sửa</a>
+                            <p>@vocab.vocab.LessonId</p>
+                        </td>
+                             
+                        <td>
+                            <p>@vocab.containerTittle</p>
+                        </td>
+                             
+                        <td>
+                            <p>@vocab.unitTittle</p>
+                        </td>    
+                        
+                        <td>
+                            <p>@vocab.courseName</p>
+                        </td>
+                        <td>
+                            <a href="@Url.ActionLink("Vocab_Edit","Vocab",new { id = vocab.vocab.VocabId })" class="text-link-action">Sửa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.ActionLink("Vocab_Delete","Vocab",new { id = vocab.VocabId })" class="text-link-action">Xóa</a>
+                            <a href="@Url.ActionLink("Vocab_Delete","Vocab",new { id = vocab.vocab.VocabId })" class="text-link-action">Xóa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.ActionLink("Vocab_Details","Vocab",new { id = vocab.VocabId })" class="text-link-action">Chi tiết</a>
+                            <a href="@Url.ActionLink("Vocab_Details","Vocab",new { id = vocab.vocab.VocabId })" class="text-link-action">Chi tiết</a>
                         </td>
                     </tr>
                 }

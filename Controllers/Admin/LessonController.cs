@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
 using study4_be.Models.ViewModel;
 using study4_be.Repositories;
@@ -31,21 +32,40 @@ namespace study4_be.Controllers.Admin
         }
         public async Task<IActionResult> Lesson_List()
         {
-            var lessons = await _lessonsRepository.GetAllLessonsAsync(); // Retrieve list of courses from repository
-            return View(lessons); // Pass the list of courses to the view
+            var container = await _context.Containers
+              .Include(c => c.Unit)
+                  .ThenInclude(u => u.Course)
+              .ToListAsync();
+            var lesson = await _context.Lessons.ToListAsync();
+
+            var lessonViewModels = lesson.Select(lesson => new LessonListViewModel
+            {
+                Lesson = lesson,
+                containerTitle = container.FirstOrDefault(c => c.ContainerId == lesson.ContainerId)?.ContainerTitle ?? "N/A",
+                unitTitle = container.FirstOrDefault(c => c.ContainerId == lesson.ContainerId)?.Unit?.UnitTittle ?? "N/A",
+                courseTitle = container.FirstOrDefault(c => c.ContainerId == lesson.ContainerId)?.Unit?.Course?.CourseName ?? "N/A"
+            });
+
+
+            return View(lessonViewModels);
         }
         public IActionResult Lesson_Create()
         {
-            var containers = _context.Containers.ToList();
+            var containers = _context.Containers
+                 .Include(c => c.Unit)
+                     .ThenInclude(u => u.Course)
+                 .ToList();
+
             var model = new LessonCreateViewModel
             {
                 lesson = new Lesson(),
                 container = containers.Select(c => new SelectListItem
                 {
                     Value = c.ContainerId.ToString(),
-                    Text = c.ContainerId.ToString()
+                    Text = $"{c.ContainerTitle} : {c.Unit.UnitTittle} : {c.Unit.Course.CourseName}"
                 }).ToList()
             };
+
             return View(model);
         }
         [HttpPost]
@@ -57,7 +77,9 @@ namespace study4_be.Controllers.Admin
                 {
                     LessonType = lessonViewModel.lesson.LessonType,
                     LessonId = lessonViewModel.lesson.LessonId,
-                    LessonTitle = lessonViewModel.lesson.LessonTitle
+                    LessonTitle = lessonViewModel.lesson.LessonTitle,
+                    ContainerId = lessonViewModel.lesson.ContainerId
+                    
                     // map other properties if needed
                 };
 
