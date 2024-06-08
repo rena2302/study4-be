@@ -1,10 +1,10 @@
-﻿@model study4_be.Models.Container
+﻿@model study4_be.Models.ViewModel.ContainerCreateViewModel
 
 @{
-    ViewData["Title"] = "Create Course";
+    ViewData["Title"] = "Create Container";
 }
 
-<h2>Course Create</h2>
+<h2>Container Create</h2>
 
 <div class="form-horizontal">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -13,10 +13,17 @@
             <p class="card-description">Create</p>
             <form asp-action="Container_Create" method="post" enctype="multipart/form-data" class="forms-sample">
                 <div class="form-group">
-                    <label for="UnitId">UnitId</label>
-                    <input asp-for="UnitId" class="form-control" />
-                    <span asp-validation-for="UnitId" class="text-danger"></span>
+                    <label for="Container Title">Container Title</label>
+                    <input asp-for="containers.ContainerTitle" class="form-control" />
+                    <span asp-validation-for="containers.ContainerTitle" class="text-danger"></span>
                 </div>
+
+                <div class="form-group">
+                    <label asp-for="containers.UnitId">Unit id</label>
+                    <select asp-for="containers.UnitId" class="form-control" asp-items="Model.units"></select>
+                    <span asp-validation-for="containers.UnitId" class="text-danger"></span>
+                </div>
+
                 <div class="flex">
                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                     @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-light" })

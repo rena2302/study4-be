@@ -1,4 +1,4 @@
-﻿@model IEnumerable<study4_be.Models.Container>
+﻿@model IEnumerable<study4_be.Models.ViewModel.ContainerListViewModel>
 @{
     ViewData["Title"] = "Container List";
 }
@@ -31,28 +31,37 @@
         <table class="table">
             <thead class="table-info">
                 <tr>
-                    <th>ContainerId</th>
-                    <th>UnitId</th>
-                    <th>Unit</th>
-                    <th>Lessons</th>
+                    <th>Container Id</th>
+                    <th>Container Title</th>
+                    <th>Unit Title</th>
+                    <th>Course name</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var course in Model)
+                @foreach (var container in Model)
                 {
                     <tr>
                         <td>
-                            <p>@course.ContainerId</p>
+                            <p>@container.container.ContainerId</p>
                         </td>
                         <td>
-                            <p>@course.UnitId</p>
+                            <p>@container.container.ContainerTitle</p>
+                        </td>
+                                          
+                        <td>
+                            <p>@container.unitTitle</p>
+                        </td>
+                        
+                        <td>
+                            <p>@container.courseName</p>
                         </td>
                         <td>
-                            <a href="@Url.Action("Container_Edit", "Container", new { id = course.ContainerId })" class="text-link-action">Sửa</a>
+                            <a href="@Url.Action("Container_Edit", "Container", new { id = container.container.ContainerId })" class="text-link-action">Sửa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.Action("Container_Delete", "Container", new { id = course.ContainerId })" class="text-link-action">Xóa</a>
+                            <a href="@Url.Action("Container_Delete", "Container", new { id =container.container.ContainerId})" class="text-link-action">Xóa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.Action("Container_Details", "Container", new { id = course.ContainerId })" class="text-link-action">Chi tiết</a>
+                            <a href="@Url.Action("Container_Details", "Container", new { id = container.container.ContainerId })" class="text-link-action">Chi tiết</a>
                         </td>
                     </tr>
                 }

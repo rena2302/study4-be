@@ -33,10 +33,8 @@ namespace study4_be.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var passWord = Environment.GetEnvironmentVariable("YourPassword");
-                //optionsBuilder.UseSqlServer("Data Source=GBAONEEE;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
-                optionsBuilder.UseSqlServer("Server=estudy.database.windows.net,1433;Initial Catalog=estudydb;Persist Security Info=False;User ID=estudyadmin;Password=" + passWord + ";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-                //optionsBuilder.UseSqlServer("Data Source=LAPTOP-62MKG1UJ;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-62MKG1UJ;Initial Catalog=STUDY4;Integrated Security=True;Trust Server Certificate=True");
             }
         }
 
@@ -71,6 +69,10 @@ namespace study4_be.Models
                 entity.ToTable("CONTAINER");
 
                 entity.Property(e => e.ContainerId).HasColumnName("CONTAINER_ID");
+
+                entity.Property(e => e.ContainerTitle)
+                    .HasMaxLength(1)
+                    .HasColumnName("CONTAINER_TITLE");
 
                 entity.Property(e => e.UnitId).HasColumnName("UNIT_ID");
 

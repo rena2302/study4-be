@@ -11,6 +11,7 @@ namespace study4_be.Models
         }
 
         public int ContainerId { get; set; }
+        public string? ContainerTitle { get; set; }
         public int? UnitId { get; set; }
 
         public virtual Unit? Unit { get; set; }
