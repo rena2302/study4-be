@@ -71,7 +71,7 @@ namespace study4_be.Models
                 entity.Property(e => e.ContainerId).HasColumnName("CONTAINER_ID");
 
                 entity.Property(e => e.ContainerTitle)
-                    .HasMaxLength(1)
+                    .HasMaxLength(100)
                     .HasColumnName("CONTAINER_TITLE");
 
                 entity.Property(e => e.UnitId).HasColumnName("UNIT_ID");
