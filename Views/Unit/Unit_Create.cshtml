@@ -1,4 +1,4 @@
-﻿@model study4_be.Models.ViewModel.UnitCreateVIewModel
+﻿@model study4_be.Models.ViewModel.UnitCreateViewModel
 
 @{
     ViewData["Title"] = "Unit Create";
@@ -13,7 +13,7 @@
             <p class="card-description">Create</p>
             <form asp-action="Unit_Create" method="post" enctype="multipart/form-data" class="forms-sample">
                 <div class="form-group">
-                    <label for="Units.UnitTittle">Unit Tittle</label>
+                    <label asp-for="Units.UnitTittle">Unit Title</label>
                     <input asp-for="Units.UnitTittle" class="form-control" />
                     <span asp-validation-for="Units.UnitTittle" class="text-danger"></span>
                 </div>

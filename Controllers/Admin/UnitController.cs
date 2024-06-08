@@ -24,9 +24,9 @@ namespace study4_be.Controllers.Admin
         public IActionResult Unit_Create()
         {
             var courses = _context.Courses.ToList();
-            var model = new UnitCreateVIewModel
+            var model = new UnitCreateViewModel
             {
-                Units = new Unit(),
+                Units = new Unit(),  
                 Courses = courses.Select(c => new SelectListItem
                 {
                     Value = c.CourseId.ToString(),
@@ -36,40 +36,74 @@ namespace study4_be.Controllers.Admin
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Unit_Create(UnitCreateVIewModel unit)
+        public async Task<IActionResult> Unit_Create(UnitCreateViewModel unitViewModel)
         {
-            if (!ModelState.IsValid)
-            {
 
-                return View(unit);
-            }
             try
             {
-                try
+                var unit = new Unit
                 {
-                    await _context.AddAsync(unit);
-                    await _context.SaveChangesAsync();
-                    unit.Courses = _context.Courses.Select(c => new SelectListItem
-                    {
-                        Value = c.CourseId.ToString(),
-                        Text = c.CourseName
-                    }).ToList();
-                }
-                catch (Exception e)
-                {
-                    CreatedAtAction(nameof(GetUnitById), new { id = unit.Units.UnitId }, unit);
-                    _logger.LogError(e, "Error occurred while creating new unit.");
-                }
-                return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
+                    UnitTittle = unitViewModel.Units.UnitTittle,
+                    CourseId = unitViewModel.Units.CourseId
+                    // map other properties if needed
+                };
+
+                await _context.AddAsync(unit);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                // show log
                 _logger.LogError(ex, "Error occurred while creating new unit.");
                 ModelState.AddModelError("", "An error occurred while processing your request. Please try again later.");
-                return View(unit);
+
+                unitViewModel.Courses = _context.Courses.Select(c => new SelectListItem
+                {
+                    Value = c.CourseId.ToString(),
+                    Text = c.CourseName
+                }).ToList();
+
+                return View(unitViewModel);
             }
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Unit_Create(UnitCreateViewModel unitViewModel)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(unitViewModel);
+        //    }
+
+        //    try
+        //    {
+        //        var unit = new Unit
+        //        {
+        //            UnitId = unitViewModel.Units.UnitId,
+        //            UnitTittle = unitViewModel.Units.UnitTittle
+        //            // map other properties
+        //        };
+
+        //        await _context.AddAsync(unit);
+        //        await _context.SaveChangesAsync();
+
+        //        unitViewModel.Courses = _context.Courses.Select(c => new SelectListItem
+        //        {
+        //            Value = c.CourseId.ToString(),
+        //            Text = c.CourseName
+        //        }).ToList();
+
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error occurred while creating new unit.");
+        //        ModelState.AddModelError("", "An error occurred while processing your request. Please try again later.");
+        //        return View(unitViewModel);
+        //    }
+        //}
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUnitById(int id)
