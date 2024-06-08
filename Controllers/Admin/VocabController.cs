@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using study4_be.Models;
+using study4_be.Models.ViewModel;
 using study4_be.Repositories;
 
 namespace study4_be.Controllers.Admin
@@ -34,37 +36,52 @@ namespace study4_be.Controllers.Admin
         }
         public IActionResult Vocab_Create()
         {
-            return View();
+            var lessons = _context.Lessons.ToList();
+            var model = new VocabCreateViewModel
+            {
+                vocab = new Vocabulary(),
+                lesson = lessons.Select(c => new SelectListItem
+                {
+                    Value = c.LessonId.ToString(),
+                    Text = c.LessonTitle.ToString()
+                }).ToList()
+            };
+            return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Vocab_Create(Vocabulary vocabulary)
+        public async Task<IActionResult> Vocab_Create(VocabCreateViewModel vocabViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-
-                return View(vocabulary);    //show form with value input and show errors
-            }
             try
             {
-                try
+                var vocabulary = new Vocabulary
                 {
-                    await _context.AddAsync(vocabulary);
-                    await _context.SaveChangesAsync();
-                    CreatedAtAction(nameof(GetVocabById), new { id = vocabulary.VocabId }, vocabulary);
-                }
-                catch (Exception e)
-                {
-                    CreatedAtAction(nameof(GetVocabById), new { id = vocabulary.VocabId }, vocabulary);
-                    _logger.LogError(e, "Error occurred while creating new vocabulary.");
-                }
-                return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
+                    VocabId = vocabViewModel.vocab.VocabId,
+                    VocabType = vocabViewModel.vocab.VocabType,
+                    AudioUrlUk = vocabViewModel.vocab.AudioUrlUk,
+                    AudioUrlUs = vocabViewModel.vocab.AudioUrlUs,
+                    Mean = vocabViewModel.vocab.Mean,
+                    Example = vocabViewModel.vocab.Example,
+                    Explanation = vocabViewModel.vocab.Explanation,
+                    LessonId = vocabViewModel.vocab.LessonId,
+                };
+
+                await _context.AddAsync(vocabulary);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                // show log
-                _logger.LogError(ex, "Error occurred while creating new vocabulary.");
+                _logger.LogError(ex, "Error occurred while creating new unit.");
                 ModelState.AddModelError("", "An error occurred while processing your request. Please try again later.");
-                return View(vocabulary);
+
+                vocabViewModel.lesson = _context.Lessons.Select(c => new SelectListItem
+                {
+                    Value = c.LessonId.ToString(),
+                    Text = c.LessonTitle.ToString()
+                }).ToList();
+
+                return View(vocabViewModel);
             }
         }
 

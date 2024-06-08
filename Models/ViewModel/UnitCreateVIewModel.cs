@@ -2,7 +2,7 @@
 
 namespace study4_be.Models.ViewModel
 {
-    public class UnitCreateVIewModel
+    public class UnitCreateViewModel
     {
         public Unit Units { get; set; }
         public List<SelectListItem> Courses { get; set; }
