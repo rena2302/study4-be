@@ -79,33 +79,6 @@ namespace study4_be.Controllers.Admin
 
                 return View(lessonViewModel);
             }
-            //if (!ModelState.IsValid)
-            //{
-
-            //    return View(lesson);    //show form with value input and show errors
-            //}
-            //try
-            //{
-            //    try
-            //    {
-            //        await _context.AddAsync(lesson);
-            //        await _context.SaveChangesAsync();
-            //        CreatedAtAction(nameof(GetLessonById), new { id = lesson.LessonId }, lesson);
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        CreatedAtAction(nameof(GetLessonById), new { id = lesson.LessonId }, lesson);
-            //        _logger.LogError(e, "Error occurred while creating new lesson.");
-            //    }
-            //    return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
-            //}
-            //catch (Exception ex)
-            //{
-            //    // show log
-            //    _logger.LogError(ex, "Error occurred while creating new lesson.");
-            //    ModelState.AddModelError("", "An error occurred while processing your request. Please try again later.");
-            //    return View(lesson);
-            //}
         }
 
         [HttpGet("{id}")]

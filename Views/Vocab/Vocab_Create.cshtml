@@ -1,56 +1,56 @@
-﻿@model study4_be.Models.Vocabulary
+﻿@model study4_be.Models.ViewModel.VocabCreateViewModel
 
 @{
     ViewData["Title"] = "Vocabulary";
 }
 
-<h2>Unit Create</h2>
+<h2>Vocab Create</h2>
 
 <div class="form-horizontal">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="card">
         <div class="card-body">
-            <p class="card-description">Create</p>
+            <p class="card-description">Vocab Create</p>
             <form asp-action="Vocab_Create" method="post" enctype="multipart/form-data" class="forms-sample">
                 <div class="form-group">
-                    <label for="VocabType">VocabType</label>
-                    <input asp-for="VocabType" class="form-control" />
-                    <span asp-validation-for="VocabType" class="text-danger"></span>
+                    <label for="vocab.VocabType">Vocab Type</label>
+                    <input asp-for="vocab.VocabType" class="form-control" />
+                    <span asp-validation-for="vocab.VocabType" class="text-danger"></span>
+                </div> 
+                <div class="form-group">
+                    <label for="vocab.VocabType">Vocab Tittle</label>
+                    <input asp-for="vocab.VocabType" class="form-control" />
+                    <span asp-validation-for="vocab.VocabType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="Mean">Mean</label>
-                    <input asp-for="Mean" class="form-control" />
-                    <span asp-validation-for="Mean" class="text-danger"></span>
+                    <label for="vocab.Mean">Vocab Mean</label>
+                    <input asp-for="vocab.Mean" class="form-control" />
+                    <span asp-validation-for="vocab.Mean" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="Example">Example</label>
-                    <input asp-for="Example" class="form-control" />
-                    <span asp-validation-for="Example" class="text-danger"></span>
+                    <label for="vocab.Example">Example</label>
+                    <input asp-for="vocab.Example" class="form-control" />
+                    <span asp-validation-for="vocab.Example" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="Explanation">Explanation</label>
-                    <input asp-for="Explanation" class="form-control" />
-                    <span asp-validation-for="Explanation" class="text-danger"></span>
+                    <label for="vocab.Explanation">Explanation</label>
+                    <input asp-for="vocab.Explanation" class="form-control" />
+                    <span asp-validation-for="vocab.Explanation" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="AudioUrlUs">AudioUrlUs</label>
-                    <input asp-for="AudioUrlUs" class="form-control" />
-                    <span asp-validation-for="AudioUrlUs" class="text-danger"></span>
+                    <label for="vocab.AudioUrlUs">AudioUrl Us</label>
+                    <input asp-for="vocab.AudioUrlUs" class="form-control" />
+                    <span asp-validation-for="vocab.AudioUrlUs" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="AudioUrlUk">AudioUrlUk</label>
-                    <input asp-for="AudioUrlUk" class="form-control" />
-                    <span asp-validation-for="AudioUrlUk" class="text-danger"></span>
+                    <label for="vocab.AudioUrlUk">AudioUrl Uk</label>
+                    <input asp-for="vocab.AudioUrlUk" class="form-control" />
+                    <span asp-validation-for="vocab.AudioUrlUk" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="LessonId">LessonId</label>
-                    <input asp-for="LessonId" class="form-control" />
-                    <span asp-validation-for="LessonId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label for="Lesson">Lesson</label>
-                    <input asp-for="Lesson" class="form-control" />
-                    <span asp-validation-for="Lesson" class="text-danger"></span>
+                    <label asp-for="vocab.LessonId">Lesson id</label>
+                    <select asp-for="vocab.LessonId" class="form-control" asp-items="Model.lesson"></select>
+                    <span asp-validation-for="vocab.LessonId" class="text-danger"></span>
                 </div>
                 <div class="flex">
                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
