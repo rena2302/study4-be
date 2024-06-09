@@ -23,6 +23,7 @@ namespace study4_be.Models
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<Question> Questions { get; set; } = null!;
         public virtual DbSet<Rating> Ratings { get; set; } = null!;
+        public virtual DbSet<Tag> Tags { get; set; } = null!;
         public virtual DbSet<Translate> Translates { get; set; } = null!;
         public virtual DbSet<Unit> Units { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -124,10 +125,17 @@ namespace study4_be.Models
                     .HasMaxLength(200)
                     .HasColumnName("LESSON_TYPE");
 
+                entity.Property(e => e.TagId).HasColumnName("TAG_ID");
+
                 entity.HasOne(d => d.Container)
                     .WithMany(p => p.Lessons)
                     .HasForeignKey(d => d.ContainerId)
                     .HasConstraintName("FK_LESSON_CONTAINER");
+
+                entity.HasOne(d => d.Tag)
+                    .WithMany(p => p.Lessons)
+                    .HasForeignKey(d => d.TagId)
+                    .HasConstraintName("FK_LESSON_TAG");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -236,6 +244,17 @@ namespace study4_be.Models
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK_RATING_USERS");
+            });
+
+            modelBuilder.Entity<Tag>(entity =>
+            {
+                entity.ToTable("TAG");
+
+                entity.Property(e => e.TagId).HasColumnName("TAG_ID");
+
+                entity.Property(e => e.TagTitle)
+                    .HasMaxLength(200)
+                    .HasColumnName("TAG_TITLE");
             });
 
             modelBuilder.Entity<Translate>(entity =>

@@ -17,8 +17,10 @@ namespace study4_be.Models
         public string? LessonType { get; set; }
         public string? LessonTitle { get; set; }
         public int? ContainerId { get; set; }
+        public int? TagId { get; set; }
 
         public virtual Container? Container { get; set; }
+        public virtual Tag? Tag { get; set; }
         public virtual ICollection<Audio> Audios { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Translate> Translates { get; set; }
