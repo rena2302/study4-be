@@ -20,12 +20,8 @@ namespace study4_be.Controllers.API
             _vocabFlashCardRepo = new VocabFlashCardRepository();
             _logger = logger; 
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpPost("Get_AllVocabOfLesson")]
-        public async Task<IActionResult> Get_AllVocabOfLesson(VocabFlashCardRequest _vocabRequest) {
+        public async Task<IActionResult> Get_AllVocabOfLesson([FromBody] VocabFlashCardRequest _vocabRequest) {
             if (_vocabRequest.lessonId == null)
             {
                 _logger.LogWarning("LessonId is null or empty in the request.");
@@ -43,6 +39,35 @@ namespace study4_be.Controllers.API
                 return StatusCode(500, new { status = 500, message = "An error occurred while processing your request." });
             }
         }
+        [HttpPost("Get_AllVocabFindpair")]
+        public async Task<IActionResult> Get_AllVocabFindpair([FromBody] VocabFlashCardRequest _vocabRequest)
+        {
+            if (_vocabRequest.lessonId == null)
+            {
+                _logger.LogWarning("LessonId is null or empty in the request.");
+                return BadRequest(new { status = 400, message = "LessonId is null or empty" });
+            }
+
+            try
+            {
+                var allVocabOfLesson = await _vocabFlashCardRepo.GetAllVocabDependLesson(_vocabRequest.lessonId);
+
+                var responseData = allVocabOfLesson.Select(vocab => new VocabFindPairResponse
+                {
+                    vocabId = vocab.VocabId,
+                    vocabMean = vocab.Mean,
+                    vocabExplanation = vocab.Explanation,
+                    vocabTitle = vocab.VocabTitle
+                }).ToList();
+                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = responseData });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching vocab for lesson {LessonId}", _vocabRequest.lessonId);
+                return StatusCode(500, new { status = 500, message = "An error occurred while processing your request." });
+            }
+        }
+
 
     }
 }
