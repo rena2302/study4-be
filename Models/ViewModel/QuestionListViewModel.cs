@@ -6,6 +6,7 @@
         public string courseName { get; set; }
         public string lessonTittle { get; set; }
         public string containerTittle { get; set; }
-        public string unitTittle { get; set; }
+        public string unitTittle { get; set; }   
+        public string tag { get; set; }
     }
 }

@@ -125,7 +125,9 @@ namespace study4_be.Models
                     .HasMaxLength(200)
                     .HasColumnName("LESSON_TYPE");
 
-                entity.Property(e => e.TagId).HasColumnName("TAG_ID");
+                entity.Property(e => e.TagId)
+                    .HasMaxLength(100)
+                    .HasColumnName("TAG_ID");
 
                 entity.HasOne(d => d.Container)
                     .WithMany(p => p.Lessons)
@@ -250,11 +252,9 @@ namespace study4_be.Models
             {
                 entity.ToTable("TAG");
 
-                entity.Property(e => e.TagId).HasColumnName("TAG_ID");
-
-                entity.Property(e => e.TagTitle)
-                    .HasMaxLength(200)
-                    .HasColumnName("TAG_TITLE");
+                entity.Property(e => e.TagId)
+                    .HasMaxLength(100)
+                    .HasColumnName("TAG_ID");
             });
 
             modelBuilder.Entity<Translate>(entity =>

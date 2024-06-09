@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
 using study4_be.Models.ViewModel;
@@ -42,6 +43,7 @@ namespace study4_be.Controllers.Admin
                         unitTittle = ques.Lesson?.Container?.Unit?.UnitTittle ?? "N/A",
                         containerTittle = ques.Lesson?.Container?.ContainerTitle ?? "N/A",
                         lessonTittle = ques.Lesson?.LessonTitle ?? "N/A",
+                        tag = ques.Lesson?.TagId ?? "N/A",
                     }).ToList();
 
                 return View(questionViewModels);
@@ -70,7 +72,7 @@ namespace study4_be.Controllers.Admin
                 lesson = lessons.Select(c => new SelectListItem
                 {
                     Value = c.LessonId.ToString(),
-                    Text = $"{c.LessonTitle} - Container: {(c.Container?.ContainerTitle ?? "N/A")} - Unit: {(c.Container?.Unit?.UnitTittle ?? "N/A")} - Course: {(c.Container?.Unit?.Course?.CourseName ?? "N/A")}"
+                    Text = $"{c.LessonTitle} - Container: {(c.Container?.ContainerTitle ?? "N/A")} - Unit: {(c.Container?.Unit?.UnitTittle ?? "N/A")} - Course: {(c.Container?.Unit?.Course?.CourseName ?? "N/A")} - TAG: {(c.TagId ?? "N/A")}"
                 }).ToList()
             };
 

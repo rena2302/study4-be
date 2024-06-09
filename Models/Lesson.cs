@@ -17,7 +17,7 @@ namespace study4_be.Models
         public string? LessonType { get; set; }
         public string? LessonTitle { get; set; }
         public int? ContainerId { get; set; }
-        public int? TagId { get; set; }
+        public string? TagId { get; set; }
 
         public virtual Container? Container { get; set; }
         public virtual Tag? Tag { get; set; }

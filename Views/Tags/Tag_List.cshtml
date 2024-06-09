@@ -32,7 +32,6 @@
             <thead class="table-info">
                 <tr>
                     <th>Tag Id</th>
-                    <th>Tag Title</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -43,9 +42,6 @@
                         <td>
                             <p>@item.TagId</p>
                         </td> 
-                        <td>
-                            <p>@item.TagTitle</p>
-                        </td>
                         <td>
                             <a href="@Url.Action("Tag_Edit", "Tags", new { id = item.TagId})" class="text-link-action">Sửa</a>
                             <span style="padding:0 8px">|</span>

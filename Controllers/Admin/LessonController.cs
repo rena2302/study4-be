@@ -41,7 +41,6 @@ namespace study4_be.Controllers.Admin
             var lessonViewModels = lesson.Select(lesson => new LessonListViewModel
             {
                 Lesson = lesson,
-                //tagTitle=lesson.tag
                 containerTitle = container.FirstOrDefault(c => c.ContainerId == lesson.ContainerId)?.ContainerTitle ?? "N/A",
                 unitTitle = container.FirstOrDefault(c => c.ContainerId == lesson.ContainerId)?.Unit?.UnitTittle ?? "N/A",
                 courseTitle = container.FirstOrDefault(c => c.ContainerId == lesson.ContainerId)?.Unit?.Course?.CourseName ?? "N/A"
@@ -70,7 +69,7 @@ namespace study4_be.Controllers.Admin
                 tag = tags.Select(t => new SelectListItem
                 {
                     Value = t.TagId.ToString(),
-                    Text = t.TagTitle
+                    Text = t.TagId
                 }).ToList()
             };
 

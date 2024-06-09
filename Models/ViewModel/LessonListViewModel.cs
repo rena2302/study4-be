@@ -6,6 +6,5 @@
         public string containerTitle {  get; set; } 
         public string unitTitle { get; set; }
         public string courseTitle { get; set; }
-        public string tagTitle { get; set; }    
     }
 }

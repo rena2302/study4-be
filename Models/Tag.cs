@@ -10,8 +10,7 @@ namespace study4_be.Models
             Lessons = new HashSet<Lesson>();
         }
 
-        public int TagId { get; set; }
-        public string? TagTitle { get; set; }
+        public string TagId { get; set; } = null!;
 
         public virtual ICollection<Lesson> Lessons { get; set; }
     }
