@@ -28,13 +28,17 @@ namespace study4_be.Controllers.API
         {
             using (var context = new STUDY4Context())
             {
-                //Get the list of containers based on unitId
+                // Get the unit by ID
+                var unitExist = await context.Units.FindAsync(unit.unitId);
+                if (unitExist == null)
+                {
+                    return NotFound(new { status = 404, message = "Unit not found" });
+                }
+
+                // Get the list of containers based on unitId
                 var containers = await context.Containers
                                               .Where(c => c.UnitId == unit.unitId)
                                               .ToListAsync();
-                var unitExist = await context.Units.FindAsync(unit.unitId);
-                // Initialize an empty list to hold all lessons
-                var lessons = new List<Lesson>();
 
                 // Loop through each container and get its lessons
                 foreach (var container in containers)
@@ -42,18 +46,34 @@ namespace study4_be.Controllers.API
                     var containerLessons = await context.Lessons
                                                         .Where(l => l.ContainerId == container.ContainerId)
                                                         .ToListAsync();
-                    lessons.AddRange(containerLessons);
+                    container.Lessons = containerLessons;
                 }
 
-                // Return both lists in a UnitDetail object
+                // Create the response object
                 var unitDetail = new UnitDetailResponse
                 {
                     unitId = unit.unitId,
                     unitName = unitExist.UnitTittle,
-                    Containers = containers,
+                    Containers = containers.Select(c => new ContainerResponse
+                    {
+                        ContainerId = c.ContainerId,
+                        ContainerTitle = c.ContainerTitle,
+                        Lessons = c.Lessons.Select(l => new LessonResponse
+                        {
+                            LessonId = l.LessonId,
+                            LessonTitle = l.LessonTitle,
+                            LessonType = l.LessonType
+                        }).ToList()
+                    }).ToList()
                 };
 
-                return Ok(new { status = 200, message = "Get All Units and Containers Successful", unitDetail });
+                // Return the formatted response
+                return Ok(new
+                {
+                    status = 200,
+                    message = "Get All Units and Containers Successful",
+                    unitDetail
+                });
             }
         }
     }

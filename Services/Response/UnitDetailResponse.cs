@@ -6,6 +6,6 @@ namespace study4_be.Services.Response
     {
         public int unitId { get; set; }
         public string unitName { get; set; } = string.Empty;
-        public IEnumerable<Container> Containers { get; set; }
+        public List<ContainerResponse> Containers { get; set; } 
     }
 }
