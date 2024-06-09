@@ -92,6 +92,7 @@ namespace study4_be.Controllers.Admin
                 {
                     VocabId = vocabViewModel.vocab.VocabId,
                     VocabType = vocabViewModel.vocab.VocabType,
+                    VocabTitle = vocabViewModel.vocab.VocabTitle,
                     AudioUrlUk = vocabViewModel.vocab.AudioUrlUk,
                     AudioUrlUs = vocabViewModel.vocab.AudioUrlUs,
                     Mean = vocabViewModel.vocab.Mean,
