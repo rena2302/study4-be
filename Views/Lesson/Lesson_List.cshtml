@@ -33,7 +33,8 @@
                     <th>Lesson Title</th>
                     <th>Container Title</th>
                     <th>Unit Title</th>
-                    <th>Course Title</th>
+                    <th>Course Title</th>   
+                    <th>Tag Title</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -58,6 +59,9 @@
                         </td>
                         <td>
                             <p>@item.courseTitle</p>
+                        </td> 
+                        <td>
+                            <p>@item.tagTitle</p>
                         </td>
                         <td>
                             <a href="@Url.ActionLink("Lesson_Edit","Lesson", new { id = item.Lesson.LessonId })," class="text-link-action">Sửa</a>
