@@ -28,6 +28,7 @@ namespace study4_be.Models
         public virtual DbSet<Unit> Units { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserCourse> UserCourses { get; set; } = null!;
+        public virtual DbSet<Video> Videos { get; set; } = null!;
         public virtual DbSet<Vocabulary> Vocabularies { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -374,6 +375,17 @@ namespace study4_be.Models
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_USER_COURSE_USER");
+            });
+
+            modelBuilder.Entity<Video>(entity =>
+            {
+                entity.ToTable("VIDEO");
+
+                entity.Property(e => e.VideoId).HasColumnName("VIDEO_ID");
+
+                entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
+
+                entity.Property(e => e.VideoUrl).HasColumnName("VIDEO_URL");
             });
 
             modelBuilder.Entity<Vocabulary>(entity =>
