@@ -16,14 +16,6 @@ namespace study4_be.Controllers.Admin
         }
         private readonly VocabRepository _vocabsRepository = new VocabRepository();
         public STUDY4Context _context = new STUDY4Context();
-        [HttpGet("GetAllVocabs")]
-        public async Task<ActionResult<IEnumerable<Vocabulary>>> GetAllVocabs()
-        {
-            var vocabs = await _vocabsRepository.GetAllVocabAsync();
-            return Json(new { status = 200, message = "Get Vocab Successful", vocabs });
-
-        }
-
         [HttpDelete("DeleteAllVocabs")]
         public async Task<IActionResult> DeleteAllVocabs()
         {

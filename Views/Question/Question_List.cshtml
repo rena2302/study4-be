@@ -1,4 +1,4 @@
-﻿@model IEnumerable<study4_be.Models.Question>
+﻿@model IEnumerable<study4_be.Models.ViewModel.QuestionListViewModel>
 <style>
     .course__create-btn {
         padding: 10px;
@@ -28,48 +28,66 @@
         <table class="table">
             <thead class="table-info">
                 <tr>
-                    <th>QuestionId</th>
-                    <th>IdQuizzes</th>
-                    <th>QuestionText</th>
-                    <th>CorrectAnswer</th>
-                    <th>OptionA</th>
-                    <th>OptionB</th>
-                    <th>OptionC</th>
-                    <th>OptionD</th>
-                    <th></th>
+                    <th>Question Id</th>
+                    <th>Question Text</th>
+                    <th>Answer</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>     
+                    <th>Lesson Title</th>
+                    <th>Container Title</th>
+                    <th>Unit Title</th>
+                    <th>Course Title</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var question in Model)
+                @foreach (var item in Model)
                 {
                     <tr>
                         <td>
-                            <p>@question.QuestionId</p>
+                            <p>@item.question.QuestionId</p>
                         </td>
                         <td>
-                            <p>@question.QuestionText</p>
+                            <p>@item.question.QuestionText</p>
                         </td>
                         <td>
-                            <p>@question.CorrectAnswer</p>
+                            <p>@item.question.CorrectAnswer</p>
                         </td>
                         <td>
-                            <p>@question.OptionA</p>
+                            <p>@item.question.OptionA</p>
                         </td>
                         <td>
-                            <p>@question.OptionB</p>
+                            <p>@item.question.OptionB</p>
                         </td>
                         <td>
-                            <p>@question.OptionC</p>
+                            <p>@item.question.OptionC</p>
                         </td>
                         <td>
-                            <p>@question.OptionD</p>
+                            <p>@item.question.OptionD</p>
+                        </td>    
+                        <td>
+                            <p>@item.question.OptionD</p>
+                        </td>    
+                        <td>
+                            <p>@item.lessonTittle</p>
+                        </td>   
+                        <td>
+                            <p>@item.containerTittle</p>
+                        </td>   
+                        <td>
+                            <p>@item.unitTittle</p>
+                        </td>  
+                        <td>
+                            <p>@item.courseName</p>
                         </td>
                         <td>
-                            <a href="@Url.ActionLink("Question_Edit","Question",new { id = question.QuestionId })" class="text-link-action">Sửa</a>
+                            <a href="@Url.ActionLink("Question_Edit","Question",new { id = item.question.QuestionId })" class="text-link-action">Sửa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.ActionLink("Question_Delete","Question",new { id = question.QuestionId })" class="text-link-action">Xóa</a>
+                            <a href="@Url.ActionLink("Question_Delete","Question",new { id = item.question.QuestionId })" class="text-link-action">Xóa</a>
                             <span style="padding:0 8px">|</span>
-                            <a href="@Url.ActionLink("Question_Details","Question",new { id = question.QuestionId })" class="text-link-action">Chi tiết</a>
+                            <a href="@Url.ActionLink("Question_Details","Question",new { id = item.question.QuestionId })" class="text-link-action">Chi tiết</a>
                         </td>
                     </tr>
                 }
