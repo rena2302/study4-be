@@ -1,0 +1,28 @@
+﻿@model study4_be.Models.Tag
+<style>
+    .flex{
+        margin-top: 20px;
+        display: flex;
+        align-items:center;
+    }
+</style>
+
+
+<div class="form-horizontal">
+    <h4>Tag</h4>
+    <hr />
+    <div class="card-body">
+        <p class="card-description"> Edit</p>
+        <form asp-action="Tag_Edit" method="post" enctype="multipart/form-data" class="forms-sample">
+            <div class="form-group">
+                <label for="TagTitle">Tag Title</label>
+                <input asp-for="TagTitle" class="form-control" />
+                <span asp-validation-for="TagTitle" class="text-danger"></span>
+            </div>
+            <div class="flex">
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-light" })
+            </div>
+        </form>
+    </div>
+</div>
