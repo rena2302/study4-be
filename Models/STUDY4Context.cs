@@ -381,7 +381,6 @@ namespace study4_be.Models
 
                 entity.Property(e => e.Mean)
                     .HasMaxLength(100)
-                    .IsUnicode(false)
                     .HasColumnName("MEAN");
 
                 entity.Property(e => e.VocabTitle)
