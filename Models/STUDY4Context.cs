@@ -204,9 +204,15 @@ namespace study4_be.Models
                     .IsUnicode(false)
                     .HasColumnName("OPTION_D");
 
+                entity.Property(e => e.QuestionAudio).HasColumnName("QUESTION_AUDIO");
+
+                entity.Property(e => e.QuestionImage).HasColumnName("QUESTION_IMAGE");
+
                 entity.Property(e => e.QuestionText)
                     .HasMaxLength(100)
                     .HasColumnName("QUESTION_TEXT");
+
+                entity.Property(e => e.QuestionTranslate).HasColumnName("QUESTION_TRANSLATE");
 
                 entity.HasOne(d => d.Lesson)
                     .WithMany(p => p.Questions)
