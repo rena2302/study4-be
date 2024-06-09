@@ -16,5 +16,10 @@ namespace study4_be.Repositories
             _context.Questions.RemoveRange(questions);
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Question>> GetAllQuestionsOfLesson(int lessonId)
+        {
+            return await _context.Questions.Where(q =>  q.LessonId == lessonId).ToListAsync();
+        }
+
     }
 }

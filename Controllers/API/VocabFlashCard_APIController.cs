@@ -3,6 +3,7 @@ using study4_be.Models;
 using study4_be.Repositories;
 using study4_be.Services.Request;
 using study4_be.Services.Response;
+using Microsoft.Extensions.Logging;
 
 namespace study4_be.Controllers.API
 {
@@ -10,17 +11,37 @@ namespace study4_be.Controllers.API
     [ApiController]
     public class VocabFlashCard_APIController : Controller
     {
-        public STUDY4Context _context = new STUDY4Context();
-        public VocabFlashCardRepository _vocabFlashCardRepo = new VocabFlashCardRepository();
-
+        private readonly STUDY4Context _context;
+        private readonly VocabFlashCardRepository _vocabFlashCardRepo;
+        private readonly ILogger<VocabFlashCard_APIController> _logger;
+        public VocabFlashCard_APIController(ILogger<VocabFlashCard_APIController> logger) 
+        {
+            _context = new STUDY4Context();
+            _vocabFlashCardRepo = new VocabFlashCardRepository();
+            _logger = logger; 
+        }
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost("Get_AllVocabOfLesson")]
         public async Task<IActionResult> Get_AllVocabOfLesson(VocabFlashCardRequest _vocabRequest) {
-            var allVocabOfLesson = await _vocabFlashCardRepo.GetAllVocabDependLesson(_vocabRequest.lessonId);
-            return Json(new { status = 200, message = "Get All Vocab Of Lesson Successful", allVocabOfLesson });
+            if (_vocabRequest.lessonId == null)
+            {
+                _logger.LogWarning("LessonId is null or empty in the request.");
+                return BadRequest(new { status = 400, message = "LessonId is null or empty" });
+            }
+
+            try
+            {
+                var allVocabOfLesson = await _vocabFlashCardRepo.GetAllVocabDependLesson(_vocabRequest.lessonId);
+                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = allVocabOfLesson });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching vocab for lesson {LessonId}", _vocabRequest.lessonId);
+                return StatusCode(500, new { status = 500, message = "An error occurred while processing your request." });
+            }
         }
 
     }
