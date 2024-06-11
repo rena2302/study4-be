@@ -5,6 +5,7 @@ using study4_be.Payment;
 using study4_be.Payment.MomoPayment;
 using study4_be.PaymentServices.Momo.Config;
 using study4_be.Services;
+//using study4_be.Services.EmailServices;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.Configure<MomoConfig>(
     builder.Configuration.GetSection(MomoConfig.ConfigName));
 //Add services to the container.
+//builder.Services.Configure<EmailConfig>(builder.Configuration.GetSection(EmailConfig.ConfigName));
+//builder.Services.AddSingleton<EmailService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddControllersWithViews();
 

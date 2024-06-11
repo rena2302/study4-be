@@ -21,6 +21,7 @@ namespace study4_be.Models
 
         public virtual Container? Container { get; set; }
         public virtual Tag? Tag { get; set; }
+        public virtual Video Video { get; set; } = null!;
         public virtual ICollection<Audio> Audios { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Translate> Translates { get; set; }

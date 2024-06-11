@@ -8,6 +8,7 @@ namespace study4_be.Models
         public int QuestionId { get; set; }
         public int? LessonId { get; set; }
         public string? QuestionText { get; set; }
+        public string? QuestionParagraph { get; set; }
         public string? QuestionTranslate { get; set; }
         public string? QuestionAudio { get; set; }
         public string? QuestionImage { get; set; }

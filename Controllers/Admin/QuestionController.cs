@@ -87,6 +87,7 @@ namespace study4_be.Controllers.Admin
                 {
                     QuestionId = questionViewModel.question.QuestionId,
                     QuestionText = questionViewModel.question.QuestionText,
+                    QuestionParagraph = questionViewModel.question.QuestionParagraph,
                     QuestionAudio= questionViewModel.question.QuestionAudio,
                     QuestionTranslate = questionViewModel.question.QuestionTranslate,
                     QuestionImage = questionViewModel.question.QuestionImage,
