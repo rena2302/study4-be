@@ -62,7 +62,8 @@ namespace study4_be.Controllers.API
                         {
                             LessonId = l.LessonId,
                             LessonTitle = l.LessonTitle,
-                            LessonType = l.LessonType
+                            LessonType = l.LessonType,
+                            tagId = l.TagId,    
                         }).ToList()
                     }).ToList()
                 };
