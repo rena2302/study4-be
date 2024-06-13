@@ -5,6 +5,9 @@ using study4_be.Services.Request;
 using study4_be.Services.Response;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using Google.Cloud.Storage.V1;
+using study4_be.Services;
+using Google.Apis.Auth.OAuth2;
 
 namespace study4_be.Controllers.API
 {
@@ -15,11 +18,13 @@ namespace study4_be.Controllers.API
         private readonly STUDY4Context _context;
         private readonly VocabFlashCardRepository _vocabFlashCardRepo;
         private readonly ILogger<VocabFlashCard_APIController> _logger;
-        public VocabFlashCard_APIController(ILogger<VocabFlashCard_APIController> logger)
+        private readonly FireBaseServices _firebaseServices;
+        public VocabFlashCard_APIController(ILogger<VocabFlashCard_APIController> logger, FireBaseServices firebaseServices)
         {
             _context = new STUDY4Context();
             _vocabFlashCardRepo = new VocabFlashCardRepository();
             _logger = logger;
+            _firebaseServices = firebaseServices;
         }
         [HttpPost("Get_AllVocabOfLesson")]
         public async Task<IActionResult> Get_AllVocabOfLesson([FromBody] VocabFlashCardRequest _vocabRequest) {
@@ -75,23 +80,30 @@ namespace study4_be.Controllers.API
             {
                 var allVocabOfLesson = await _vocabFlashCardRepo.GetAllVocabDependLesson(_vocabRequest.lessonId);
 
+                var firebaseBucketName =  _firebaseServices.GetFirebaseBucketName();
+
+                // Use firebaseBucketName as needed...
+
                 var responseData = new List<VocabListenChoosenResponse>();
                 foreach (var vocab in allVocabOfLesson)
                 {
+                    // Generate and upload audio to Firebase Storage
                     var audioFilePath = Path.Combine(Path.GetTempPath(), $"{vocab.VocabId}.wav");
-                    await GenerateAudioAsync(vocab.VocabTitle, audioFilePath);
+                    GenerateAudio(vocab.VocabTitle, audioFilePath);
 
                     var audioBytes = System.IO.File.ReadAllBytes(audioFilePath);
+                    var audioUrl = await UploadFileToFirebaseStorageAsync(audioBytes, $"{vocab.VocabId}.wav", firebaseBucketName);
+                    // Example: Upload to Firebase Storage using firebaseBucketName...
 
                     responseData.Add(new VocabListenChoosenResponse
                     {
                         vocabId = vocab.VocabId,
                         vocabMean = vocab.Mean,
                         vocabTitle = vocab.VocabTitle,
-                        vocabAudioBytes = audioBytes // Ensure this is correctly populated with byte array
+                        vocabAudioUrl = audioUrl
                     });
 
-                    // Delete the temporary file after converting to bytes
+                    // Delete the temporary file after uploading
                     System.IO.File.Delete(audioFilePath);
                 }
 
@@ -104,7 +116,34 @@ namespace study4_be.Controllers.API
             }
         }
 
-        private async Task GenerateAudioAsync(string text, string filePath)
+        // Thực hiện tải tệp lên Firebase Storage
+        public async Task<string> UploadFileToFirebaseStorageAsync(byte[] fileBytes, string fileName, string bucketName)
+        {
+            // Assuming your service account file is named "serviceAccount.json"
+            string serviceAccountPath = Path.Combine(Directory.GetCurrentDirectory(), "firebase_secret.json");
+
+            // Load the credential from the file
+            var credential = GoogleCredential.FromFile(serviceAccountPath);
+
+            // Create a StorageClient object
+            var storage = StorageClient.Create(credential);
+                    string correctedBucketName = "estudy-426108.appspot.com"; // Assuming the correct name is 'estudy426108'
+            // Create a MemoryStream object from the file bytes
+            using (var memoryStream = new MemoryStream(fileBytes))
+            {
+                // Upload the file to Firebase Storage
+                try
+                {
+                    var storageObject = await storage.UploadObjectAsync(correctedBucketName, fileName, null, memoryStream);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error uploading file: {ex.Message}");
+                }
+                return $"https://firebasestorage.googleapis.com/v0/b/{correctedBucketName}/o/{fileName}?alt=media";
+            }
+        }
+        private void GenerateAudio(string text, string filePath)
         {
             var startInfo = new ProcessStartInfo
             {
@@ -118,7 +157,7 @@ namespace study4_be.Controllers.API
             using (var process = new Process { StartInfo = startInfo })
             {
                 process.Start();
-                await process.WaitForExitAsync();
+                process.WaitForExit();
             }
         }
 

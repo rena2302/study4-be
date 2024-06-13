@@ -795,3 +795,16 @@ C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\obj\Debug\net6.0\study4-be.Ra
 C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\obj\Debug\net6.0\scopedcss\projectbundle\study4-be.bundle.scp.css
 C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\obj\Debug\net6.0\refint\study4-be.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\FirebaseAdmin.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\Google.Api.Gax.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\Google.Api.Gax.Rest.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\Google.Apis.Storage.v1.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\Google.Cloud.Storage.V1.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\System.Collections.Immutable.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\System.Management.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Management.dll
+C:\Users\phanv\OneDrive\Máy tính\SideProject\stb\bin\Debug\net6.0\firebase_secret.json

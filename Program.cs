@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
+using MediatR;
 using study4_be.Interface;
 using study4_be.Models;
 using study4_be.Payment;
@@ -31,8 +33,14 @@ builder.Services.Configure<MomoConfig>(
 //builder.Services.AddSingleton<EmailService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddControllersWithViews();
+// Thêm dịch vụ vào container
+builder.Services.AddSingleton<FireBaseServices>();
+
+// Register HttpContextAccessor if needed
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
