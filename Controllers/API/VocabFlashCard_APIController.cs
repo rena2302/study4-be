@@ -120,7 +120,7 @@ namespace study4_be.Controllers.API
         public async Task<string> UploadFileToFirebaseStorageAsync(byte[] fileBytes, string fileName, string bucketName)
         {
             // Assuming your service account file is named "serviceAccount.json"
-            string serviceAccountPath = Path.Combine(Directory.GetCurrentDirectory(), "firebase_secret.json");
+            string serviceAccountPath = Path.Combine(Directory.GetCurrentDirectory(), "firebase_config.json");
 
             // Load the credential from the file
             var credential = GoogleCredential.FromFile(serviceAccountPath);
