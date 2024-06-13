@@ -94,7 +94,7 @@ namespace study4_be.Controllers.Admin
                 await _context.AddAsync(lesson);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Lesson_List", "Lesson");
             }
             catch (Exception ex)
             {

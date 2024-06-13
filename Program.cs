@@ -20,7 +20,7 @@ builder.Services.AddControllers()
 //Đăng ký các dịch vụ
 builder.Services.AddDbContext<STUDY4Context>(); // Đăng ký STUDY4Context vào DI container
 builder.Services.AddScoped<UserCourseExpirationService>(); // Đăng ký dịch vụ UserCourseExpirationService với phạm vi Scoped
-// Momo config payment
+                                                           // Momo config payment
 builder.Services.AddTransient<ICurrentUserServices, CurrentUserServices>(); // Đăng ký ICurrentUserServices
 builder.Configuration.AddJsonFile("appsettings.json", optional: false);
 builder.Services.AddTransient<IConnectionService, ConnectionService>();

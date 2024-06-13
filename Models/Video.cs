@@ -9,6 +9,6 @@ namespace study4_be.Models
         public int? LessonId { get; set; }
         public string? VideoUrl { get; set; }
 
-        public virtual Lesson VideoNavigation { get; set; } = null!;
+        public virtual Lesson? VideoNavigation { get; set; } = null!;
     }
 }

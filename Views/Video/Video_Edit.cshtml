@@ -1,0 +1,33 @@
+﻿@model study4_be.Models.ViewModel.VideoCreateViewModel
+<style>
+    .flex {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+
+<div class="form-horizontal">
+    <h4>Unit</h4>
+    <hr />
+    <div class="card-body">
+        <p class="card-description"> Edit</p>
+        <form asp-action="Video_Create" method="post" enctype="multipart/form-data" class="forms-sample">
+            <div class="form-group">
+                <label asp-for="videos.VideoUrl">VideoUrl</label>
+                <input asp-for="videos.VideoUrl" class="form-control" />
+                <span asp-validation-for="videos.VideoUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="videos.LessonId">Lesson</label>
+                <select asp-for="videos.LessonId" class="form-control" asp-items="Model.Lessons"></select>
+                <span asp-validation-for="videos.LessonId" class="text-danger"></span>
+            </div>
+            <div class="flex">
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                @Html.ActionLink("Cancel", "Video_List", "Video", null, new { @class = "btn btn-light" })
+            </div>
+        </form>
+    </div>
+</div>

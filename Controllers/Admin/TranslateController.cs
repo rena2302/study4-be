@@ -57,7 +57,7 @@ namespace study4_be.Controllers.Admin
                     CreatedAtAction(nameof(GetTranslateById), new { id = translate.TranslateId }, translate);
                     _logger.LogError(e, "Error occurred while creating new translate.");
                 }
-                return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
+                return RedirectToAction("Translate_List", "Translate"); // nav to main home when add successfull, after change nav to index create Courses
             }
             catch (Exception ex)
             {

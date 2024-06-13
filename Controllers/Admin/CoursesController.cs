@@ -63,7 +63,7 @@ namespace study4_be.Controllers.Admin
                     CreatedAtAction(nameof(GetCourseById), new { id = course.CourseId }, course);
                     _logger.LogError(e, "Error occurred while creating new course.");
                 }
-                return RedirectToAction("Index", "Home"); // nav to main home when add successfull, after change nav to index create Courses
+                return RedirectToAction("Course_List", "Courses"); // nav to main home when add successfull, after change nav to index create Courses
             }
             catch (Exception ex)
             {

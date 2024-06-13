@@ -26,7 +26,7 @@ namespace study4_be.Controllers.Admin
             var courses = _context.Courses.ToList();
             var model = new UnitCreateViewModel
             {
-                Units = new Unit(),  
+                Units = new Unit(),
                 Courses = courses.Select(c => new SelectListItem
                 {
                     Value = c.CourseId.ToString(),
@@ -51,7 +51,7 @@ namespace study4_be.Controllers.Admin
                 await _context.AddAsync(unit);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Unit_List", "Unit");
             }
             catch (Exception ex)
             {

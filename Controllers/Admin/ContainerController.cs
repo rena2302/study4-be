@@ -7,17 +7,17 @@ using study4_be.Repositories;
 
 namespace study4_be.Controllers.Admin
 {
-	public class ContainerController : Controller
-	{
-		private readonly ILogger<ContainerController> _logger;
-		public ContainerController(ILogger<ContainerController> logger)
-		{
-			_logger = logger;
-		}
-		private readonly ContainerRepository _containersRepository = new ContainerRepository();
-		public STUDY4Context _context = new STUDY4Context();
-		public async Task<IActionResult> Container_List()
-		{
+    public class ContainerController : Controller
+    {
+        private readonly ILogger<ContainerController> _logger;
+        public ContainerController(ILogger<ContainerController> logger)
+        {
+            _logger = logger;
+        }
+        private readonly ContainerRepository _containersRepository = new ContainerRepository();
+        public STUDY4Context _context = new STUDY4Context();
+        public async Task<IActionResult> Container_List()
+        {
             var containers = await _context.Containers
                    .Include(c => c.Unit)
                        .ThenInclude(u => u.Course)
@@ -32,8 +32,8 @@ namespace study4_be.Controllers.Admin
 
             return View(containerViewModels);
         }
-		public IActionResult Container_Create()
-		{
+        public IActionResult Container_Create()
+        {
             var units = _context.Units.Include(u => u.Course).ToList();
             var model = new ContainerCreateViewModel
             {
@@ -45,8 +45,8 @@ namespace study4_be.Controllers.Admin
                 }).ToList()
             };
             return View(model);
-		}
-		[HttpPost]
+        }
+        [HttpPost]
         public async Task<IActionResult> Container_Create(ContainerCreateViewModel containerViewModel)
         {
             try
@@ -61,7 +61,7 @@ namespace study4_be.Controllers.Admin
                 await _context.AddAsync(container);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Container_List", "Container");
             }
             catch (Exception ex)
             {
@@ -78,30 +78,30 @@ namespace study4_be.Controllers.Admin
         }
 
         [HttpGet("{id}")]
-		public async Task<IActionResult> GetContainerById(int id)
-		{
-			var container = await _context.Containers.FindAsync(id);
-			if (container == null)
-			{
-				return NotFound();
-			}
+        public async Task<IActionResult> GetContainerById(int id)
+        {
+            var container = await _context.Containers.FindAsync(id);
+            if (container == null)
+            {
+                return NotFound();
+            }
 
-			return Ok(container);
-		}
+            return Ok(container);
+        }
 
-		public IActionResult Container_Edit()
-		{
-			return View();
-		}
+        public IActionResult Container_Edit()
+        {
+            return View();
+        }
 
-		public IActionResult Container_Delete()
-		{
-			return View();
-		}
+        public IActionResult Container_Delete()
+        {
+            return View();
+        }
 
-		public IActionResult Container_Details()
-		{
-			return View();
-		}
-	}
+        public IActionResult Container_Details()
+        {
+            return View();
+        }
+    }
 }

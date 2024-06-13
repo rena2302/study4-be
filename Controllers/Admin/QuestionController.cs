@@ -88,21 +88,21 @@ namespace study4_be.Controllers.Admin
                     QuestionId = questionViewModel.question.QuestionId,
                     QuestionText = questionViewModel.question.QuestionText,
                     QuestionParagraph = questionViewModel.question.QuestionParagraph,
-                    QuestionAudio= questionViewModel.question.QuestionAudio,
+                    QuestionAudio = questionViewModel.question.QuestionAudio,
                     QuestionTranslate = questionViewModel.question.QuestionTranslate,
                     QuestionImage = questionViewModel.question.QuestionImage,
                     CorrectAnswer = questionViewModel.question.CorrectAnswer,
                     OptionA = questionViewModel.question.OptionA,
                     OptionB = questionViewModel.question.OptionB,
-                    OptionC= questionViewModel.question.OptionC,
-                    OptionD= questionViewModel.question.OptionD,
-                    LessonId= questionViewModel.question.LessonId,
+                    OptionC = questionViewModel.question.OptionC,
+                    OptionD = questionViewModel.question.OptionD,
+                    LessonId = questionViewModel.question.LessonId,
                 };
 
                 await _context.AddAsync(question);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Question_List", "Question");
             }
             catch (Exception ex)
             {
