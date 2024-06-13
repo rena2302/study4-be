@@ -4,6 +4,7 @@ using study4_be.Repositories;
 using study4_be.Services.Request;
 using study4_be.Services.Response;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace study4_be.Controllers.API
 {
@@ -14,11 +15,11 @@ namespace study4_be.Controllers.API
         private readonly STUDY4Context _context;
         private readonly VocabFlashCardRepository _vocabFlashCardRepo;
         private readonly ILogger<VocabFlashCard_APIController> _logger;
-        public VocabFlashCard_APIController(ILogger<VocabFlashCard_APIController> logger) 
+        public VocabFlashCard_APIController(ILogger<VocabFlashCard_APIController> logger)
         {
             _context = new STUDY4Context();
             _vocabFlashCardRepo = new VocabFlashCardRepository();
-            _logger = logger; 
+            _logger = logger;
         }
         [HttpPost("Get_AllVocabOfLesson")]
         public async Task<IActionResult> Get_AllVocabOfLesson([FromBody] VocabFlashCardRequest _vocabRequest) {
@@ -67,7 +68,59 @@ namespace study4_be.Controllers.API
                 return StatusCode(500, new { status = 500, message = "An error occurred while processing your request." });
             }
         }
+        [HttpPost("Get_AllListenChossenVocab")]
+        public async Task<IActionResult> Get_AllListenChossenVocab([FromBody] VocabFlashCardRequest _vocabRequest)
+        {
+            try
+            {
+                var allVocabOfLesson = await _vocabFlashCardRepo.GetAllVocabDependLesson(_vocabRequest.lessonId);
 
+                var responseData = new List<VocabListenChoosenResponse>();
+                foreach (var vocab in allVocabOfLesson)
+                {
+                    var audioFilePath = Path.Combine(Path.GetTempPath(), $"{vocab.VocabId}.wav");
+                    await GenerateAudioAsync(vocab.VocabTitle, audioFilePath);
+
+                    var audioBytes = System.IO.File.ReadAllBytes(audioFilePath);
+
+                    responseData.Add(new VocabListenChoosenResponse
+                    {
+                        vocabId = vocab.VocabId,
+                        vocabMean = vocab.Mean,
+                        vocabTitle = vocab.VocabTitle,
+                        vocabAudioBytes = audioBytes // Ensure this is correctly populated with byte array
+                    });
+
+                    // Delete the temporary file after converting to bytes
+                    System.IO.File.Delete(audioFilePath);
+                }
+
+                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = responseData });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching vocab for lesson {LessonId}", _vocabRequest.lessonId);
+                return StatusCode(500, new { status = 500, message = "An error occurred while processing your request." });
+            }
+        }
+
+        private async Task GenerateAudioAsync(string text, string filePath)
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = @"C:\Program Files (x86)\eSpeak NG\espeak-ng.exe",
+                Arguments = $"-w \"{filePath}\" \"{text}\"",
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (var process = new Process { StartInfo = startInfo })
+            {
+                process.Start();
+                await process.WaitForExitAsync();
+            }
+        }
 
     }
 }
