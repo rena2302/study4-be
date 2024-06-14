@@ -10,6 +10,7 @@ namespace study4_be.Models
             Audios = new HashSet<Audio>();
             Questions = new HashSet<Question>();
             Translates = new HashSet<Translate>();
+            Videos = new HashSet<Video>();
             Vocabularies = new HashSet<Vocabulary>();
         }
 
@@ -21,10 +22,10 @@ namespace study4_be.Models
 
         public virtual Container? Container { get; set; }
         public virtual Tag? Tag { get; set; }
-        public virtual Video Video { get; set; } = null!;
         public virtual ICollection<Audio> Audios { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Translate> Translates { get; set; }
+        public virtual ICollection<Video> Videos { get; set; }
         public virtual ICollection<Vocabulary> Vocabularies { get; set; }
     }
 }

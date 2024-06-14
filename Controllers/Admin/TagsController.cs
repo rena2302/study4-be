@@ -47,7 +47,7 @@ namespace study4_be.Controllers.Admin
                     CreatedAtAction(nameof(GetTagById), new { id = tag.TagId }, tag);
                     _logger.LogError(e, "Error occurred while creating new course.");
                 }
-                return RedirectToAction("Tags_List", "Tags"); // nav to main home when add successfull, after change nav to index create Courses
+                return RedirectToAction("Tag_List", "Tags"); // nav to main home when add successfull, after change nav to index create Courses
             }
             catch (Exception ex)
             {

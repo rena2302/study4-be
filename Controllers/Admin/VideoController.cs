@@ -21,7 +21,7 @@ namespace study4_be.Controllers.Admin
             try
             {
                 var videos = await _context.Videos
-                    .Include(v => v.VideoNavigation)
+                    .Include(v => v.Lesson)
                     .ThenInclude(l => l.Container)
                         .ThenInclude(c => c.Unit)
                             .ThenInclude(u => u.Course)
@@ -31,10 +31,10 @@ namespace study4_be.Controllers.Admin
                     .Select(video => new VideoListViewModel
                     {
                         video = video,
-                        courseName = video.VideoNavigation?.Container?.Unit?.Course?.CourseName ?? "N/A",
-                        unitTittle = video.VideoNavigation?.Container?.Unit?.UnitTittle ?? "N/A",
-                        containerTittle = video.VideoNavigation?.Container?.ContainerTitle ?? "N/A",
-                        lessonTittle = video.VideoNavigation?.LessonTitle ?? "N/A",
+                        courseName = video.Lesson?.Container?.Unit?.Course?.CourseName ?? "N/A",
+                        unitTittle = video.Lesson?.Container?.Unit?.UnitTittle ?? "N/A",
+                        containerTittle = video.Lesson?.Container?.ContainerTitle ?? "N/A",
+                        lessonTittle = video.Lesson?.LessonTitle ?? "N/A",
                     }).ToList();
 
                 return View(videoViewModels);

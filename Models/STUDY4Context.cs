@@ -184,22 +184,18 @@ namespace study4_be.Models
 
                 entity.Property(e => e.OptionA)
                     .HasMaxLength(200)
-                    .IsUnicode(false)
                     .HasColumnName("OPTION_A");
 
                 entity.Property(e => e.OptionB)
                     .HasMaxLength(200)
-                    .IsUnicode(false)
                     .HasColumnName("OPTION_B");
 
                 entity.Property(e => e.OptionC)
                     .HasMaxLength(200)
-                    .IsUnicode(false)
                     .HasColumnName("OPTION_C");
 
                 entity.Property(e => e.OptionD)
                     .HasMaxLength(200)
-                    .IsUnicode(false)
                     .HasColumnName("OPTION_D");
 
                 entity.Property(e => e.QuestionAudio).HasColumnName("QUESTION_AUDIO");
@@ -370,18 +366,15 @@ namespace study4_be.Models
             {
                 entity.ToTable("VIDEO");
 
-                entity.Property(e => e.VideoId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("VIDEO_ID");
+                entity.Property(e => e.VideoId).HasColumnName("VIDEO_ID");
 
                 entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
 
                 entity.Property(e => e.VideoUrl).HasColumnName("VIDEO_URL");
 
-                entity.HasOne(d => d.VideoNavigation)
-                    .WithOne(p => p.Video)
-                    .HasForeignKey<Video>(d => d.VideoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                entity.HasOne(d => d.Lesson)
+                    .WithMany(p => p.Videos)
+                    .HasForeignKey(d => d.LessonId)
                     .HasConstraintName("FK_VIDEO_LESSON");
             });
 
