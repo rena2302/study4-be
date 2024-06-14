@@ -10,6 +10,7 @@ using study4_be.Services;
 using Microsoft.EntityFrameworkCore;
 using study4_be.Services.Request;
 using System.Linq;
+using study4_be.Services.Response;
 namespace study4_be.Controllers.API
 {
     [Route("api/[controller]")]
@@ -28,7 +29,17 @@ namespace study4_be.Controllers.API
         public async Task<ActionResult<IEnumerable<Course>>> Get_AllCourses()
         {
             var courses = await _coursesRepository.GetAllCoursesAsync();
-            return Json(new { status = 200, message = "Get Courses Successful", courses });
+            var coursesResponse = courses.Select(course => new CourseResponse
+            {
+                CourseId = course.CourseId,
+                CourseName = course.CourseName,
+                CourseDescription = course.CourseDescription,
+                CourseImage = course.CourseImage,
+                CoursePrice = course.CoursePrice,
+                CourseSale = course.CourseSale,
+                LastPrice = course.CoursePrice - ( course.CoursePrice * course.CourseSale / 100) ,
+            }).ToList();
+            return Json(new { status = 200, message = "Get Courses Successful", coursesResponse });
         }
         [HttpPost("Get_UnregisteredCourses")] // courses the user hasn't registered for
         public async Task<ActionResult> Get_UnregisteredCourses(GetUserCoursesRequest request)
@@ -43,8 +54,17 @@ namespace study4_be.Controllers.API
             {
                 return NotFound(new { status = 404, message = "No unregistered courses found or User Register All Before" });
             }
-
-            return Ok(new { status = 200, message = "Get Unregistered Courses Successful", unregisteredCourses });
+            var unregisteredCoursesResponse = unregisteredCourses.Select(course => new CourseResponse
+            {
+                CourseId = course.CourseId,
+                CourseName = course.CourseName,
+                CourseDescription = course.CourseDescription,
+                CourseImage = course.CourseImage,
+                CoursePrice = course.CoursePrice,
+                CourseSale = course.CourseSale,
+                LastPrice = course.CoursePrice - (course.CoursePrice * course.CourseSale / 100),
+            }).ToList();
+            return Ok(new { status = 200, message = "Get Unregistered Courses Successful", unregisteredCoursesResponse });
         }
         [HttpPost("Get_OutstandingCoursesUserNotBought")]
         public async Task<ActionResult> Get_OutstandingCoursesUserNotBought(GetUserCoursesRequest req)
@@ -60,8 +80,17 @@ namespace study4_be.Controllers.API
                 var detailedOutstandingCoursesForGuest = await _context.Courses
                       .Where(c => outstandingCoursesForGuest.Contains(c.CourseId)) // Lọc các khóa học theo danh sách các CourseId nổi bật
                       .ToListAsync();
-
-                return Ok(new { status = 200, message = "Get Outstanding Courses For Guest Successful", outstandingCourses = detailedOutstandingCoursesForGuest });
+                var detailedOutstandingCoursesForGuestResponse = detailedOutstandingCoursesForGuest.Select(course => new CourseResponse
+                {
+                    CourseId = course.CourseId,
+                    CourseName = course.CourseName,
+                    CourseDescription = course.CourseDescription,
+                    CourseImage = course.CourseImage,
+                    CoursePrice = course.CoursePrice,
+                    CourseSale = course.CourseSale,
+                    LastPrice = course.CoursePrice - (course.CoursePrice * course.CourseSale / 100),
+                }).ToList();
+                return Ok(new { status = 200, message = "Get Outstanding Courses For Guest Successful", outstandingCourses = detailedOutstandingCoursesForGuestResponse });
             }
             List<int>  userPurchasedCourses = await GetCoursesUserHasPurchasedAsync(req.userId);
             var outstandingCourses = await _context.UserCourses
@@ -81,7 +110,17 @@ namespace study4_be.Controllers.API
                 {
                     return NotFound(new { status = 404, message = "No outstanding courses found or not have any outstaind course" });
                 }
-            return Ok(new { status = 200, message = "Get Outstanding Courses User Hadn't Bought Successful", outstandingCourses = detailedOutstandingCourses });
+            var detailedOutstandingCoursesResponse = detailedOutstandingCourses.Select(course => new CourseResponse
+            {
+                CourseId = course.CourseId,
+                CourseName = course.CourseName,
+                CourseDescription = course.CourseDescription,
+                CourseImage = course.CourseImage,
+                CoursePrice = course.CoursePrice,
+                CourseSale = course.CourseSale,
+                LastPrice = course.CoursePrice - (course.CoursePrice * course.CourseSale / 100),
+            }).ToList();
+            return Ok(new { status = 200, message = "Get Outstanding Courses User Hadn't Bought Successful", outstandingCourses = detailedOutstandingCoursesResponse });
         }
         public async Task<List<int>> GetCoursesUserHasPurchasedAsync(string userId)
         {

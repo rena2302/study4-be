@@ -19,6 +19,7 @@ namespace study4_be.Models
         public string? CourseImage { get; set; }
         public string? CourseTag { get; set; }
         public double? CoursePrice { get; set; }
+        public int? CourseSale { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }

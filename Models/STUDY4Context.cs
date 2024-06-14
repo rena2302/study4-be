@@ -102,6 +102,8 @@ namespace study4_be.Models
 
                 entity.Property(e => e.CoursePrice).HasColumnName("COURSE_PRICE");
 
+                entity.Property(e => e.CourseSale).HasColumnName("COURSE_SALE");
+
                 entity.Property(e => e.CourseTag)
                     .HasMaxLength(100)
                     .HasColumnName("COURSE_TAG");

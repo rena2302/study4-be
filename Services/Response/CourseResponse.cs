@@ -8,5 +8,7 @@
         public string? CourseImage { get; set; }
         public string? CourseTag { get; set; }
         public double? CoursePrice { get; set; }
+        public int ? CourseSale { get; set; }
+        public double?  LastPrice { get; set; }
     }
 }
