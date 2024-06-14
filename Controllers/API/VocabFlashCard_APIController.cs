@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Google.Cloud.Storage.V1;
 using study4_be.Services;
 using Google.Apis.Auth.OAuth2;
+using Microsoft.EntityFrameworkCore;
 
 namespace study4_be.Controllers.API
 {
@@ -37,7 +38,15 @@ namespace study4_be.Controllers.API
             try
             {
                 var allVocabOfLesson = await _vocabFlashCardRepo.GetAllVocabDependLesson(_vocabRequest.lessonId);
-                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = allVocabOfLesson });
+                var  lessonTag = await _context.Lessons
+                                           .Where(l => l.LessonId == _vocabRequest.lessonId)
+                                           .Select(l => l.Tag)
+                                           .FirstAsync();
+                var lessonTagResponse = new
+                {
+                    lessonTag = lessonTag.TagId
+                };
+                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = allVocabOfLesson, lessonTag = lessonTagResponse });
             }
             catch (Exception ex)
             {
@@ -57,7 +66,10 @@ namespace study4_be.Controllers.API
             try
             {
                 var allVocabOfLesson = await _vocabFlashCardRepo.GetAllVocabDependLesson(_vocabRequest.lessonId);
-
+                var lessonTag = await _context.Lessons
+                                  .Where(l => l.LessonId == _vocabRequest.lessonId)
+                                  .Select(l => l.Tag)
+                                  .FirstAsync();
                 var responseData = allVocabOfLesson.Select(vocab => new VocabFindPairResponse
                 {
                     vocabId = vocab.VocabId,
@@ -65,7 +77,12 @@ namespace study4_be.Controllers.API
                     vocabExplanation = vocab.Explanation,
                     vocabTitle = vocab.VocabTitle
                 }).ToList();
-                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = responseData });
+        
+                var lessonTagResponse = new
+                {
+                    lessonTag = lessonTag.TagId
+                };
+                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = responseData, lessonTag= lessonTagResponse });
             }
             catch (Exception ex)
             {
@@ -83,7 +100,14 @@ namespace study4_be.Controllers.API
                 var firebaseBucketName =  _firebaseServices.GetFirebaseBucketName();
 
                 // Use firebaseBucketName as needed...
-
+                var lessonTag = await _context.Lessons
+                         .Where(l => l.LessonId == _vocabRequest.lessonId)
+                         .Select(l => l.Tag)
+                         .FirstAsync();
+                var lessonTagResponse = new
+                {
+                    lessonTag = lessonTag.TagId
+                };
                 var responseData = new List<VocabListenChoosenResponse>();
                 foreach (var vocab in allVocabOfLesson)
                 {
@@ -102,12 +126,11 @@ namespace study4_be.Controllers.API
                         vocabTitle = vocab.VocabTitle,
                         vocabAudioUrl = audioUrl
                     });
-
                     // Delete the temporary file after uploading
                     System.IO.File.Delete(audioFilePath);
                 }
 
-                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = responseData });
+                return Ok(new { status = 200, message = "Get All Vocab Of Lesson Successful", data = responseData, lessontag=lessonTagResponse });
             }
             catch (Exception ex)
             {

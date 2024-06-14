@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using study4_be.Models;
 using study4_be.Repositories;
 using study4_be.Services.Request;
@@ -30,8 +31,16 @@ namespace study4_be.Controllers.API
 
             try
             {
+                var lessonTag = await _context.Lessons
+                         .Where(l => l.LessonId == _questionRequest.lessonId)
+                         .Select(l => l.Tag)
+                         .FirstAsync();
+                var lessonTagResponse = new
+                {
+                    lessonTag = lessonTag.TagId
+                };
                 var allQuestionOfLesson = await _questionRepo.GetAllQuestionsOfLesson(_questionRequest.lessonId);
-                return Json(new { status = 200, message = "Get All Question Of Lesson Successful", allQuestionOfLesson });
+                return Json(new { status = 200, message = "Get All Question Of Lesson Successful", allQuestionOfLesson, lessonTag = lessonTagResponse });
             }
             catch (Exception ex)
             {
